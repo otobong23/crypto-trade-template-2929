@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Command } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
 import { FeaturesSection } from "@/components/features/FeaturesSection";
@@ -10,6 +11,8 @@ import Footer from "@/components/Footer";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 
 const Index = () => {
+  const { t } = useTranslation();
+  
   return (
     <div className="min-h-screen bg-black text-foreground">
       <Navigation />
@@ -41,11 +44,11 @@ const Index = () => {
         <div className="max-w-4xl relative z-10">
           <h1 className="text-5xl md:text-7xl font-normal mb-4 tracking-tight text-left">
             <span className="text-gray-200">
-              <TextGenerateEffect words="Trade crypto with" />
+              <TextGenerateEffect words={t('hero.title')} />
             </span>
             <br />
             <span className="text-white font-medium">
-              <TextGenerateEffect words="confidence & security" />
+              <TextGenerateEffect words={t('hero.titleHighlight')} />
             </span>
           </h1>
           
@@ -55,8 +58,7 @@ const Index = () => {
             transition={{ delay: 0.4 }}
             className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl text-left"
           >
-            Experience seamless cryptocurrency trading with advanced features, real-time analytics, and institutional-grade security.{" "}
-            <span className="text-white">Start trading in minutes.</span>
+            {t('hero.subtitle')}
           </motion.p>
           
           <motion.div
@@ -66,7 +68,7 @@ const Index = () => {
             className="flex flex-col sm:flex-row gap-4 items-start"
           >
             <Button size="lg" className="button-gradient">
-              Start Trading Now
+              {t('hero.cta')}
             </Button>
             <Button size="lg" variant="link" className="text-white">
               View Markets <ArrowRight className="ml-2 w-4 h-4" />
@@ -131,7 +133,7 @@ const Index = () => {
             Join thousands of traders who have already discovered the power of our platform.
           </p>
           <Button size="lg" className="button-gradient">
-            Create Account
+            {t('nav.startTrading')}
             <ArrowRight className="ml-2 w-4 h-4" />
           </Button>
         </motion.div>

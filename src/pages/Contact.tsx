@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Mail, MapPin, Phone, MessageCircle, X } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -8,6 +9,7 @@ import Footer from "@/components/Footer";
 import { useState } from "react";
 
 const Contact = () => {
+  const { t } = useTranslation();
   const [isChatOpen, setIsChatOpen] = useState(false);
 
   return (
@@ -23,10 +25,10 @@ const Contact = () => {
           className="text-center mb-20"
         >
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
-            Get In Touch
+            {t('contact.title')}
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Ready to start your trading journey? We're here to help you every step of the way.
+            {t('contact.subtitle')}
           </p>
         </motion.section>
 
@@ -42,9 +44,9 @@ const Contact = () => {
             <form className="space-y-6">
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium mb-2">First Name</label>
+                  <label className="block text-sm font-medium mb-2">{t('contact.form.name')}</label>
                   <Input 
-                    placeholder="Enter your first name" 
+                    placeholder={t('contact.form.name')} 
                     className="bg-black/50 border-white/20 focus:border-blue-400"
                   />
                 </div>
@@ -57,30 +59,30 @@ const Contact = () => {
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2">Email Address</label>
+                <label className="block text-sm font-medium mb-2">{t('contact.form.email')}</label>
                 <Input 
                   type="email" 
-                  placeholder="Enter your email address" 
+                  placeholder={t('contact.form.email')} 
                   className="bg-black/50 border-white/20 focus:border-blue-400"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2">Subject</label>
+                <label className="block text-sm font-medium mb-2">{t('contact.form.subject')}</label>
                 <Input 
-                  placeholder="Enter subject" 
+                  placeholder={t('contact.form.subject')} 
                   className="bg-black/50 border-white/20 focus:border-blue-400"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2">Message</label>
+                <label className="block text-sm font-medium mb-2">{t('contact.form.message')}</label>
                 <Textarea 
-                  placeholder="Enter your message" 
+                  placeholder={t('contact.form.message')} 
                   rows={5}
                   className="bg-black/50 border-white/20 focus:border-blue-400"
                 />
               </div>
               <Button className="w-full button-gradient" size="lg">
-                Send Message
+                {t('contact.form.send')}
               </Button>
             </form>
           </motion.div>

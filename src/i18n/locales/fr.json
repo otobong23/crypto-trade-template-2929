@@ -1,0 +1,170 @@
+{
+  "nav": {
+    "about": "À propos",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "dashboard": "Tableau de bord",
+    "startTrading": "Commencer à trader"
+  },
+  "hero": {
+    "title": "Tradez avec confiance, grandissez avec",
+    "titleHighlight": "Tradephere",
+    "subtitle": "Rejoignez des milliers de traders prospères utilisant notre plateforme avancée. Commencez avec seulement 500$ et regardez vos investissements croître avec nos stratégies éprouvées.",
+    "cta": "Commencer à trader maintenant"
+  },
+  "features": {
+    "title": "Pourquoi choisir Tradephere ?",
+    "subtitle": "Découvrez les fonctionnalités puissantes qui font de nous le choix préféré des traders du monde entier"
+  },
+  "pricing": {
+    "title": "Choisissez votre plan de trading",
+    "subtitle": "Sélectionnez le plan parfait qui correspond à vos objectifs d'investissement et votre expérience de trading",
+    "monthly": "Mensuel",
+    "mostPopular": "Le plus populaire",
+    "getStarted": "Commencer",
+    "plan500": {
+      "name": "Plan Débutant",
+      "price": "500$",
+      "description": "Parfait pour les débutants qui commencent leur parcours de trading",
+      "features": [
+        "Outils de trading de base",
+        "Support par email",
+        "Rapports de marché mensuels",
+        "Conseils de gestion des risques"
+      ]
+    },
+    "plan1000": {
+      "name": "Plan Basique",
+      "price": "1 000$",
+      "description": "Idéal pour les traders avec une certaine expérience",
+      "features": [
+        "Outils de trading avancés",
+        "Support prioritaire",
+        "Analyse de marché hebdomadaire",
+        "Optimisation de portefeuille",
+        "Application mobile de trading"
+      ]
+    },
+    "plan5000": {
+      "name": "Plan Professionnel",
+      "price": "5 000$",
+      "description": "Pour les traders sérieux recherchant un rendement maximal",
+      "features": [
+        "Suite de trading professionnelle",
+        "Support dédié 24/7",
+        "Insights de marché quotidiens",
+        "Analyses avancées",
+        "Conseiller en trading personnel",
+        "Accès API"
+      ]
+    },
+    "plan10000": {
+      "name": "Plan Elite",
+      "price": "10 000$",
+      "description": "Fonctionnalités premium pour les traders d'élite",
+      "features": [
+        "Plateforme de trading élite",
+        "Ligne de support VIP",
+        "Données de marché en temps réel",
+        "Stratégies de trading personnalisées",
+        "Gestionnaire de compte dédié",
+        "Recherche de marché exclusive",
+        "Gestion avancée des risques"
+      ]
+    },
+    "plan200000": {
+      "name": "Plan Institutionnel",
+      "price": "200 000$",
+      "description": "Solutions de niveau entreprise pour les clients institutionnels",
+      "features": [
+        "Plateforme de niveau institutionnel",
+        "Service de gants blancs",
+        "Intégration personnalisée",
+        "Tarification institutionnelle",
+        "Bureau de trading dédié",
+        "Conformité réglementaire",
+        "Trading multi-actifs",
+        "Appels API illimités"
+      ]
+    }
+  },
+  "about": {
+    "title": "À propos de nous",
+    "whoWeAre": {
+      "title": "Qui nous sommes",
+      "subtitle": "Bienvenue chez Trade Phere !",
+      "description": "Avec un focus sur la transparence, la sécurité et l'innovation, nous donnons aux individus les moyens de faire croître leurs revenus rapidement et efficacement, soutenus par une technologie de pointe et un support expert."
+    },
+    "aboutTradePhere": {
+      "title": "À propos de Trade Phere",
+      "subtitle": "Qui nous sommes et ce que nous faisons !",
+      "description": "Bienvenue sur le site web de Trade Phere ! Notre plateforme d'investissement est le produit d'une préparation minutieuse et d'un travail fructueux d'experts dans le domaine du Trading, du commerce hautement rentable en cryptomonnaies et du marketing en ligne. Utilisant des méthodes modernes de faire des affaires et une approche personnelle pour chaque client, nous offrons un modèle d'investissement unique aux personnes qui veulent utiliser Bitcoin non seulement comme méthode de paiement, mais aussi comme source fiable de revenus stables. L'entreprise Trade Phere utilise uniquement des équipements miniers modernes et trade sur les marchés les plus stables, ce qui minimise le risque de perte financière pour les clients et leur garantit un revenu stable accumulé chaque jour calendaire."
+    },
+    "reliability": {
+      "title": "Nous dirigeons avec fiabilité",
+      "subtitle": "Pourquoi nous choisir ?",
+      "description": "Si vous vous trouvez ici, vous êtes définitivement à la recherche d'un investissement fiable et rentable. Oui, vous êtes juste au bon endroit ! Notre entreprise offre une gestion d'actifs de confiance de la plus haute qualité basée sur les devises étrangères et le commerce rentable à travers les échanges Bitcoin. Il n'y a aucun autre marché financier mondial qui puisse garantir une capacité quotidienne à générer un profit constant avec les grandes fluctuations de prix du Bitcoin. Les modalités proposées pour renforcer la coopération seront acceptées par quiconque utilise la cryptomonnaie et connaît ses perspectives fantastiques. Votre dépôt fonctionne de manière continue et génère des profits chaque jour avec la possibilité de retirer les profits instantanément. Rejoignez notre entreprise aujourd'hui et commencez à faire de gros profits !"
+    },
+    "legal": {
+      "title": "Légal",
+      "subtitle": "Nous sommes vérifiés, fiables et de confiance !",
+      "description": "En tant qu'entreprise enregistrée au Royaume-Uni, nous opérons en toute transparence, adhérant aux réglementations strictes régissant tous les échanges crypto et financiers afin d'assurer confiance et fiabilité.",
+      "viewCertificate": "Voir le certificat"
+    },
+    "income": {
+      "title": "Augmenter vos revenus",
+      "subtitle": "Les meilleures fonctionnalités de Trade Phere",
+      "feature1": {
+        "title": "Sécurité garantie",
+        "description": "Notre certificat GeoTrust EV SSL garantit la sécurité de vos transactions."
+      },
+      "feature2": {
+        "title": "Paiements instantanés",
+        "description": "Recevez votre paiement instantanément dès que vous le demandez !"
+      },
+      "feature3": {
+        "title": "Protection serveur robuste",
+        "description": "Le site web TradePhere utilise un serveur dédié très puissant avec le plus haut niveau de protection."
+      }
+    }
+  },
+  "contact": {
+    "title": "Entrer en contact",
+    "subtitle": "Prêt à commencer votre parcours de trading ? Nous sommes là pour vous aider à chaque étape.",
+    "form": {
+      "name": "Votre nom",
+      "email": "Adresse email",
+      "subject": "Sujet",
+      "message": "Votre message",
+      "send": "Envoyer le message"
+    },
+    "info": {
+      "title": "Informations de contact",
+      "email": "Envoyez-nous un email",
+      "emailValue": "support@tradephere.com",
+      "response": "Temps de réponse",
+      "responseValue": "Dans les 24 heures",
+      "support": "Heures de support",
+      "supportValue": "Disponible 24/7"
+    },
+    "chat": {
+      "title": "Support de chat en direct",
+      "subtitle": "Obtenez une aide instantanée de notre équipe de support",
+      "placeholder": "Tapez votre message...",
+      "send": "Envoyer"
+    }
+  },
+  "footer": {
+    "description": "Donner aux traders du monde entier les moyens d'agir avec une technologie de pointe et un support expert.",
+    "trading": "Trading",
+    "features": "Fonctionnalités",
+    "pricing": "Tarification",
+    "resources": "Ressources",
+    "help": "Centre d'aide",
+    "blog": "Blog",
+    "legal": "Légal",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions de service",
+    "copyright": "© 2024 Tradephere. Tous droits réservés."
+  }
+}

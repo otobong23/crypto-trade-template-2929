@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { Menu } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import tradephereLogoSrc from "@/assets/tradephere-logo.png";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Navigation = () => {
+  const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -41,10 +44,10 @@ const Navigation = () => {
   };
 
   const navItems = [
-    { name: "About", href: "#about", onClick: () => scrollToSection('about') },
-    { name: "FAQ", href: "#faq", onClick: () => scrollToSection('faq') },
-    { name: "Contact", href: "#contact", onClick: () => scrollToSection('contact') },
-    { name: "Dashboard", href: "#dashboard", onClick: () => scrollToSection('dashboard') },
+    { name: t('nav.about'), href: "#about", onClick: () => scrollToSection('about') },
+    { name: t('nav.faq'), href: "#faq", onClick: () => scrollToSection('faq') },
+    { name: t('nav.contact'), href: "#contact", onClick: () => scrollToSection('contact') },
+    { name: t('nav.dashboard'), href: "#dashboard", onClick: () => scrollToSection('dashboard') },
   ];
 
   return (
@@ -79,12 +82,13 @@ const Navigation = () => {
                 {item.name}
               </a>
             ))}
+            <LanguageSwitcher />
             <Button 
               onClick={() => scrollToSection('cta')}
               size="sm"
               className="button-gradient"
             >
-              Start Trading
+              {t('nav.startTrading')}
             </Button>
           </div>
 
@@ -114,15 +118,18 @@ const Navigation = () => {
                       {item.name}
                     </a>
                   ))}
-                  <Button 
-                    onClick={() => {
-                      setIsMobileMenuOpen(false);
-                      scrollToSection('cta');
-                    }}
-                    className="button-gradient mt-4"
-                  >
-                    Start Trading
-                  </Button>
+                  <div className="mt-4 space-y-3">
+                    <LanguageSwitcher />
+                    <Button 
+                      onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        scrollToSection('cta');
+                      }}
+                      className="button-gradient w-full"
+                    >
+                      {t('nav.startTrading')}
+                    </Button>
+                  </div>
                 </div>
               </SheetContent>
             </Sheet>
