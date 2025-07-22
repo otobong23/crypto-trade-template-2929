@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Command, Menu } from "lucide-react";
+import { Menu } from "lucide-react";
+import tradephereLogoSrc from "@/assets/tradephere-logo.png";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 
@@ -40,9 +41,10 @@ const Navigation = () => {
   };
 
   const navItems = [
-    { name: "Features", href: "#features", onClick: () => scrollToSection('features') },
-    { name: "Prices", href: "#pricing", onClick: () => scrollToSection('pricing') },
-    { name: "Testimonials", href: "#testimonials", onClick: () => scrollToSection('testimonials') },
+    { name: "About", href: "#about", onClick: () => scrollToSection('about') },
+    { name: "FAQ", href: "#faq", onClick: () => scrollToSection('faq') },
+    { name: "Contact", href: "#contact", onClick: () => scrollToSection('contact') },
+    { name: "Dashboard", href: "#dashboard", onClick: () => scrollToSection('dashboard') },
   ];
 
   return (
@@ -56,8 +58,8 @@ const Navigation = () => {
       <div className="mx-auto h-full px-6">
         <nav className="flex items-center justify-between h-full">
           <div className="flex items-center gap-2">
-            <Command className="w-5 h-5 text-primary" />
-            <span className="font-bold text-base">CryptoTrade</span>
+            <img src={tradephereLogoSrc} alt="Tradephere" className="w-8 h-8" />
+            <span className="font-bold text-base">Tradephere</span>
           </div>
 
           {/* Desktop Navigation */}

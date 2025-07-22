@@ -67,42 +67,68 @@ export const PricingSection = () => {
         </motion.p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
         <PricingTier
-          name="Basic Trader"
-          price="$0"
-          description="Perfect for beginners starting their crypto journey"
+          name="Starter Plan"
+          price="$500"
+          description="Begin your trading journey with our starter package"
           features={[
-            "Basic spot trading",
-            "Market & limit orders",
-            "Basic market analysis",
-            "Email support"
+            "Basic trading tools",
+            "Market analysis",
+            "Email support",
+            "Mobile app access"
           ]}
         />
         <PricingTier
-          name="Pro Trader"
-          price="$29"
-          description="Advanced features for serious traders"
+          name="Growth Plan"
+          price="$1,000"
+          description="Enhanced features for growing traders"
           features={[
-            "Advanced trading tools",
-            "Margin trading up to 10x",
-            "Advanced technical analysis",
+            "Advanced charting",
+            "Risk management tools",
             "Priority support",
-            "API access"
+            "API access",
+            "Trading signals"
+          ]}
+        />
+        <PricingTier
+          name="Pro Plan"
+          price="$5,000"
+          description="Professional trading with premium features"
+          features={[
+            "Professional tools",
+            "Advanced analytics",
+            "Dedicated support",
+            "Custom indicators",
+            "Portfolio management",
+            "Live market data"
           ]}
           isPopular
         />
         <PricingTier
-          name="Institutional"
-          price="Custom"
-          description="Enterprise-grade solutions for institutions"
+          name="Elite Plan"
+          price="$10,000"
+          description="Elite trading experience with exclusive tools"
           features={[
-            "Custom trading solutions",
+            "Elite trading suite",
+            "Personal advisor",
+            "VIP support",
+            "Custom strategies",
+            "Advanced automation",
+            "Institutional tools"
+          ]}
+        />
+        <PricingTier
+          name="Premier Plan"
+          price="$200,000"
+          description="Ultimate trading package for high-volume traders"
+          features={[
             "Unlimited trading volume",
-            "OTC desk access",
-            "Dedicated account manager",
-            "Custom API integration",
-            "24/7 priority support"
+            "White-glove service",
+            "24/7 dedicated support",
+            "Custom infrastructure",
+            "Institutional pricing",
+            "Direct market access"
           ]}
         />
       </div>
