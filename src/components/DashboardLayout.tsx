@@ -13,7 +13,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Link, useLocation } from "react-router-dom";
-import tradephereLogoSrc from "@/assets/tradephere-logo.png";
+import tradephereLogoSrc from "@/assets/trade_phere.svg";
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
