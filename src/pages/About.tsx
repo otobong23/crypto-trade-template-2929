@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Shield, Zap, Server, CheckCircle } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
@@ -166,6 +167,75 @@ const About = () => {
                 {t('about.income.feature3.description')}
               </p>
             </motion.div>
+          </div>
+        </motion.section>
+
+        {/* FAQ Section */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="mb-20"
+        >
+          <div className="glass rounded-2xl p-8 md:p-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">{t('about.faq.title')}</h2>
+            <div className="max-w-4xl mx-auto">
+              <Accordion type="single" collapsible className="w-full space-y-4">
+                <AccordionItem value="item-1" className="border border-white/10 rounded-lg bg-black/20 px-6">
+                  <AccordionTrigger className="text-left hover:no-underline">
+                    <span className="text-lg font-semibold">{t('about.faq.question1.title')}</span>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-gray-300 pt-0 pb-4">
+                    {t('about.faq.question1.answer')}
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="item-2" className="border border-white/10 rounded-lg bg-black/20 px-6">
+                  <AccordionTrigger className="text-left hover:no-underline">
+                    <span className="text-lg font-semibold">{t('about.faq.question2.title')}</span>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-gray-300 pt-0 pb-4">
+                    {t('about.faq.question2.answer')}
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="item-3" className="border border-white/10 rounded-lg bg-black/20 px-6">
+                  <AccordionTrigger className="text-left hover:no-underline">
+                    <span className="text-lg font-semibold">{t('about.faq.question3.title')}</span>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-gray-300 pt-0 pb-4">
+                    {t('about.faq.question3.answer')}
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="item-4" className="border border-white/10 rounded-lg bg-black/20 px-6">
+                  <AccordionTrigger className="text-left hover:no-underline">
+                    <span className="text-lg font-semibold">{t('about.faq.question4.title')}</span>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-gray-300 pt-0 pb-4">
+                    {t('about.faq.question4.answer')}
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="item-5" className="border border-white/10 rounded-lg bg-black/20 px-6">
+                  <AccordionTrigger className="text-left hover:no-underline">
+                    <span className="text-lg font-semibold">{t('about.faq.question5.title')}</span>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-gray-300 pt-0 pb-4">
+                    {t('about.faq.question5.answer')}
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="item-6" className="border border-white/10 rounded-lg bg-black/20 px-6">
+                  <AccordionTrigger className="text-left hover:no-underline">
+                    <span className="text-lg font-semibold">{t('about.faq.question6.title')}</span>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-gray-300 pt-0 pb-4">
+                    {t('about.faq.question6.answer')}
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </div>
           </div>
         </motion.section>
       </div>

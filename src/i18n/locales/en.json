@@ -1,7 +1,7 @@
 {
   "nav": {
     "about": "About",
-    "faq": "FAQ",
+    
     "contact": "Contact",
     "dashboard": "Dashboard",
     "startTrading": "Start Trading"
@@ -125,6 +125,33 @@
       "feature3": {
         "title": "Robust Server Protection",
         "description": "TradePhere website uses a very powerful dedicated server with the highest level of protection."
+      }
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "question1": {
+        "title": "What is Trade Phere and how does it work?",
+        "answer": "Trade Phere is an investment platform that focuses on cryptocurrency trading and mining. We use modern equipment and trade in stable markets to provide our clients with daily profits while minimizing financial risks."
+      },
+      "question2": {
+        "title": "How secure are my investments with Trade Phere?",
+        "answer": "We prioritize security with our GeoTrust EV SSL Certificate, robust server protection, and compliance with UK regulations. As a UK-registered company, we operate with full transparency and adhere to strict financial regulations."
+      },
+      "question3": {
+        "title": "What cryptocurrencies does Trade Phere support?",
+        "answer": "Trade Phere primarily focuses on Bitcoin trading and mining, but we also support other major cryptocurrencies including Ethereum and USDT for deposits and withdrawals."
+      },
+      "question4": {
+        "title": "How quickly can I withdraw my profits?",
+        "answer": "We offer instant payments! You can request withdrawals at any time, and your payments are processed immediately upon request, giving you complete control over your earnings."
+      },
+      "question5": {
+        "title": "What makes Trade Phere different from other investment platforms?",
+        "answer": "Our unique combination of modern mining equipment, expert trading strategies, daily profit generation, instant withdrawals, and full regulatory compliance sets us apart. We offer transparency, security, and consistent returns."
+      },
+      "question6": {
+        "title": "Do I need experience in cryptocurrency trading to invest?",
+        "answer": "No experience is required! Our expert team handles all trading activities for you. We provide a user-friendly platform where you can invest and watch your portfolio grow without needing any technical knowledge."
       }
     }
   },

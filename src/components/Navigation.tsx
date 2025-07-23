@@ -44,10 +44,8 @@ const Navigation = () => {
   };
 
   const navItems = [
-    { name: t('nav.about'), href: "#about", onClick: () => scrollToSection('about') },
-    { name: t('nav.faq'), href: "#faq", onClick: () => scrollToSection('faq') },
-    { name: t('nav.contact'), href: "#contact", onClick: () => scrollToSection('contact') },
-    { name: t('nav.dashboard'), href: "#dashboard", onClick: () => scrollToSection('dashboard') },
+    { name: t('nav.about'), href: "/about" },
+    { name: t('nav.contact'), href: "/contact" },
   ];
 
   return (
@@ -71,12 +69,6 @@ const Navigation = () => {
               <a
                 key={item.name}
                 href={item.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  if (item.onClick) {
-                    item.onClick();
-                  }
-                }}
                 className="text-sm text-muted-foreground hover:text-foreground transition-all duration-300"
               >
                 {item.name}
@@ -107,13 +99,7 @@ const Navigation = () => {
                       key={item.name}
                       href={item.href}
                       className="text-lg text-muted-foreground hover:text-foreground transition-colors"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setIsMobileMenuOpen(false);
-                        if (item.onClick) {
-                          item.onClick();
-                        }
-                      }}
+                      onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {item.name}
                     </a>
