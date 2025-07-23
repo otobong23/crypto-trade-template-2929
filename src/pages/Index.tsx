@@ -9,6 +9,9 @@ import LogoCarousel from "@/components/LogoCarousel";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import Footer from "@/components/Footer";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
+import TradingViewWidget from "@/components/TradingViewWidget";
+import MarketOverviewWidget from "@/components/MarketOverviewWidget";
+import CryptoTickerWidget from "@/components/CryptoTickerWidget";
 
 const Index = () => {
   const { t } = useTranslation();
@@ -91,6 +94,58 @@ const Index = () => {
           </div>
         </motion.div>
       </motion.section>
+
+      {/* Crypto Ticker */}
+      <div className="bg-black border-y border-white/10">
+        <CryptoTickerWidget />
+      </div>
+
+      {/* Trading View Widgets Section */}
+      <section className="container px-4 py-20 bg-black">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Live Market Data</h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Stay updated with real-time cryptocurrency prices and charts powered by TradingView
+          </p>
+        </motion.div>
+
+        <div className="grid lg:grid-cols-2 gap-8 mb-12">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="glass rounded-xl p-6"
+          >
+            <h3 className="text-xl font-semibold mb-4">Bitcoin Chart</h3>
+            <TradingViewWidget symbol="BINANCE:BTCUSDT" height="400" />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="glass rounded-xl p-6"
+          >
+            <h3 className="text-xl font-semibold mb-4">Ethereum Chart</h3>
+            <TradingViewWidget symbol="BINANCE:ETHUSDT" height="400" />
+          </motion.div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="glass rounded-xl p-6"
+        >
+          <h3 className="text-xl font-semibold mb-4">Market Overview</h3>
+          <MarketOverviewWidget height="600" />
+        </motion.div>
+      </section>
 
       {/* Logo Carousel */}
       <LogoCarousel />

@@ -126,6 +126,33 @@
         "title": "Protección Robusta del Servidor",
         "description": "El sitio web de TradePhere usa un servidor dedicado muy poderoso con el más alto nivel de protección."
       }
+    },
+    "faq": {
+      "title": "Preguntas Frecuentes",
+      "question1": {
+        "title": "¿Qué es Trade Phere y cómo funciona?",
+        "answer": "Trade Phere es una plataforma de inversión que se centra en el comercio y minería de criptomonedas. Utilizamos equipos modernos y comerciamos en mercados estables para brindar a nuestros clientes ganancias diarias mientras minimizamos los riesgos financieros."
+      },
+      "question2": {
+        "title": "¿Qué tan seguras son mis inversiones con Trade Phere?",
+        "answer": "Priorizamos la seguridad con nuestro Certificado SSL EV de GeoTrust, protección robusta del servidor y cumplimiento de las regulaciones del Reino Unido. Como empresa registrada en el Reino Unido, operamos con total transparencia y cumplimos estrictas regulaciones financieras."
+      },
+      "question3": {
+        "title": "¿Qué criptomonedas admite Trade Phere?",
+        "answer": "Trade Phere se centra principalmente en el comercio y minería de Bitcoin, pero también admitimos otras criptomonedas importantes, incluidas Ethereum y USDT para depósitos y retiros."
+      },
+      "question4": {
+        "title": "¿Qué tan rápido puedo retirar mis ganancias?",
+        "answer": "¡Ofrecemos pagos instantáneos! Puedes solicitar retiros en cualquier momento, y tus pagos se procesan inmediatamente al solicitarlos, dándote control completo sobre tus ganancias."
+      },
+      "question5": {
+        "title": "¿Qué hace que Trade Phere sea diferente de otras plataformas de inversión?",
+        "answer": "Nuestra combinación única de equipos de minería modernos, estrategias de trading expertas, generación de ganancias diarias, retiros instantáneos y cumplimiento regulatorio completo nos distingue. Ofrecemos transparencia, seguridad y rendimientos consistentes."
+      },
+      "question6": {
+        "title": "¿Necesito experiencia en trading de criptomonedas para invertir?",
+        "answer": "¡No se requiere experiencia! Nuestro equipo experto maneja todas las actividades de trading por ti. Proporcionamos una plataforma fácil de usar donde puedes invertir y ver crecer tu portafolio sin necesidad de conocimientos técnicos."
+      }
     }
   },
   "contact": {

@@ -1,7 +1,7 @@
 {
   "nav": {
     "about": "À propos",
-    "faq": "FAQ",
+    
     "contact": "Contact",
     "dashboard": "Tableau de bord",
     "startTrading": "Commencer à trader"
@@ -125,6 +125,33 @@
       "feature3": {
         "title": "Protection serveur robuste",
         "description": "Le site web TradePhere utilise un serveur dédié très puissant avec le plus haut niveau de protection."
+      }
+    },
+    "faq": {
+      "title": "Questions Fréquemment Posées",
+      "question1": {
+        "title": "Qu'est-ce que Trade Phere et comment ça fonctionne ?",
+        "answer": "Trade Phere est une plateforme d'investissement qui se concentre sur le trading et le minage de cryptomonnaies. Nous utilisons des équipements modernes et tradons sur des marchés stables pour offrir à nos clients des profits quotidiens tout en minimisant les risques financiers."
+      },
+      "question2": {
+        "title": "À quel point mes investissements sont-ils sécurisés avec Trade Phere ?",
+        "answer": "Nous priorisons la sécurité avec notre Certificat SSL EV GeoTrust, une protection robuste des serveurs et la conformité aux réglementations britanniques. En tant qu'entreprise enregistrée au Royaume-Uni, nous opérons en toute transparence et respectons des réglementations financières strictes."
+      },
+      "question3": {
+        "title": "Quelles cryptomonnaies Trade Phere supporte-t-il ?",
+        "answer": "Trade Phere se concentre principalement sur le trading et le minage de Bitcoin, mais nous supportons aussi d'autres cryptomonnaies majeures incluant Ethereum et USDT pour les dépôts et retraits."
+      },
+      "question4": {
+        "title": "À quelle vitesse puis-je retirer mes profits ?",
+        "answer": "Nous offrons des paiements instantanés ! Vous pouvez demander des retraits à tout moment, et vos paiements sont traités immédiatement sur demande, vous donnant un contrôle complet sur vos gains."
+      },
+      "question5": {
+        "title": "Qu'est-ce qui rend Trade Phere différent des autres plateformes d'investissement ?",
+        "answer": "Notre combinaison unique d'équipements de minage modernes, de stratégies de trading expertes, de génération de profits quotidiens, de retraits instantanés et de conformité réglementaire complète nous distingue. Nous offrons transparence, sécurité et rendements cohérents."
+      },
+      "question6": {
+        "title": "Ai-je besoin d'expérience en trading de cryptomonnaies pour investir ?",
+        "answer": "Aucune expérience n'est requise ! Notre équipe d'experts gère toutes les activités de trading pour vous. Nous fournissons une plateforme conviviale où vous pouvez investir et regarder votre portefeuille grandir sans avoir besoin de connaissances techniques."
       }
     }
   },
