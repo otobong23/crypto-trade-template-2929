@@ -214,7 +214,7 @@ const AdminSettings = () => {
                 <p className="text-lg font-bold text-white">v2.1.0</p>
               </div>
               <div className="text-center p-4 rounded-lg bg-black/20">
-                <p className="text-gray-400 text-sm">Last Backup</p>
+                <p className="text-gray-400 text-sm">Last Updated</p>
                 <p className="text-lg font-bold text-white">2024-01-20</p>
               </div>
               <div className="text-center p-4 rounded-lg bg-black/20">
