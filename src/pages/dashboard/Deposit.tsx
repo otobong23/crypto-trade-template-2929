@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -11,6 +12,7 @@ const Deposit = () => {
   const [selectedCrypto, setSelectedCrypto] = useState("");
   const [amount, setAmount] = useState("");
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const cryptos = [
     { symbol: "BTC", name: "Bitcoin", address: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa" },
@@ -32,9 +34,9 @@ const Deposit = () => {
       return;
     }
     
-    toast({
-      title: "Deposit Initiated",
-      description: "Please transfer funds to the provided address",
+    // Navigate to confirmation page with selected crypto and amount
+    navigate("/dashboard/deposit/confirm", {
+      state: { selectedCrypto, amount }
     });
   };
 

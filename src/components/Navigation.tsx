@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import tradephereLogoSrc from "@/assets/tradephere-logo.png";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
@@ -58,10 +59,10 @@ const Navigation = () => {
     >
       <div className="mx-auto h-full px-6">
         <nav className="flex items-center justify-between h-full">
-          <div className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2">
             <img src={tradephereLogoSrc} alt="Tradephere" className="w-8 h-8" />
             <span className="font-bold text-base">Tradephere</span>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6">
@@ -75,13 +76,11 @@ const Navigation = () => {
               </a>
             ))}
             <LanguageSwitcher />
-            <Button 
-              onClick={() => scrollToSection('cta')}
-              size="sm"
-              className="button-gradient"
-            >
-              {t('nav.startTrading')}
-            </Button>
+            <Link to="/login">
+              <Button size="sm" className="button-gradient">
+                {t('nav.startTrading')}
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Navigation */}
@@ -106,15 +105,14 @@ const Navigation = () => {
                   ))}
                   <div className="mt-4 space-y-3">
                     <LanguageSwitcher />
-                    <Button 
-                      onClick={() => {
-                        setIsMobileMenuOpen(false);
-                        scrollToSection('cta');
-                      }}
-                      className="button-gradient w-full"
-                    >
-                      {t('nav.startTrading')}
-                    </Button>
+                    <Link to="/login" className="w-full">
+                      <Button 
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="button-gradient w-full"
+                      >
+                        {t('nav.startTrading')}
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </SheetContent>
