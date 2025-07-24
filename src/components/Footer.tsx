@@ -1,4 +1,4 @@
-import { Github, Twitter } from "lucide-react";
+import { Github, Mail, Twitter } from "lucide-react";
 import { Button } from "./ui/button";
 
 const Footer = () => {
@@ -14,7 +14,8 @@ const Footer = () => {
               </p>
               <div className="flex space-x-4">
                 <Button variant="ghost" size="icon">
-                  <Twitter className="w-4 h-4" />
+                  {/* <Twitter className="w-4 h-4" /> */}
+                  <Mail className="w-4 h-4" />
                 </Button>
                 <Button variant="ghost" size="icon">
                   <Github className="w-4 h-4" />
@@ -73,7 +74,7 @@ const Footer = () => {
 
           <div className="mt-8 pt-8 border-t border-white/10">
             <p className="text-sm text-muted-foreground text-center">
-              © {new Date().getFullYear()} Rezaul Arif. All rights reserved.
+              © {new Date().getFullYear()} Developer. All rights reserved.
             </p>
           </div>
         </div>
