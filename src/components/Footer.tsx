@@ -14,7 +14,6 @@ const Footer = () => {
               </p>
               <div className="flex space-x-4">
                 <Button variant="ghost" size="icon">
-                  {/* <Twitter className="w-4 h-4" /> */}
                   <Mail className="w-4 h-4" />
                 </Button>
                 <Button variant="ghost" size="icon">
