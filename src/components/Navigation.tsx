@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import tradephereLogoSrc from "@/assets/tradephere-logo.png";
+import tradephereLogoSrc from "@/assets/trade_phere.svg";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import LanguageSwitcher from "./LanguageSwitcher";
