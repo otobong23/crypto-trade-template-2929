@@ -24,6 +24,8 @@ const Login = () => {
           title: "Login Successful",
           description: "Welcome back to Trade Phere!",
         });
+        localStorage.setItem("authToken", "dummy-user-token");
+        localStorage.setItem("userRole", "user");
         // Redirect to dashboard would happen here
         window.location.href = "/dashboard";
       } else {
@@ -64,7 +66,7 @@ const Login = () => {
                   className="bg-black/50"
                 />
               </div>
-              
+
               <div className="space-y-2">
                 <Label htmlFor="password">Password</Label>
                 <Input
@@ -78,8 +80,8 @@ const Login = () => {
                 />
               </div>
 
-              <Button 
-                type="submit" 
+              <Button
+                type="submit"
                 className="w-full button-gradient"
                 disabled={isLoading}
               >
