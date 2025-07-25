@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Link, useLocation } from "react-router-dom";
 import tradephereLogoSrc from "@/assets/trade_phere.svg";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -114,6 +115,7 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
           <div className="flex-1" />
           
           <div className="flex items-center gap-4">
+            <LanguageSwitcher />
             <div className="flex items-center gap-2 text-white">
               <User className="w-5 h-5" />
               <span className="text-sm">John Doe</span>

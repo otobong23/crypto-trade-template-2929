@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Link, useLocation } from "react-router-dom";
 import tradephereLogoSrc from "@/assets/trade_phere.svg";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 interface AdminLayoutProps {
   children: React.ReactNode;
@@ -112,6 +113,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
           <div className="flex-1" />
           
           <div className="flex items-center gap-4">
+            <LanguageSwitcher />
             <div className="flex items-center gap-2 text-white">
               <Shield className="w-5 h-5 text-red-500" />
               <span className="text-sm">Admin</span>
