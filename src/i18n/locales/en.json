@@ -181,6 +181,56 @@
       "send": "Send"
     }
   },
+  "dashboard": {
+    "nav": {
+      "home": "Home",
+      "plans": "Plans",
+      "wallet": "Wallet",
+      "history": "History",
+      "market": "Market",
+      "logout": "Logout"
+    },
+    "home": {
+      "welcome": "Welcome back",
+      "totalBalance": "Total Balance",
+      "dailyProfit": "Daily Profit",
+      "activeInvestments": "Active Investments",
+      "totalWithdrawn": "Total Withdrawn"
+    }
+  },
+  "admin": {
+    "nav": {
+      "dashboard": "Dashboard",
+      "users": "Users",
+      "transactions": "Transactions",
+      "settings": "Settings",
+      "logout": "Logout"
+    },
+    "login": {
+      "title": "Admin Login",
+      "subtitle": "Sign in to your admin panel",
+      "username": "Username",
+      "password": "Password",
+      "login": "Login"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Sign in to your account",
+      "subtitle": "Enter your credentials to access your dashboard",
+      "email": "Email",
+      "password": "Password",
+      "login": "Login"
+    },
+    "signup": {
+      "title": "Create account",
+      "subtitle": "Sign up to start trading",
+      "name": "Full Name",
+      "email": "Email",
+      "password": "Password",
+      "signUp": "Sign Up"
+    }
+  },
   "footer": {
     "description": "Empowering traders worldwide with cutting-edge technology and expert support.",
     "trading": "Trading",
