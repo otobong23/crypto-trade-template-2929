@@ -15,9 +15,10 @@ import {
 } from "lucide-react";
 import DashboardLayout from "@/components/DashboardLayout";
 import MarketOverviewWidget from "@/components/MarketOverviewWidget";
+import { useTranslation } from "react-i18next";
 
 const Dashboard = () => {
-  // Dummy data
+  const { t } = useTranslation();
   const userStats = {
     totalBalance: 12450.50,
     totalProfit: 2340.75,
@@ -71,9 +72,9 @@ const Dashboard = () => {
     <DashboardLayout>
       <div className="space-y-6">
         {/* Welcome Section */}
-        <div className="flex items-center justify-between">
+         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-white">Welcome back, John!</h1>
+            <h1 className="text-3xl font-bold text-white">{t('dashboard.home.welcome')}, John!</h1>
             <p className="text-gray-400">Here's your trading overview</p>
           </div>
           <Avatar className="h-12 w-12">
@@ -84,8 +85,8 @@ const Dashboard = () => {
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <Card className="glass border-white/10">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-gray-400">Total Balance</CardTitle>
+             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium text-gray-400">{t('dashboard.home.totalBalance')}</CardTitle>
               <DollarSign className="h-4 w-4 text-green-500" />
             </CardHeader>
             <CardContent>
@@ -95,8 +96,8 @@ const Dashboard = () => {
           </Card>
 
           <Card className="glass border-white/10">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-gray-400">Total Profit</CardTitle>
+             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium text-gray-400">{t('dashboard.home.dailyProfit')}</CardTitle>
               <TrendingUp className="h-4 w-4 text-green-500" />
             </CardHeader>
             <CardContent>
@@ -106,7 +107,7 @@ const Dashboard = () => {
           </Card>
 
           <Card className="glass border-white/10">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-gray-400">Total Loss</CardTitle>
               <TrendingDown className="h-4 w-4 text-red-500" />
             </CardHeader>
@@ -117,8 +118,8 @@ const Dashboard = () => {
           </Card>
 
           <Card className="glass border-white/10">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-gray-400">Active Investments</CardTitle>
+             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium text-gray-400">{t('dashboard.home.activeInvestments')}</CardTitle>
               <TrendingUp className="h-4 w-4 text-blue-500" />
             </CardHeader>
             <CardContent>
@@ -131,8 +132,8 @@ const Dashboard = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Recent Transactions */}
           <Card className="glass border-white/10">
-            <CardHeader>
-              <CardTitle className="text-white">Recent Transactions</CardTitle>
+             <CardHeader>
+              <CardTitle className="text-white">{t('dashboard.home.recentTransactions')}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
@@ -156,16 +157,16 @@ const Dashboard = () => {
                   </div>
                 ))}
               </div>
-              <Button variant="outline" className="w-full mt-4">
-                View All Transactions
+               <Button variant="outline" className="w-full mt-4">
+                {t('dashboard.home.viewAll')}
               </Button>
             </CardContent>
           </Card>
 
           {/* Live Market Watch */}
           <Card className="glass border-white/10">
-            <CardHeader>
-              <CardTitle className="text-white">Live Market Watch</CardTitle>
+             <CardHeader>
+              <CardTitle className="text-white">{t('dashboard.home.marketWatch')}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-3">
@@ -191,8 +192,8 @@ const Dashboard = () => {
                   </div>
                 ))}
               </div>
-              <Button variant="outline" className="w-full mt-4">
-                View All Markets
+               <Button variant="outline" className="w-full mt-4">
+                {t('dashboard.home.viewAll')}
               </Button>
             </CardContent>
           </Card>
@@ -200,8 +201,8 @@ const Dashboard = () => {
 
         {/* Market Chart */}
         <Card className="glass border-white/10">
-          <CardHeader>
-            <CardTitle className="text-white">Market Overview</CardTitle>
+           <CardHeader>
+            <CardTitle className="text-white">{t('dashboard.home.portfolioOverview')}</CardTitle>
           </CardHeader>
           <CardContent>
             <MarketOverviewWidget height="400" />

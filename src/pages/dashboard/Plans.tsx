@@ -5,8 +5,11 @@ import { Badge } from "@/components/ui/badge";
 import { CheckCircle, Star, ArrowRight } from "lucide-react";
 import DashboardLayout from "@/components/DashboardLayout";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Plans = () => {
+  const { t } = useTranslation();
+  
   const plans = [
     {
       id: 1,
@@ -101,22 +104,22 @@ const Plans = () => {
     <DashboardLayout>
       <div className="space-y-6">
         {/* Header */}
-        <div className="flex items-center justify-between">
+         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-white">Investment Plans</h1>
-            <p className="text-gray-400">Choose the perfect plan for your trading goals</p>
+            <h1 className="text-3xl font-bold text-white">{t('dashboard.plans.title')}</h1>
+            <p className="text-gray-400">{t('dashboard.plans.subtitle')}</p>
           </div>
           <div className="flex gap-3">
-            <Button asChild variant="outline">
+             <Button asChild variant="outline">
               <Link to="/dashboard/deposit">
                 <ArrowRight className="w-4 h-4 mr-2" />
-                Deposit
+                {t('dashboard.home.deposit')}
               </Link>
             </Button>
-            <Button asChild variant="outline">
+             <Button asChild variant="outline">
               <Link to="/dashboard/withdrawal">
                 <ArrowRight className="w-4 h-4 mr-2" />
-                Withdraw
+                {t('dashboard.home.withdraw')}
               </Link>
             </Button>
           </div>
@@ -136,11 +139,11 @@ const Plans = () => {
           <CardContent>
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="text-xl font-bold text-white">{currentPlan.name}</h3>
+                 <h3 className="text-xl font-bold text-white">{currentPlan.name}</h3>
                 <p className="text-gray-400">{currentPlan.description}</p>
                 <p className="text-sm text-gray-400 mt-2">
-                  Expected Return: <span className="text-green-500 font-medium">{currentPlan.profit}</span> • 
-                  Duration: <span className="text-primary font-medium">{currentPlan.duration}</span>
+                  {t('dashboard.plans.totalReturn')}: <span className="text-green-500 font-medium">{currentPlan.profit}</span> • 
+                  {t('dashboard.plans.duration')}: <span className="text-primary font-medium">{currentPlan.duration}</span>
                 </p>
               </div>
               <div className="text-right">
@@ -152,8 +155,8 @@ const Plans = () => {
         </Card>
 
         {/* Available Plans */}
-        <div>
-          <h2 className="text-2xl font-bold text-white mb-6">Available Plans</h2>
+         <div>
+          <h2 className="text-2xl font-bold text-white mb-6">{t('dashboard.plans.title')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {plans.map((plan, index) => (
               <motion.div
@@ -178,13 +181,13 @@ const Plans = () => {
                   </CardHeader>
                   
                   <CardContent className="space-y-4">
-                    <div className="space-y-2">
+                     <div className="space-y-2">
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-400">Expected Return:</span>
+                        <span className="text-gray-400">{t('dashboard.plans.totalReturn')}:</span>
                         <span className="text-green-500 font-medium">{plan.profit}</span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-400">Duration:</span>
+                        <span className="text-gray-400">{t('dashboard.plans.duration')}:</span>
                         <span className="text-primary font-medium">{plan.duration}</span>
                       </div>
                     </div>
@@ -198,12 +201,12 @@ const Plans = () => {
                       ))}
                     </div>
                     
-                    <Button 
+                     <Button 
                       className={`w-full ${plan.popular ? 'button-gradient' : ''}`}
                       variant={plan.popular ? 'default' : 'outline'}
                       disabled={currentPlan.id === plan.id}
                     >
-                      {currentPlan.id === plan.id ? 'Current Plan' : 'Select Plan'}
+                      {currentPlan.id === plan.id ? 'Current Plan' : t('dashboard.plans.selectPlan')}
                     </Button>
                   </CardContent>
                 </Card>

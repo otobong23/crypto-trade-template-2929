@@ -14,9 +14,10 @@ import {
 import DashboardLayout from "@/components/DashboardLayout";
 import MarketOverviewWidget from "@/components/MarketOverviewWidget";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Wallet = () => {
-  // Dummy wallet data
+  const { t } = useTranslation();
   const walletBalance = {
     total: 12450.50,
     available: 11200.25,
@@ -41,22 +42,22 @@ const Wallet = () => {
     <DashboardLayout>
       <div className="space-y-6">
         {/* Header */}
-        <div className="flex items-center justify-between">
+         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-white">My Wallet</h1>
-            <p className="text-gray-400">Manage your funds and view market data</p>
+            <h1 className="text-3xl font-bold text-white">{t('dashboard.wallet.title')}</h1>
+            <p className="text-gray-400">{t('dashboard.wallet.subtitle')}</p>
           </div>
           <div className="flex gap-3">
-            <Button asChild className="button-gradient">
+             <Button asChild className="button-gradient">
               <Link to="/dashboard/deposit">
                 <Plus className="w-4 h-4 mr-2" />
-                Deposit
+                {t('dashboard.wallet.deposit')}
               </Link>
             </Button>
-            <Button asChild variant="outline">
+             <Button asChild variant="outline">
               <Link to="/dashboard/withdrawal">
                 <Minus className="w-4 h-4 mr-2" />
-                Withdraw
+                {t('dashboard.wallet.withdraw')}
               </Link>
             </Button>
           </div>
@@ -65,8 +66,8 @@ const Wallet = () => {
         {/* Wallet Balance Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <Card className="glass border-white/10">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-gray-400">Total Balance</CardTitle>
+             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium text-gray-400">{t('dashboard.wallet.totalBalance')}</CardTitle>
               <WalletIcon className="h-4 w-4 text-primary" />
             </CardHeader>
             <CardContent>
@@ -76,8 +77,8 @@ const Wallet = () => {
           </Card>
 
           <Card className="glass border-white/10">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-gray-400">Available Balance</CardTitle>
+             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium text-gray-400">{t('dashboard.wallet.availableBalance')}</CardTitle>
               <ArrowUpRight className="h-4 w-4 text-green-500" />
             </CardHeader>
             <CardContent>
@@ -87,7 +88,7 @@ const Wallet = () => {
           </Card>
 
           <Card className="glass border-white/10">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-gray-400">Locked Balance</CardTitle>
               <ArrowDownLeft className="h-4 w-4 text-orange-500" />
             </CardHeader>
@@ -101,8 +102,8 @@ const Wallet = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Crypto Holdings */}
           <Card className="glass border-white/10">
-            <CardHeader>
-              <CardTitle className="text-white">Your Holdings</CardTitle>
+             <CardHeader>
+              <CardTitle className="text-white">{t('dashboard.wallet.cryptoHoldings')}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
@@ -131,12 +132,12 @@ const Wallet = () => {
                   </div>
                 ))}
               </div>
-              <div className="flex gap-3 mt-4">
+               <div className="flex gap-3 mt-4">
                 <Button asChild className="flex-1">
-                  <Link to="/dashboard/deposit">Deposit More</Link>
+                  <Link to="/dashboard/deposit">{t('dashboard.wallet.deposit')}</Link>
                 </Button>
                 <Button asChild variant="outline" className="flex-1">
-                  <Link to="/dashboard/withdrawal">Withdraw</Link>
+                  <Link to="/dashboard/withdrawal">{t('dashboard.wallet.withdraw')}</Link>
                 </Button>
               </div>
             </CardContent>
@@ -144,10 +145,10 @@ const Wallet = () => {
 
           {/* Markets */}
           <Card className="glass border-white/10">
-            <CardHeader className="flex items-center justify-between">
+             <CardHeader className="flex items-center justify-between">
               <CardTitle className="text-white">Markets</CardTitle>
               <Button asChild variant="ghost" size="sm">
-                <Link to="/dashboard/market">View All</Link>
+                <Link to="/dashboard/market">{t('dashboard.home.viewAll')}</Link>
               </Button>
             </CardHeader>
             <CardContent>
@@ -168,7 +169,7 @@ const Wallet = () => {
                   </div>
                 ))}
               </div>
-              <Button asChild variant="outline" className="w-full mt-4">
+               <Button asChild variant="outline" className="w-full mt-4">
                 <Link to="/dashboard/market">Explore All Markets</Link>
               </Button>
             </CardContent>
@@ -177,7 +178,7 @@ const Wallet = () => {
 
         {/* Market Chart */}
         <Card className="glass border-white/10">
-          <CardHeader>
+           <CardHeader>
             <CardTitle className="text-white">Live Market Overview</CardTitle>
           </CardHeader>
           <CardContent>

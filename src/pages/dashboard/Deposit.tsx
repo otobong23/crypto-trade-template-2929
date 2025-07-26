@@ -7,8 +7,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import DashboardLayout from "@/components/DashboardLayout";
+import { useTranslation } from "react-i18next";
 
 const Deposit = () => {
+  const { t } = useTranslation();
   const [selectedCrypto, setSelectedCrypto] = useState("");
   const [amount, setAmount] = useState("");
   const { toast } = useToast();
@@ -27,8 +29,8 @@ const Deposit = () => {
   const handleDeposit = () => {
     if (!selectedCrypto || !amount) {
       toast({
-        title: "Error",
-        description: "Please select crypto and enter amount",
+        title: t('dashboard.deposit.error'),
+        description: t('dashboard.deposit.selectCryptoAndAmount'),
         variant: "destructive",
       });
       return;
@@ -44,13 +46,13 @@ const Deposit = () => {
     <DashboardLayout>
       <div className="max-w-2xl mx-auto space-y-6">
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-white">Deposit Funds</h1>
-          <p className="text-gray-400">Select cryptocurrency and amount to deposit</p>
+          <h1 className="text-3xl font-bold text-white">{t('dashboard.deposit.title')}</h1>
+          <p className="text-gray-400">{t('dashboard.deposit.subtitle')}</p>
         </div>
 
         <Card className="glass border-white/10">
           <CardHeader>
-            <CardTitle className="text-white">Select Cryptocurrency</CardTitle>
+            <CardTitle className="text-white">{t('dashboard.deposit.selectCrypto')}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -79,22 +81,22 @@ const Deposit = () => {
 
         <Card className="glass border-white/10">
           <CardHeader>
-            <CardTitle className="text-white">Deposit Amount</CardTitle>
+            <CardTitle className="text-white">{t('dashboard.deposit.depositAmount')}</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <Label htmlFor="amount">Amount (USD)</Label>
+              <Label htmlFor="amount">{t('dashboard.deposit.amount')}</Label>
               <Input
                 id="amount"
                 type="number"
-                placeholder="Enter amount"
+                placeholder={t('dashboard.deposit.enterAmount')}
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
                 className="bg-black/50"
               />
             </div>
             <Button onClick={handleDeposit} className="w-full button-gradient">
-              Proceed to Deposit
+              {t('dashboard.deposit.proceedToDeposit')}
             </Button>
           </CardContent>
         </Card>

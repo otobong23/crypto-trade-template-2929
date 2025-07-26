@@ -14,9 +14,10 @@ import {
 import DashboardLayout from "@/components/DashboardLayout";
 import TradingViewWidget from "@/components/TradingViewWidget";
 import MarketOverviewWidget from "@/components/MarketOverviewWidget";
+import { useTranslation } from "react-i18next";
 
 const Market = () => {
-  // Dummy market data
+  const { t } = useTranslation();
   const featuredMarkets = [
     { 
       pair: "BTC/USDT", 
@@ -69,8 +70,8 @@ const Market = () => {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-white">Market</h1>
-            <p className="text-gray-400">Live cryptocurrency market data and trading pairs</p>
+            <h1 className="text-3xl font-bold text-white">{t('dashboard.market.title')}</h1>
+            <p className="text-gray-400">{t('dashboard.market.subtitle')}</p>
           </div>
           <div className="flex gap-3">
             <div className="relative">
@@ -84,7 +85,7 @@ const Market = () => {
         <div>
           <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
             <Star className="w-5 h-5 text-primary" />
-            Featured Markets
+            {t('dashboard.market.featuredMarkets')}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {featuredMarkets.map((market, index) => (
@@ -117,7 +118,7 @@ const Market = () => {
                         </div>
                       </div>
                       <Button size="sm" className="button-gradient">
-                        Trade
+                        {t('dashboard.market.startTrading')}
                       </Button>
                     </div>
                     
@@ -164,7 +165,7 @@ const Market = () => {
           <CardHeader>
             <CardTitle className="text-white flex items-center gap-2">
               <TrendingUp className="w-5 h-5" />
-              All Markets
+              {t('dashboard.market.tradingPairs')}
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -172,9 +173,9 @@ const Market = () => {
               {/* Header */}
               <div className="grid grid-cols-5 gap-4 py-3 px-4 text-sm font-medium text-gray-400 border-b border-white/10">
                 <div>Pair</div>
-                <div className="text-right">Price</div>
-                <div className="text-right">24h Change</div>
-                <div className="text-right">24h Volume</div>
+                <div className="text-right">{t('dashboard.market.price')}</div>
+                <div className="text-right">{t('dashboard.market.change')}</div>
+                <div className="text-right">{t('dashboard.market.volume')}</div>
                 <div className="text-right">Action</div>
               </div>
               
@@ -221,7 +222,7 @@ const Market = () => {
                         <Eye className="w-3 h-3" />
                       </Button>
                       <Button size="sm" variant="outline">
-                        Trade
+                        {t('dashboard.market.startTrading')}
                       </Button>
                     </div>
                   </div>
@@ -234,7 +235,7 @@ const Market = () => {
         {/* Market Overview Widget */}
         <Card className="glass border-white/10">
           <CardHeader>
-            <CardTitle className="text-white">Market Overview</CardTitle>
+            <CardTitle className="text-white">{t('dashboard.home.portfolioOverview')}</CardTitle>
           </CardHeader>
           <CardContent>
             <MarketOverviewWidget height="500" />

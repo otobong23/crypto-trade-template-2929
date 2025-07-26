@@ -17,8 +17,10 @@ import {
   ArrowDownLeft
 } from "lucide-react";
 import DashboardLayout from "@/components/DashboardLayout";
+import { useTranslation } from "react-i18next";
 
 const History = () => {
+  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState("");
   const [filterType, setFilterType] = useState("all");
   const [filterStatus, setFilterStatus] = useState("all");
@@ -165,10 +167,10 @@ const History = () => {
     <DashboardLayout>
       <div className="space-y-6">
         {/* Header */}
-        <div className="flex items-center justify-between">
+         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-white">Transaction History</h1>
-            <p className="text-gray-400">View and manage all your transactions</p>
+            <h1 className="text-3xl font-bold text-white">{t('dashboard.history.title')}</h1>
+            <p className="text-gray-400">{t('dashboard.history.subtitle')}</p>
           </div>
           <Button variant="outline">
             <Download className="w-4 h-4 mr-2" />
@@ -180,7 +182,7 @@ const History = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
           <Card className="glass border-white/10">
             <CardContent className="p-4">
-              <div className="text-2xl font-bold text-white">{stats.total}</div>
+               <div className="text-2xl font-bold text-white">{stats.total}</div>
               <p className="text-xs text-gray-400">Total Transactions</p>
             </CardContent>
           </Card>
@@ -208,14 +210,14 @@ const History = () => {
 
           <Card className="glass border-white/10">
             <CardContent className="p-4">
-              <div className="text-2xl font-bold text-green-500">${stats.totalDeposited.toLocaleString()}</div>
+               <div className="text-2xl font-bold text-green-500">${stats.totalDeposited.toLocaleString()}</div>
               <p className="text-xs text-gray-400">Total Deposited</p>
             </CardContent>
           </Card>
 
           <Card className="glass border-white/10">
             <CardContent className="p-4">
-              <div className="text-2xl font-bold text-orange-500">${stats.totalWithdrawn.toLocaleString()}</div>
+               <div className="text-2xl font-bold text-orange-500">${stats.totalWithdrawn.toLocaleString()}</div>
               <p className="text-xs text-gray-400">Total Withdrawn</p>
             </CardContent>
           </Card>
@@ -223,20 +225,20 @@ const History = () => {
 
         {/* Filters */}
         <Card className="glass border-white/10">
-          <CardHeader>
+           <CardHeader>
             <CardTitle className="text-white flex items-center gap-2">
               <Filter className="w-5 h-5" />
-              Filters
+              {t('dashboard.history.filterByType')}
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-400">Search</label>
+               <div className="space-y-2">
+                <label className="text-sm font-medium text-gray-400">{t('common.search')}</label>
                 <div className="relative">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
                   <Input
-                    placeholder="Search by ID or crypto..."
+                    placeholder={t('dashboard.history.searchTransactions')}
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="pl-10 bg-black/50"
@@ -244,28 +246,28 @@ const History = () => {
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-400">Type</label>
+               <div className="space-y-2">
+                <label className="text-sm font-medium text-gray-400">{t('dashboard.history.type')}</label>
                 <Select value={filterType} onValueChange={setFilterType}>
                   <SelectTrigger className="bg-black/50">
                     <SelectValue />
                   </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">All Types</SelectItem>
+                   <SelectContent>
+                    <SelectItem value="all">{t('dashboard.history.allTypes')}</SelectItem>
                     <SelectItem value="deposit">Deposit</SelectItem>
                     <SelectItem value="withdrawal">Withdrawal</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
 
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-400">Status</label>
+               <div className="space-y-2">
+                <label className="text-sm font-medium text-gray-400">{t('dashboard.history.status')}</label>
                 <Select value={filterStatus} onValueChange={setFilterStatus}>
                   <SelectTrigger className="bg-black/50">
                     <SelectValue />
                   </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">All Status</SelectItem>
+                   <SelectContent>
+                    <SelectItem value="all">{t('dashboard.history.allStatuses')}</SelectItem>
                     <SelectItem value="completed">Completed</SelectItem>
                     <SelectItem value="pending">Pending</SelectItem>
                     <SelectItem value="rejected">Rejected</SelectItem>
@@ -278,10 +280,10 @@ const History = () => {
 
         {/* Transactions Table */}
         <Card className="glass border-white/10">
-          <CardHeader>
+           <CardHeader>
             <CardTitle className="text-white flex items-center gap-2">
               <HistoryIcon className="w-5 h-5" />
-              Recent Transactions ({filteredTransactions.length})
+              {t('dashboard.history.title')} ({filteredTransactions.length})
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -329,8 +331,8 @@ const History = () => {
               ))}
               
               {filteredTransactions.length === 0 && (
-                <div className="text-center py-8">
-                  <p className="text-gray-400">No transactions found matching your filters.</p>
+                 <div className="text-center py-8">
+                  <p className="text-gray-400">{t('dashboard.history.noTransactions')}</p>
                 </div>
               )}
             </div>
