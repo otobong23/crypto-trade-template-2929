@@ -99,7 +99,7 @@
       "instruction1": "复制上面的钱包地址",
       "instruction2": "将所需金额发送到此地址",
       "instruction3": "在下方上传付款凭证",
-      "instruction4": "点击"确认充值"继续",
+      "instruction4": "点击\"确认充值\"继续",
       "uploadProof": "上传付款凭证",
       "selectFile": "选择文件",
       "confirmDeposit": "确认充值",
