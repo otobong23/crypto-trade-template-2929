@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { 
@@ -13,6 +14,7 @@ import {
 import AdminLayout from "@/components/AdminLayout";
 
 const AdminDashboard = () => {
+  const { t } = useTranslation();
   const stats = {
     totalUsers: 1250,
     totalTransactions: 5680,
@@ -61,53 +63,53 @@ const AdminDashboard = () => {
     <AdminLayout>
       <div className="space-y-6">
         <div>
-          <h1 className="text-3xl font-bold text-white">Admin Dashboard</h1>
-          <p className="text-gray-400">Platform overview and statistics</p>
+          <h1 className="text-3xl font-bold text-white">{t('admin.dashboard.title')}</h1>
+          <p className="text-gray-400">{t('admin.dashboard.subtitle')}</p>
         </div>
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <Card className="glass border-white/10">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-gray-400">Total Users</CardTitle>
+              <CardTitle className="text-sm font-medium text-gray-400">{t('admin.dashboard.totalUsers')}</CardTitle>
               <Users className="h-4 w-4 text-blue-500" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold text-white">{stats.totalUsers.toLocaleString()}</div>
-              <p className="text-xs text-gray-400">+12 new this week</p>
+              <p className="text-xs text-gray-400">{t('admin.dashboard.newUsersWeek')}</p>
             </CardContent>
           </Card>
 
           <Card className="glass border-white/10">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-gray-400">Total Transactions</CardTitle>
+              <CardTitle className="text-sm font-medium text-gray-400">{t('admin.dashboard.totalTransactions')}</CardTitle>
               <DollarSign className="h-4 w-4 text-green-500" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold text-white">{stats.totalTransactions.toLocaleString()}</div>
-              <p className="text-xs text-gray-400">+5.2% from last month</p>
+              <p className="text-xs text-gray-400">{t('admin.dashboard.monthlyGrowth')}</p>
             </CardContent>
           </Card>
 
           <Card className="glass border-white/10">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-gray-400">Total Deposits</CardTitle>
+              <CardTitle className="text-sm font-medium text-gray-400">{t('admin.dashboard.totalDeposits')}</CardTitle>
               <TrendingUp className="h-4 w-4 text-green-500" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold text-green-500">${stats.totalDeposits.toLocaleString()}</div>
-              <p className="text-xs text-gray-400">+8.1% this month</p>
+              <p className="text-xs text-gray-400">{t('admin.dashboard.depositsGrowth')}</p>
             </CardContent>
           </Card>
 
           <Card className="glass border-white/10">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-gray-400">Total Withdrawals</CardTitle>
+              <CardTitle className="text-sm font-medium text-gray-400">{t('admin.dashboard.totalWithdrawals')}</CardTitle>
               <TrendingDown className="h-4 w-4 text-orange-500" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold text-orange-500">${stats.totalWithdrawals.toLocaleString()}</div>
-              <p className="text-xs text-gray-400">-2.3% this month</p>
+              <p className="text-xs text-gray-400">{t('admin.dashboard.withdrawalsChange')}</p>
             </CardContent>
           </Card>
         </div>
@@ -118,12 +120,12 @@ const AdminDashboard = () => {
             <CardHeader>
               <CardTitle className="text-white flex items-center gap-2">
                 <Clock className="w-5 h-5 text-yellow-500" />
-                Pending Transactions
+                {t('admin.dashboard.pendingTransactions')}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-3xl font-bold text-yellow-500">{stats.pendingTransactions}</div>
-              <p className="text-sm text-gray-400">Requires attention</p>
+              <p className="text-sm text-gray-400">{t('admin.dashboard.requiresAttention')}</p>
             </CardContent>
           </Card>
 
@@ -131,12 +133,12 @@ const AdminDashboard = () => {
             <CardHeader>
               <CardTitle className="text-white flex items-center gap-2">
                 <CheckCircle className="w-5 h-5 text-green-500" />
-                Completed Transactions
+                {t('admin.dashboard.completedTransactions')}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-3xl font-bold text-green-500">{stats.completedTransactions}</div>
-              <p className="text-sm text-gray-400">Successfully processed</p>
+              <p className="text-sm text-gray-400">{t('admin.dashboard.successfullyProcessed')}</p>
             </CardContent>
           </Card>
 
@@ -144,12 +146,12 @@ const AdminDashboard = () => {
             <CardHeader>
               <CardTitle className="text-white flex items-center gap-2">
                 <XCircle className="w-5 h-5 text-red-500" />
-                Rejected Transactions
+                {t('admin.dashboard.rejectedTransactions')}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-3xl font-bold text-red-500">{stats.rejectedTransactions}</div>
-              <p className="text-sm text-gray-400">Failed transactions</p>
+              <p className="text-sm text-gray-400">{t('admin.dashboard.failedTransactions')}</p>
             </CardContent>
           </Card>
         </div>
@@ -157,7 +159,7 @@ const AdminDashboard = () => {
         {/* Recent Transactions */}
         <Card className="glass border-white/10">
           <CardHeader>
-            <CardTitle className="text-white">Recent Transactions</CardTitle>
+            <CardTitle className="text-white">{t('admin.dashboard.recentTransactions')}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">

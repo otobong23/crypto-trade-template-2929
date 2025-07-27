@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -9,6 +10,7 @@ import { Copy, Upload, CheckCircle, QrCode } from "lucide-react";
 import DashboardLayout from "@/components/DashboardLayout";
 
 const DepositConfirm = () => {
+  const { t } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -50,8 +52,8 @@ const DepositConfirm = () => {
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
     toast({
-      title: "Copied!",
-      description: "Address copied to clipboard",
+      title: t('common.success'),
+      description: t('dashboard.deposit.addressCopied'),
     });
   };
 
@@ -65,8 +67,8 @@ const DepositConfirm = () => {
   const handleConfirmDeposit = async () => {
     if (!selectedFile) {
       toast({
-        title: "Error",
-        description: "Please upload payment receipt",
+        title: t('common.error'),
+        description: t('dashboard.deposit.uploadReceipt'),
         variant: "destructive",
       });
       return;
@@ -77,8 +79,8 @@ const DepositConfirm = () => {
     // Simulate file upload delay
     setTimeout(() => {
       toast({
-        title: "Deposit Submitted",
-        description: "Your deposit is now pending review. You will be notified once processed.",
+        title: t('dashboard.deposit.submitted'),
+        description: t('dashboard.deposit.pendingReview'),
       });
       setIsUploading(false);
       navigate("/dashboard/history");
@@ -89,30 +91,30 @@ const DepositConfirm = () => {
     <DashboardLayout>
       <div className="max-w-2xl mx-auto space-y-6">
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-white">Complete Deposit</h1>
-          <p className="text-gray-400">Send {selectedCrypto} to the address below</p>
+          <h1 className="text-3xl font-bold text-white">{t('dashboard.deposit.completeDeposit')}</h1>
+          <p className="text-gray-400">{t('dashboard.deposit.sendToAddress', { crypto: selectedCrypto })}</p>
         </div>
 
         {/* Deposit Summary */}
         <Card className="glass border-white/10">
           <CardHeader>
-            <CardTitle className="text-white">Deposit Summary</CardTitle>
+            <CardTitle className="text-white">{t('dashboard.deposit.summary')}</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="flex justify-between items-center p-4 rounded-lg bg-black/20">
-              <span className="text-gray-400">Amount (USD)</span>
+              <span className="text-gray-400">{t('dashboard.deposit.amountUSD')}</span>
               <span className="text-white font-medium">${amount}</span>
             </div>
             <div className="flex justify-between items-center p-4 rounded-lg bg-black/20">
-              <span className="text-gray-400">Cryptocurrency</span>
+              <span className="text-gray-400">{t('dashboard.deposit.cryptocurrency')}</span>
               <span className="text-white font-medium">{crypto.name} ({selectedCrypto})</span>
             </div>
             <div className="flex justify-between items-center p-4 rounded-lg bg-black/20">
-              <span className="text-gray-400">Current Rate</span>
+              <span className="text-gray-400">{t('dashboard.deposit.currentRate')}</span>
               <span className="text-white font-medium">${crypto.currentPrice.toLocaleString()}</span>
             </div>
             <div className="flex justify-between items-center p-4 rounded-lg bg-primary/10 border border-primary/20">
-              <span className="text-gray-400">Amount to Send</span>
+              <span className="text-gray-400">{t('dashboard.deposit.amountToSend')}</span>
               <span className="text-primary font-bold">{cryptoAmount} {selectedCrypto}</span>
             </div>
           </CardContent>
@@ -123,19 +125,19 @@ const DepositConfirm = () => {
           <CardHeader>
             <CardTitle className="text-white flex items-center gap-2">
               <QrCode className="w-5 h-5" />
-              Wallet Address
+              {t('dashboard.deposit.walletAddress')}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <Label className="text-gray-400">Network</Label>
+              <Label className="text-gray-400">{t('dashboard.deposit.network')}</Label>
               <div className="p-3 rounded-lg bg-black/20 text-white">
                 {crypto.network}
               </div>
             </div>
             
             <div>
-              <Label className="text-gray-400">Send to this address</Label>
+              <Label className="text-gray-400">{t('dashboard.deposit.sendToAddress')}</Label>
               <div className="flex gap-2">
                 <div className="flex-1 p-3 rounded-lg bg-black/20 text-white font-mono text-sm break-all">
                   {crypto.address}
@@ -155,8 +157,8 @@ const DepositConfirm = () => {
               <div className="w-48 h-48 bg-white rounded-lg flex items-center justify-center">
                 <div className="text-black text-center">
                   <QrCode className="w-16 h-16 mx-auto mb-2" />
-                  <p className="text-sm">QR Code</p>
-                  <p className="text-xs">{selectedCrypto} Address</p>
+                  <p className="text-sm">{t('dashboard.deposit.qrCode')}</p>
+                  <p className="text-xs">{selectedCrypto} {t('dashboard.deposit.address')}</p>
                 </div>
               </div>
             </div>
@@ -166,12 +168,12 @@ const DepositConfirm = () => {
         {/* Upload Receipt */}
         <Card className="glass border-white/10">
           <CardHeader>
-            <CardTitle className="text-white">Upload Payment Receipt</CardTitle>
+            <CardTitle className="text-white">{t('dashboard.deposit.uploadReceipt')}</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
               <Label htmlFor="receipt" className="text-gray-400">
-                Upload screenshot or receipt of your transaction
+                {t('dashboard.deposit.uploadInstructions')}
               </Label>
               <div className="mt-2">
                 <input
@@ -187,7 +189,7 @@ const DepositConfirm = () => {
                 >
                   <Upload className="w-8 h-8 text-gray-400 mb-2" />
                   <p className="text-gray-400 text-sm">
-                    {selectedFile ? selectedFile.name : "Click to upload receipt"}
+                    {selectedFile ? selectedFile.name : t('dashboard.deposit.clickToUpload')}
                   </p>
                 </label>
               </div>
@@ -196,7 +198,7 @@ const DepositConfirm = () => {
             {selectedFile && (
               <div className="flex items-center gap-2 p-3 rounded-lg bg-green-500/10 border border-green-500/20">
                 <CheckCircle className="w-5 h-5 text-green-500" />
-                <span className="text-green-500">Receipt uploaded: {selectedFile.name}</span>
+                <span className="text-green-500">{t('dashboard.deposit.receiptUploaded', { name: selectedFile.name })}</span>
               </div>
             )}
           </CardContent>
@@ -210,10 +212,10 @@ const DepositConfirm = () => {
               disabled={!selectedFile || isUploading}
               className="w-full button-gradient"
             >
-              {isUploading ? "Processing..." : "Confirm Deposit"}
+              {isUploading ? t('common.processing') : t('dashboard.deposit.confirmDeposit')}
             </Button>
             <p className="text-xs text-gray-400 text-center mt-2">
-              Your deposit will be processed within 24 hours after confirmation
+              {t('dashboard.deposit.processingTime')}
             </p>
           </CardContent>
         </Card>

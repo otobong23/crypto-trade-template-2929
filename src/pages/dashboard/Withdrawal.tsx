@@ -6,8 +6,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import DashboardLayout from "@/components/DashboardLayout";
+import { useTranslation } from "react-i18next";
 
 const Withdrawal = () => {
+  const { t } = useTranslation();
   const [selectedCrypto, setSelectedCrypto] = useState("");
   const [amount, setAmount] = useState("");
   const [address, setAddress] = useState("");
@@ -39,8 +41,8 @@ const Withdrawal = () => {
     <DashboardLayout>
       <div className="max-w-2xl mx-auto space-y-6">
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-white">Withdraw Funds</h1>
-          <p className="text-gray-400">Select cryptocurrency and enter withdrawal details</p>
+          <h1 className="text-3xl font-bold text-white">{t('dashboard.withdrawal.title')}</h1>
+          <p className="text-gray-400">{t('dashboard.withdrawal.subtitle')}</p>
         </div>
 
         <Card className="glass border-white/10">

@@ -7,8 +7,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { Shield } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const AdminLogin = () => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -56,8 +58,8 @@ const AdminLogin = () => {
             <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-red-500/20 flex items-center justify-center">
               <Shield className="w-8 h-8 text-red-500" />
             </div>
-            <CardTitle className="text-2xl text-white">Admin Login</CardTitle>
-            <p className="text-gray-400">Access admin panel</p>
+            <CardTitle className="text-2xl text-white">{t('admin.login.title')}</CardTitle>
+            <p className="text-gray-400">{t('admin.login.subtitle')}</p>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">

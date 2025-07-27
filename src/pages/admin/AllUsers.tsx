@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -9,6 +10,7 @@ import { Link } from "react-router-dom";
 import AdminLayout from "@/components/AdminLayout";
 
 const AllUsers = () => {
+  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState("");
 
   const users = [
@@ -47,24 +49,24 @@ const AllUsers = () => {
       <div className="space-y-6">
         <div className="flex justify-between items-center">
           <div>
-            <h1 className="text-3xl font-bold text-white">All Users</h1>
-            <p className="text-gray-400">Manage platform users</p>
+            <h1 className="text-3xl font-bold text-white">{t('admin.users.title')}</h1>
+            <p className="text-gray-400">{t('admin.users.subtitle')}</p>
           </div>
           <div className="text-white">
-            Total Users: <span className="font-bold">{users.length}</span>
+            {t('admin.users.totalUsers')}: <span className="font-bold">{users.length}</span>
           </div>
         </div>
 
         {/* Search Filter */}
         <Card className="glass border-white/10">
           <CardHeader>
-            <CardTitle className="text-white">Filter Users</CardTitle>
+            <CardTitle className="text-white">{t('admin.users.filterUsers')}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
               <Input
-                placeholder="Search by username, name, or email..."
+                placeholder={t('admin.users.searchPlaceholder')}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="pl-10 bg-black/50"
@@ -76,7 +78,7 @@ const AllUsers = () => {
         {/* Users List */}
         <Card className="glass border-white/10">
           <CardHeader>
-            <CardTitle className="text-white">Users ({filteredUsers.length})</CardTitle>
+            <CardTitle className="text-white">{t('admin.users.usersList', { count: filteredUsers.length })}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
@@ -105,7 +107,7 @@ const AllUsers = () => {
                   <div className="flex items-center gap-4">
                     <div className="text-right">
                       <p className="text-white font-medium">${user.balance.toLocaleString()}</p>
-                      <p className="text-xs text-gray-400">Balance</p>
+                      <p className="text-xs text-gray-400">{t('admin.users.balance')}</p>
                     </div>
                     
                     <Badge className={getStatusColor(user.status)}>
