@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -16,6 +17,7 @@ import {
 import AdminLayout from "@/components/AdminLayout";
 
 const AdminTransactions = () => {
+  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState("");
   const [filterType, setFilterType] = useState("all");
   const [filterStatus, setFilterStatus] = useState("all");
@@ -49,8 +51,8 @@ const AdminTransactions = () => {
       prev.map(t => t.id === id ? { ...t, status: "Completed" } : t)
     );
     toast({
-      title: "Transaction Approved",
-      description: "Transaction has been marked as completed",
+      title: t('admin.transactions.approved'),
+      description: t('admin.transactions.markedCompleted'),
     });
   };
 
@@ -59,16 +61,16 @@ const AdminTransactions = () => {
       prev.map(t => t.id === id ? { ...t, status: "Rejected" } : t)
     );
     toast({
-      title: "Transaction Rejected",
-      description: "Transaction has been rejected",
+      title: t('admin.transactions.rejected'),
+      description: t('admin.transactions.hasBeenRejected'),
       variant: "destructive",
     });
   };
 
   const handleDownloadReceipt = (transaction: any) => {
     toast({
-      title: "Downloading Receipt",
-      description: `Receipt for ${transaction.user}'s transaction`,
+      title: t('admin.transactions.downloadingReceipt'),
+      description: t('admin.transactions.receiptFor', { user: transaction.user }),
     });
   };
 
@@ -103,11 +105,11 @@ const AdminTransactions = () => {
       <div className="space-y-6">
         <div className="flex justify-between items-center">
           <div>
-            <h1 className="text-3xl font-bold text-white">All Transactions</h1>
-            <p className="text-gray-400">Manage platform transactions</p>
+            <h1 className="text-3xl font-bold text-white">{t('admin.transactions.title')}</h1>
+            <p className="text-gray-400">{t('admin.transactions.subtitle')}</p>
           </div>
           <div className="text-white">
-            Total: <span className="font-bold">{filteredTransactions.length}</span>
+            {t('admin.transactions.total')}: <span className="font-bold">{filteredTransactions.length}</span>
           </div>
         </div>
 
@@ -116,7 +118,7 @@ const AdminTransactions = () => {
           <CardHeader>
             <CardTitle className="text-white flex items-center gap-2">
               <Filter className="w-5 h-5" />
-              Filter Transactions
+              {t('admin.transactions.filterTransactions')}
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -124,7 +126,7 @@ const AdminTransactions = () => {
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
                 <Input
-                  placeholder="Search by username, type, or crypto..."
+                  placeholder={t('admin.transactions.searchPlaceholder')}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="pl-10 bg-black/50"
@@ -136,9 +138,9 @@ const AdminTransactions = () => {
                 onChange={(e) => setFilterType(e.target.value)}
                 className="p-3 rounded-lg bg-black/50 text-white border border-white/10"
               >
-                <option value="all">All Types</option>
-                <option value="deposit">Deposit</option>
-                <option value="withdrawal">Withdrawal</option>
+                <option value="all">{t('admin.transactions.allTypes')}</option>
+                <option value="deposit">{t('admin.transactions.deposit')}</option>
+                <option value="withdrawal">{t('admin.transactions.withdrawal')}</option>
               </select>
               
               <select
@@ -146,10 +148,10 @@ const AdminTransactions = () => {
                 onChange={(e) => setFilterStatus(e.target.value)}
                 className="p-3 rounded-lg bg-black/50 text-white border border-white/10"
               >
-                <option value="all">All Status</option>
-                <option value="pending">Pending</option>
-                <option value="completed">Completed</option>
-                <option value="rejected">Rejected</option>
+                <option value="all">{t('admin.transactions.allStatus')}</option>
+                <option value="pending">{t('admin.transactions.pending')}</option>
+                <option value="completed">{t('admin.transactions.completed')}</option>
+                <option value="rejected">{t('admin.transactions.rejected')}</option>
               </select>
             </div>
           </CardContent>
@@ -158,7 +160,7 @@ const AdminTransactions = () => {
         {/* Transactions List */}
         <Card className="glass border-white/10">
           <CardHeader>
-            <CardTitle className="text-white">Transactions ({filteredTransactions.length})</CardTitle>
+            <CardTitle className="text-white">{t('admin.transactions.transactionsList', { count: filteredTransactions.length })}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">

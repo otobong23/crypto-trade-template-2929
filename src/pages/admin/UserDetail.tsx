@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,6 +12,7 @@ import { Edit, Save, X, User } from "lucide-react";
 import AdminLayout from "@/components/AdminLayout";
 
 const UserDetail = () => {
+  const { t } = useTranslation();
   const { userId } = useParams();
   const { toast } = useToast();
   const [editingField, setEditingField] = useState<string | null>(null);
@@ -43,8 +45,8 @@ const UserDetail = () => {
     setUserData({ ...userData, [field]: tempValue });
     setEditingField(null);
     toast({
-      title: "Updated Successfully",
-      description: `${field} has been updated`,
+      title: t('admin.userDetail.updatedSuccessfully'),
+      description: t('admin.userDetail.fieldUpdated', { field }),
     });
   };
 
@@ -121,28 +123,28 @@ const UserDetail = () => {
           {/* Personal Information */}
           <Card className="glass border-white/10">
             <CardHeader>
-              <CardTitle className="text-white">Personal Information</CardTitle>
+              <CardTitle className="text-white">{t('admin.userDetail.personalInfo')}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              {renderEditableField("First Name", "firstName", userData.firstName)}
-              {renderEditableField("Last Name", "lastName", userData.lastName)}
-              {renderEditableField("Username", "username", userData.username)}
-              {renderEditableField("Email", "email", userData.email, "email")}
-              {renderEditableField("Phone Number", "phoneNumber", userData.phoneNumber, "tel")}
-              {renderEditableField("Address", "address", userData.address)}
+              {renderEditableField(t('admin.userDetail.firstName'), "firstName", userData.firstName)}
+              {renderEditableField(t('admin.userDetail.lastName'), "lastName", userData.lastName)}
+              {renderEditableField(t('admin.userDetail.username'), "username", userData.username)}
+              {renderEditableField(t('admin.userDetail.email'), "email", userData.email, "email")}
+              {renderEditableField(t('admin.userDetail.phoneNumber'), "phoneNumber", userData.phoneNumber, "tel")}
+              {renderEditableField(t('admin.userDetail.address'), "address", userData.address)}
             </CardContent>
           </Card>
 
           {/* Account Information */}
           <Card className="glass border-white/10">
             <CardHeader>
-              <CardTitle className="text-white">Account Information</CardTitle>
+              <CardTitle className="text-white">{t('admin.userDetail.accountInfo')}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              {renderEditableField("Balance", "balance", userData.balance, "number")}
+              {renderEditableField(t('admin.userDetail.balance'), "balance", userData.balance, "number")}
               
               <div className="space-y-2">
-                <Label className="text-gray-400">Account Status</Label>
+                <Label className="text-gray-400">{t('admin.userDetail.accountStatus')}</Label>
                 {editingField === "status" ? (
                   <div className="flex gap-2">
                     <select
@@ -150,9 +152,9 @@ const UserDetail = () => {
                       onChange={(e) => setTempValue(e.target.value)}
                       className="w-full p-3 rounded-lg bg-black/50 text-white border border-white/10"
                     >
-                      <option value="Active">Active</option>
-                      <option value="Inactive">Inactive</option>
-                      <option value="Suspended">Suspended</option>
+                      <option value="Active">{t('admin.userDetail.active')}</option>
+                      <option value="Inactive">{t('admin.userDetail.inactive')}</option>
+                      <option value="Suspended">{t('admin.userDetail.suspended')}</option>
                     </select>
                     <Button size="sm" onClick={() => handleSave("status")}>
                       <Save className="w-4 h-4" />
@@ -178,14 +180,14 @@ const UserDetail = () => {
               </div>
 
               <div className="space-y-2">
-                <Label className="text-gray-400">Join Date</Label>
+                <Label className="text-gray-400">{t('admin.userDetail.joinDate')}</Label>
                 <div className="p-3 rounded-lg bg-black/20">
                   <span className="text-white">{userData.joinDate}</span>
                 </div>
               </div>
 
               <div className="space-y-2">
-                <Label className="text-gray-400">Last Login</Label>
+                <Label className="text-gray-400">{t('admin.userDetail.lastLogin')}</Label>
                 <div className="p-3 rounded-lg bg-black/20">
                   <span className="text-white">{userData.lastLogin}</span>
                 </div>
@@ -197,20 +199,20 @@ const UserDetail = () => {
         {/* Financial Summary */}
         <Card className="glass border-white/10">
           <CardHeader>
-            <CardTitle className="text-white">Financial Summary</CardTitle>
+            <CardTitle className="text-white">{t('admin.userDetail.financialSummary')}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="text-center p-4 rounded-lg bg-black/20">
-                <p className="text-gray-400 text-sm">Current Balance</p>
+                <p className="text-gray-400 text-sm">{t('admin.userDetail.currentBalance')}</p>
                 <p className="text-2xl font-bold text-white">${userData.balance.toLocaleString()}</p>
               </div>
               <div className="text-center p-4 rounded-lg bg-black/20">
-                <p className="text-gray-400 text-sm">Total Deposits</p>
+                <p className="text-gray-400 text-sm">{t('admin.userDetail.totalDeposits')}</p>
                 <p className="text-2xl font-bold text-green-500">${userData.totalDeposits.toLocaleString()}</p>
               </div>
               <div className="text-center p-4 rounded-lg bg-black/20">
-                <p className="text-gray-400 text-sm">Total Withdrawals</p>
+                <p className="text-gray-400 text-sm">{t('admin.userDetail.totalWithdrawals')}</p>
                 <p className="text-2xl font-bold text-orange-500">${userData.totalWithdrawals.toLocaleString()}</p>
               </div>
             </div>

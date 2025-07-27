@@ -40,7 +40,7 @@ const Contact = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="glass rounded-2xl p-8"
           >
-            <h2 className="text-3xl font-bold mb-8 text-center">Send Us a Message</h2>
+            <h2 className="text-3xl font-bold mb-8 text-center">{t('contact.form.title')}</h2>
             <form className="space-y-6">
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
@@ -51,9 +51,9 @@ const Contact = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-2">Last Name</label>
+                  <label className="block text-sm font-medium mb-2">{t('contact.form.lastName')}</label>
                   <Input 
-                    placeholder="Enter your last name" 
+                    placeholder={t('contact.form.lastName')} 
                     className="bg-black/50 border-white/20 focus:border-blue-400"
                   />
                 </div>
@@ -95,14 +95,14 @@ const Contact = () => {
             className="space-y-8"
           >
             <div className="glass rounded-2xl p-8">
-              <h2 className="text-3xl font-bold mb-8 text-center">Contact Information</h2>
+              <h2 className="text-3xl font-bold mb-8 text-center">{t('contact.info.title')}</h2>
               <div className="space-y-6">
                 <div className="flex items-center space-x-4">
                   <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
                     <Mail className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-semibold">Email Address</h3>
+                    <h3 className="font-semibold">{t('contact.info.email')}</h3>
                     <p className="text-gray-300">support@tradephere.com</p>
                   </div>
                 </div>
@@ -112,7 +112,7 @@ const Contact = () => {
                     <MapPin className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-semibold">Office Location</h3>
+                    <h3 className="font-semibold">{t('contact.info.location')}</h3>
                     <p className="text-gray-300">5600 - 100 King St W, Toronto, ON, Canada</p>
                   </div>
                 </div>
@@ -122,7 +122,7 @@ const Contact = () => {
                     <Phone className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-semibold">Phone Number</h3>
+                    <h3 className="font-semibold">{t('contact.info.phone')}</h3>
                     <p className="text-gray-300">(236) 596-1054</p>
                   </div>
                 </div>
@@ -130,33 +130,33 @@ const Contact = () => {
             </div>
 
             <div className="glass rounded-2xl p-8">
-              <h3 className="text-2xl font-bold mb-4">Business Hours</h3>
+              <h3 className="text-2xl font-bold mb-4">{t('contact.hours.title')}</h3>
               <div className="space-y-2 text-gray-300">
                 <div className="flex justify-between">
-                  <span>Monday - Friday</span>
+                  <span>{t('contact.hours.weekdays')}</span>
                   <span>9:00 AM - 6:00 PM</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>Saturday</span>
+                  <span>{t('contact.hours.saturday')}</span>
                   <span>10:00 AM - 4:00 PM</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>Sunday</span>
-                  <span>Closed</span>
+                  <span>{t('contact.hours.sunday')}</span>
+                  <span>{t('contact.hours.closed')}</span>
                 </div>
               </div>
             </div>
 
             <div className="glass rounded-2xl p-8">
-              <h3 className="text-2xl font-bold mb-4">Need Quick Help?</h3>
+              <h3 className="text-2xl font-bold mb-4">{t('contact.chat.title')}</h3>
               <p className="text-gray-300 mb-6">
-                For immediate assistance, use our live chat feature or send us an email. Our support team is ready to help!
+                {t('contact.chat.description')}
               </p>
               <Button 
                 onClick={() => setIsChatOpen(true)}
                 className="w-full button-gradient"
               >
-                Open Live Chat
+                {t('contact.chat.openChat')}
               </Button>
             </div>
           </motion.div>
@@ -181,7 +181,7 @@ const Contact = () => {
           >
             {/* Chat Header */}
             <div className="flex items-center justify-between p-4 border-b border-white/10">
-              <h3 className="font-semibold">Live Chat Support</h3>
+              <h3 className="font-semibold">{t('contact.chat.support')}</h3>
               <Button
                 onClick={() => setIsChatOpen(false)}
                 variant="ghost"
@@ -195,13 +195,13 @@ const Contact = () => {
             {/* Chat Content */}
             <div className="flex-1 p-4 space-y-4">
               <div className="bg-blue-500/20 rounded-lg p-3">
-                <p className="text-sm">Hello! How can we help you today?</p>
+                <p className="text-sm">{t('contact.chat.greeting')}</p>
               </div>
               <div className="bg-gray-800/50 rounded-lg p-3 ml-8">
-                <p className="text-sm">Hi, I have questions about the trading plans.</p>
+                <p className="text-sm">{t('contact.chat.sampleMessage')}</p>
               </div>
               <div className="bg-blue-500/20 rounded-lg p-3">
-                <p className="text-sm">I'd be happy to help! You can also email us at support@tradephere.com for detailed information.</p>
+                <p className="text-sm">{t('contact.chat.response')}</p>
               </div>
             </div>
             
@@ -209,11 +209,11 @@ const Contact = () => {
             <div className="p-4 border-t border-white/10">
               <div className="flex space-x-2">
                 <Input 
-                  placeholder="Type your message..." 
+                  placeholder={t('contact.chat.placeholder')} 
                   className="flex-1 bg-black/50 border-white/20 text-sm"
                 />
                 <Button size="sm" className="button-gradient">
-                  Send
+                  {t('contact.chat.send')}
                 </Button>
               </div>
             </div>
