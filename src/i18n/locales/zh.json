@@ -1,9 +1,154 @@
 {
   "nav": {
     "about": "关于我们",
+    "faq": "常见问题",
     "contact": "联系我们",
     "dashboard": "仪表板",
     "startTrading": "开始交易"
+  },
+  "hero": {
+    "title": "自信交易，与Tradephere共同成长",
+    "titleHighlight": "Tradephere",
+    "subtitle": "加入数千名成功交易者，使用我们的先进平台。最低仅需$500，通过我们的成熟策略让您的投资增长。",
+    "cta": "立即开始交易"
+  },
+  "features": {
+    "title": "为什么选择Tradephere？",
+    "subtitle": "探索让我们成为全球交易者首选的强大功能"
+  },
+  "pricing": {
+    "title": "选择您的交易计划",
+    "subtitle": "选择最适合您投资目标和经验的计划",
+    "monthly": "每月",
+    "mostPopular": "最受欢迎",
+    "getStarted": "开始",
+    "plan500": {
+      "name": "入门计划",
+      "price": "$500",
+      "description": "适合初学者开启交易之路",
+      "features": []
+    },
+    "plan1000": {
+      "name": "基础计划",
+      "price": "$1,000",
+      "description": "适合有一定经验的交易者",
+      "features": []
+    },
+    "plan5000": {
+      "name": "专业计划",
+      "price": "$5,000",
+      "description": "适合追求最大回报的专业交易者",
+      "features": []
+    },
+    "plan10000": {
+      "name": "精英计划",
+      "price": "$10,000",
+      "description": "为精英交易者提供高级功能",
+      "features": []
+    },
+    "plan200000": {
+      "name": "机构计划",
+      "price": "$200,000",
+      "description": "为机构客户提供企业级解决方案",
+      "features": []
+    }
+  },
+  "about": {
+    "title": "关于我们",
+    "whoWeAre": {
+      "title": "我们是谁",
+      "subtitle": "欢迎来到Trade Phere！",
+      "description": "我们专注于透明、安全和创新，依托尖端技术和专家支持，帮助个人快速高效地提升收入。"
+    },
+    "aboutTradePhere": {
+      "title": "关于Trade Phere",
+      "subtitle": "我们是谁，我们做什么！",
+      "description": "欢迎来到Trade Phere网站！我们的投资平台是交易、加密货币高收益交易和在线营销领域专家精心准备和努力工作的成果。采用现代商业方法和个性化服务，我们为希望将比特币作为支付方式和稳定收入来源的人们提供独特的投资模式。Trade Phere业务仅使用现代矿机，并在最稳定的市场进行交易，最大限度降低客户的财务风险，确保每日稳定收益。"
+    },
+    "reliability": {
+      "title": "我们以可靠性为先",
+      "subtitle": "为什么选择我们？",
+      "description": "如果您来到这里，肯定在寻找可靠且有利可图的投资。是的，您来对地方了！我们公司基于外汇和比特币交易，提供最高质量的信托资产管理。没有其他全球金融市场能像比特币这样每日带来稳定收益。任何使用加密货币并了解其巨大前景的人都会接受我们的合作模式。您的存款持续运作，每天获利，可随时提现。立即加入我们，开启高收益之路！"
+    },
+    "legal": {
+      "title": "法律信息",
+      "subtitle": "我们已验证，可靠且值得信赖！",
+      "description": "作为英国注册公司，我们完全透明运营，严格遵守所有加密和金融交易法规，确保信任与可靠性。",
+      "viewCertificate": "查看证书"
+    },
+    "income": {
+      "title": "让您的收入更高",
+      "subtitle": "Trade Phere的最佳功能",
+      "feature1": {
+        "description": "我们的GeoTrust EV SSL证书保障您的交易安全。"
+      },
+      "feature2": {
+        "description": "只要您申请，即可即时到账！"
+      },
+      "feature3": {
+        "description": "TradePhere网站采用高性能专用服务器，安全防护等级最高。"
+      }
+    },
+    "faq": {
+      "title": "常见问题",
+      "question1": {
+        "answer": "Trade Phere是一家专注于加密货币交易和挖矿的投资平台。我们使用现代设备并在稳定市场交易，为客户每日带来收益，同时降低财务风险。"
+      },
+      "question2": {
+        "answer": "我们通过GeoTrust EV SSL证书、强大的服务器保护和英国法规合规，优先保障安全。作为英国注册公司，我们完全透明运营。"
+      },
+      "question3": {
+        "answer": "Trade Phere主要专注于比特币交易和挖矿，同时支持以太坊和USDT等主流加密货币的充值和提现。"
+      },
+      "question4": {
+        "answer": "我们提供即时支付！您可随时申请提现，资金会立即到账，让您完全掌控收益。"
+      },
+      "question5": {
+        "answer": "我们独特地结合了现代矿机、专业交易策略、每日收益、即时提现和合规运营。我们提供透明、安全和稳定回报。"
+      },
+      "question6": {
+        "answer": "无需交易经验！我们的专业团队为您管理所有交易活动。平台简单易用，无需技术知识即可投资和查看投资组合增长。"
+      }
+    }
+  },
+  "contact": {
+    "title": "联系我们",
+    "subtitle": "准备开启您的交易之旅了吗？我们随时为您提供帮助。",
+    "form": {
+      "name": "您的姓名",
+      "email": "邮箱地址",
+      "subject": "主题",
+      "message": "您的留言",
+      "send": "发送信息"
+    },
+    "info": {
+      "title": "联系方式",
+      "email": "发送邮件",
+      "emailValue": "support@tradephere.com",
+      "response": "响应时间",
+      "responseValue": "24小时内",
+      "support": "支持时间",
+      "supportValue": "全天候"
+    },
+    "chat": {
+      "title": "在线聊天支持",
+      "subtitle": "即时获得支持团队帮助",
+      "placeholder": "请输入您的消息...",
+      "send": "发送"
+    }
+  },
+  "footer": {
+    "description": "以尖端技术和专家支持赋能全球交易者。",
+    "trading": "交易",
+    "features": "功能",
+    "pricing": "价格",
+    "resources": "资源",
+    "help": "帮助中心",
+    "blog": "博客",
+    "legal": "法律信息",
+    "privacy": "隐私政策",
+    "terms": "服务条款",
+    "copyright": "© 2024 Tradephere. 保留所有权利。"
   },
   "dashboard": {
     "nav": {

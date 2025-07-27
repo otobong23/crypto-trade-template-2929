@@ -1,9 +1,154 @@
 {
   "nav": {
     "about": "회사 소개",
+    "faq": "자주 묻는 질문",
     "contact": "연락처",
     "dashboard": "대시보드",
     "startTrading": "거래 시작"
+  },
+  "hero": {
+    "title": "신뢰로 거래하고, 함께 성장하세요",
+    "titleHighlight": "Tradephere",
+    "subtitle": "수천 명의 성공적인 트레이더들이 사용하는 고급 플랫폼에 가입하세요. 최소 $500로 시작하여 검증된 전략으로 투자를 성장시키세요.",
+    "cta": "지금 거래 시작"
+  },
+  "features": {
+    "title": "왜 Tradephere를 선택해야 하나요?",
+    "subtitle": "전 세계 트레이더들이 선호하는 강력한 기능을 확인하세요"
+  },
+  "pricing": {
+    "title": "거래 플랜 선택",
+    "subtitle": "투자 목표와 경험에 맞는 완벽한 플랜을 선택하세요",
+    "monthly": "월간",
+    "mostPopular": "가장 인기",
+    "getStarted": "시작하기",
+    "plan500": {
+      "name": "스타터 플랜",
+      "price": "$500",
+      "description": "거래를 처음 시작하는 분께 적합",
+      "features": []
+    },
+    "plan1000": {
+      "name": "베이직 플랜",
+      "price": "$1,000",
+      "description": "일부 경험이 있는 트레이더에게 이상적",
+      "features": []
+    },
+    "plan5000": {
+      "name": "프로페셔널 플랜",
+      "price": "$5,000",
+      "description": "최대 수익을 추구하는 진지한 트레이더용",
+      "features": []
+    },
+    "plan10000": {
+      "name": "엘리트 플랜",
+      "price": "$10,000",
+      "description": "엘리트 트레이더를 위한 프리미엄 기능",
+      "features": []
+    },
+    "plan200000": {
+      "name": "기관 플랜",
+      "price": "$200,000",
+      "description": "기관 고객을 위한 엔터프라이즈 솔루션",
+      "features": []
+    }
+  },
+  "about": {
+    "title": "회사 소개",
+    "whoWeAre": {
+      "title": "우리는 누구인가요",
+      "subtitle": "Trade Phere에 오신 것을 환영합니다!",
+      "description": "투명성, 보안, 혁신에 중점을 두고, 첨단 기술과 전문가 지원으로 빠르고 효율적으로 수익을 성장시킬 수 있도록 돕습니다."
+    },
+    "aboutTradePhere": {
+      "title": "Trade Phere 소개",
+      "subtitle": "우리는 누구이며 무엇을 하나요!",
+      "description": "Trade Phere의 웹사이트에 오신 것을 환영합니다! 저희 투자 플랫폼은 거래, 암호화폐 고수익 거래, 온라인 마케팅 분야 전문가들의 신중한 준비와 결실로 탄생했습니다. 최신 비즈니스 방식과 고객별 맞춤 접근을 통해, 비트코인을 결제 수단뿐 아니라 안정적인 수익원으로 활용하고자 하는 분께 독특한 투자 모델을 제공합니다. Trade Phere는 최신 채굴 장비만을 사용하며 가장 안정적인 시장에서 거래하여 고객의 재정 손실 위험을 최소화하고 매일 안정적인 수익을 보장합니다."
+    },
+    "reliability": {
+      "title": "신뢰로 앞서갑니다",
+      "subtitle": "왜 저희를 선택해야 하나요?",
+      "description": "여기에 오셨다면 신뢰할 수 있고 수익성 있는 투자를 찾고 계신 겁니다. 네, 바로 올바른 곳에 오셨습니다! 저희 회사는 외환 및 비트코인 거래를 기반으로 최고 품질의 신탁 자산 관리를 제공합니다. 비트코인의 큰 가격 변동으로 매일 꾸준한 수익을 보장할 수 있는 다른 글로벌 금융 시장은 없습니다. 협력 강화를 위한 제안 방식은 암호화폐를 사용하는 누구에게나 받아들여질 것입니다. 예치금은 지속적으로 운용되어 매일 수익을 창출하며, 즉시 출금이 가능합니다. 오늘 저희 회사에 가입하여 높은 수익을 시작하세요!"
+    },
+    "legal": {
+      "title": "법적 정보",
+      "subtitle": "검증된 신뢰와 안정성!",
+      "description": "영국에 등록된 회사로서, 모든 암호화폐 및 금융 거래에 대한 엄격한 규정을 준수하며 완전한 투명성을 제공합니다.",
+      "viewCertificate": "인증서 보기"
+    },
+    "income": {
+      "title": "수익을 키우세요",
+      "subtitle": "Trade Phere의 최고의 기능",
+      "feature1": {
+        "description": "GeoTrust EV SSL 인증서로 거래의 안전을 보장합니다."
+      },
+      "feature2": {
+        "description": "요청 즉시 즉시 결제받으세요!"
+      },
+      "feature3": {
+        "description": "강력한 서버 보호로 안전하게 거래하세요."
+      }
+    },
+    "faq": {
+      "title": "자주 묻는 질문",
+      "question1": {
+        "answer": "Trade Phere는 암호화폐 거래 및 채굴에 중점을 둔 투자 플랫폼입니다. 최신 장비와 안정적인 시장에서 거래하여 고객에게 매일 수익을 제공하며 재정적 위험을 최소화합니다."
+      },
+      "question2": {
+        "answer": "GeoTrust EV SSL 인증서, 강력한 서버 보호, 영국 규정 준수로 보안을 최우선합니다. 영국 등록 회사로서 완전한 투명성을 제공합니다."
+      },
+      "question3": {
+        "answer": "Trade Phere는 비트코인 거래 및 채굴에 주력하지만, 입출금용으로 이더리움과 USDT 등 주요 암호화폐도 지원합니다."
+      },
+      "question4": {
+        "answer": "즉시 결제! 언제든 출금을 요청할 수 있으며, 요청 즉시 결제가 처리되어 수익을 완전히 통제할 수 있습니다."
+      },
+      "question5": {
+        "answer": "최신 채굴 장비, 전문 거래 전략, 일일 수익 창출, 즉시 출금, 완전한 규정 준수의 독특한 조합이 저희의 차별점입니다. 투명성, 보안, 꾸준한 수익을 제공합니다."
+      },
+      "question6": {
+        "answer": "경험이 없어도 됩니다! 전문 팀이 모든 거래 활동을 관리합니다. 기술 지식 없이도 투자하고 포트폴리오 성장을 쉽게 확인할 수 있습니다."
+      }
+    }
+  },
+  "contact": {
+    "title": "문의하기",
+    "subtitle": "거래 여정을 시작할 준비가 되셨나요? 언제든 도와드리겠습니다.",
+    "form": {
+      "name": "이름",
+      "email": "이메일 주소",
+      "subject": "제목",
+      "message": "메시지",
+      "send": "메시지 보내기"
+    },
+    "info": {
+      "title": "연락처 정보",
+      "email": "이메일 문의",
+      "emailValue": "support@tradephere.com",
+      "response": "응답 시간",
+      "responseValue": "24시간 이내",
+      "support": "지원 시간",
+      "supportValue": "24/7 가능"
+    },
+    "chat": {
+      "title": "실시간 채팅 지원",
+      "subtitle": "지원팀에서 즉시 도움을 받으세요",
+      "placeholder": "메시지를 입력하세요...",
+      "send": "보내기"
+    }
+  },
+  "footer": {
+    "description": "첨단 기술과 전문가 지원으로 전 세계 트레이더를 지원합니다.",
+    "trading": "거래",
+    "features": "기능",
+    "pricing": "가격",
+    "resources": "자료",
+    "help": "도움말 센터",
+    "blog": "블로그",
+    "legal": "법적 정보",
+    "privacy": "개인정보 처리방침",
+    "terms": "서비스 약관",
+    "copyright": "© 2024 Tradephere. 모든 권리 보유."
   },
   "dashboard": {
     "nav": {
