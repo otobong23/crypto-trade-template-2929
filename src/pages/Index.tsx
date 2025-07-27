@@ -74,7 +74,8 @@ const Index = () => {
               {t('hero.cta')}
             </Button>
             <Button size="lg" variant="link" className="text-white">
-              {t('hero.viewMarkets')} <ArrowRight className="ml-2 w-4 h-4" />
+              {/* {t('hero.viewMarkets')} <ArrowRight className="ml-2 w-4 h-4" /> */}
+              View Markets <ArrowRight className="ml-2 w-4 h-4" />
             </Button>
           </motion.div>
         </div>
@@ -108,9 +109,11 @@ const Index = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('hero.marketData.title')}</h2>
+          {/* <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('hero.marketData.title')}</h2> */}
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Live Market Data</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            {t('hero.marketData.subtitle')}
+            {/* {t('hero.marketData.subtitle')} */}
+            Stay updated with real-time cryptocurrencies and charts powered by TradingView
           </p>
         </motion.div>
 
@@ -121,7 +124,8 @@ const Index = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="glass rounded-xl p-6"
           >
-            <h3 className="text-xl font-semibold mb-4">{t('hero.marketData.bitcoinChart')}</h3>
+            {/* <h3 className="text-xl font-semibold mb-4">{t('hero.marketData.bitcoinChart')}</h3> */}
+            <h3 className="text-xl font-semibold mb-4">Bitcoin Chart</h3>
             <TradingViewWidget symbol="BINANCE:BTCUSDT" height="400" />
           </motion.div>
 
@@ -131,7 +135,8 @@ const Index = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="glass rounded-xl p-6"
           >
-            <h3 className="text-xl font-semibold mb-4">{t('hero.marketData.ethereumChart')}</h3>
+            {/* <h3 className="text-xl font-semibold mb-4">{t('hero.marketData.ethereumChart')}</h3> */}
+            <h3 className="text-xl font-semibold mb-4">Ethereum Chart</h3>
             <TradingViewWidget symbol="BINANCE:ETHUSDT" height="400" />
           </motion.div>
         </div>
@@ -142,7 +147,8 @@ const Index = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="glass rounded-xl p-6"
         >
-          <h3 className="text-xl font-semibold mb-4">{t('hero.marketData.marketOverview')}</h3>
+          {/* <h3 className="text-xl font-semibold mb-4">{t('hero.marketData.marketOverview')}</h3> */}
+          <h3 className="text-xl font-semibold mb-4">Market Overview</h3>
           <MarketOverviewWidget height="600" />
         </motion.div>
       </section>
@@ -182,10 +188,10 @@ const Index = () => {
           className="bg-[#0A0A0A]/80 backdrop-blur-lg border border-white/10 rounded-2xl p-8 md:p-12 text-center relative z-10"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            {t('hero.cta.title')}
+            {t('hero.cta')}
           </h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            {t('hero.cta.subtitle')}
+            {t('hero.subtitle')}
           </p>
           <Button size="lg" className="button-gradient">
             {t('nav.startTrading')}
