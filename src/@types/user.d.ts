@@ -1,5 +1,5 @@
 
-declare interface signResponse {
+interface signResponse {
    success: boolean;
    token: string;
    message: string,
@@ -11,13 +11,13 @@ declare interface signResponse {
    }
 }
 
-declare interface walletType {
+interface walletType {
    balance: number;
    assetValue: number;
    watchList: string[]
 }
 
-declare interface userType {
+interface userType {
    firstName: string;
    lastName: string;
    username: string;
@@ -27,7 +27,7 @@ declare interface userType {
    wallet: walletType
 }
 
-declare interface profileResponse {
+interface profileResponse {
    success: boolean;
    user: userType;y
 }
