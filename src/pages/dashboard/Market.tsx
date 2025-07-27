@@ -145,7 +145,7 @@ const Market = () => {
               <CardTitle className="text-white">Bitcoin Chart</CardTitle>
             </CardHeader>
             <CardContent>
-              <TradingViewWidget symbol="BINANCE:BTCUSDT" height="400" />
+              <TradingViewWidget symbol="BINANCE:BTCUSDT" height="600" />
             </CardContent>
           </Card>
 
@@ -154,7 +154,7 @@ const Market = () => {
               <CardTitle className="text-white">Ethereum Chart</CardTitle>
             </CardHeader>
             <CardContent>
-              <TradingViewWidget symbol="BINANCE:ETHUSDT" height="400" />
+              <TradingViewWidget symbol="BINANCE:ETHUSDT" height="600" />
             </CardContent>
           </Card>
         </div>

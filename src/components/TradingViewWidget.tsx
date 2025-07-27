@@ -19,7 +19,7 @@ interface TradingViewWidgetProps {
 const TradingViewWidget = ({
   symbol = "BINANCE:BTCUSDT",
   width = "100%",
-  height = "400",
+  height = "600",
   interval = "D",
   theme = "dark",
   style = "1",

@@ -6,6 +6,8 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { Link } from "react-router-dom";
+import api from "@/lib/api";
+import { AxiosError } from "axios";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -18,20 +20,37 @@ const Login = () => {
     setIsLoading(true);
 
     // Simulate login - replace with actual authentication
-    setTimeout(() => {
+    setTimeout(async () => {
       if (username && password) {
-        toast({
-          title: "Login Successful",
-          description: "Welcome back to Trade Phere!",
-        });
-        localStorage.setItem("authToken", "dummy-user-token");
-        localStorage.setItem("userRole", "user");
-        // Redirect to dashboard would happen here
-        window.location.href = "/dashboard";
+        try {
+          const response = await api.post<signResponse>('/auth/signin', { username, password })
+          toast({
+            title: "Login Successful",
+            description: response.data.message,
+          });
+          localStorage.setItem("authToken", response.data.token);
+          localStorage.setItem("userRole", "user");
+          // Redirect to login would happen here
+          window.location.href = "/dashboard";
+        } catch (err) {
+          if (err instanceof AxiosError) {
+            toast({
+              title: "Error",
+              description: err.response?.data.message,
+              variant: "destructive",
+            });
+          } else {
+            toast({
+              title: "Error",
+              description: 'Failed to load Login. Please try again later or reload page',
+              variant: "destructive",
+            });
+          }
+        }
       } else {
         toast({
-          title: "Login Failed",
-          description: "Please enter valid credentials",
+          title: "Error",
+          description: "Please fill in all fields",
           variant: "destructive",
         });
       }

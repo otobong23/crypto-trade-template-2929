@@ -1,20 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { 
-  Home, 
-  CreditCard, 
-  Wallet, 
-  History, 
-  TrendingUp, 
-  LogOut, 
+import {
+  Home,
+  CreditCard,
+  Wallet,
+  History,
+  TrendingUp,
+  LogOut,
   Menu,
-  User
+  User,
+  Loader
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Link, useLocation } from "react-router-dom";
 import tradephereLogoSrc from "@/assets/trade_phere.svg";
 import LanguageSwitcher from "./LanguageSwitcher";
+import { useToast } from "@/hooks/use-toast";
+import api from "@/lib/api";
+import { AxiosError } from "axios";
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -23,6 +27,37 @@ interface DashboardLayoutProps {
 const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const location = useLocation();
+  const [user, setUser] = useState<userType>(null)
+  const { toast } = useToast();
+  useEffect(() => {
+    const getUser = async () => {
+      const LOCALSTORAGE_TOKEN = localStorage.getItem('authToken')
+      if (!LOCALSTORAGE_TOKEN) {
+        window.location.href = "/login";
+        return
+      }
+      try {
+        api.defaults.headers.common["Authorization"] = `Bearer ${LOCALSTORAGE_TOKEN}`;
+        const response = await api.get<profileResponse>('/user/getUser',)
+        setUser(response.data.user)
+      } catch (err) {
+        if (err instanceof AxiosError) {
+          toast({
+            title: "Error",
+            description: err.response?.data.message,
+            variant: "destructive",
+          });
+        } else {
+          toast({
+            title: "Error",
+            description: 'Failed to load Signup. Please try again later or reload page',
+            variant: "destructive",
+          });
+        }
+      }
+    }
+    getUser()
+  }, [])
 
   const navItems = [
     { name: "Home", href: "/dashboard", icon: Home },
@@ -46,23 +81,22 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
           <span className="font-bold text-lg">Tradephere</span>
         </div>
       </div>
-      
+
       <nav className="flex-1 p-4">
         <div className="space-y-2">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = location.pathname === item.href;
-            
+
             return (
               <Link
                 key={item.name}
                 to={item.href}
                 onClick={() => setIsSidebarOpen(false)}
-                className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
-                  isActive 
-                    ? "bg-primary text-white" 
-                    : "text-gray-300 hover:bg-white/10"
-                }`}
+                className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${isActive
+                  ? "bg-primary text-white"
+                  : "text-gray-300 hover:bg-white/10"
+                  }`}
               >
                 <Icon className="w-5 h-5" />
                 {item.name}
@@ -84,6 +118,12 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
       </div>
     </div>
   );
+
+  if (!user) {
+    return (<div className="h-screen w-full flex justify-center items-center">
+      <Loader />
+    </div>)
+  }
 
   return (
     <div className="min-h-screen bg-black">
@@ -113,12 +153,12 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
         {/* Top Bar */}
         <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b border-white/10 bg-[#1B1B1B]/80 backdrop-blur-xl px-4 sm:px-6">
           <div className="flex-1" />
-          
+
           <div className="flex items-center gap-4">
             <LanguageSwitcher />
             <div className="flex items-center gap-2 text-white">
               <User className="w-5 h-5" />
-              <span className="text-sm">John Doe</span>
+              <span className="text-sm capitalize">{user.firstName ?? 'user'} {user.lastName ?? ''}</span>
             </div>
           </div>
         </header>

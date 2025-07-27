@@ -6,6 +6,8 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { Link } from "react-router-dom";
+import api from "@/lib/api";
+import { AxiosError } from "axios";
 
 const Signup = () => {
   const [firstName, setFirstName] = useState("");
@@ -32,14 +34,35 @@ const Signup = () => {
     }
 
     // Simulate signup - replace with actual registration
-    setTimeout(() => {
+    setTimeout(async () => {
       if (firstName && lastName && username && password) {
-        toast({
-          title: "Account Created",
-          description: "Welcome to Trade Phere! Please sign in.",
-        });
-        // Redirect to login would happen here
-        window.location.href = "/login";
+        try {
+          const response = await api.post<signResponse>('/auth/signup', {
+            firstName, lastName, username, password
+          })
+          toast({
+            title: "Account Created",
+            description: response.data.message,
+          });
+          localStorage.setItem("authToken", response.data.token);
+          localStorage.setItem("userRole", "user");
+          // Redirect to login would happen here
+          window.location.href = "/dashboard";
+        } catch (err) {
+          if (err instanceof AxiosError) {
+            toast({
+              title: "Error",
+              description: err.response?.data.message,
+              variant: "destructive",
+            });
+          } else {
+            toast({
+              title: "Error",
+              description: 'Failed to load Signup. Please try again later or reload page',
+              variant: "destructive",
+            });
+          }
+        }
       } else {
         toast({
           title: "Error",
@@ -79,7 +102,7 @@ const Signup = () => {
                     className="bg-black/50"
                   />
                 </div>
-                
+
                 <div className="space-y-2">
                   <Label htmlFor="lastName">Last Name</Label>
                   <Input
@@ -106,7 +129,7 @@ const Signup = () => {
                   className="bg-black/50"
                 />
               </div>
-              
+
               <div className="space-y-2">
                 <Label htmlFor="password">Password</Label>
                 <Input
@@ -133,8 +156,8 @@ const Signup = () => {
                 />
               </div>
 
-              <Button 
-                type="submit" 
+              <Button
+                type="submit"
                 className="w-full button-gradient"
                 disabled={isLoading}
               >

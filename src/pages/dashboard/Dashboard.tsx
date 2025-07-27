@@ -3,20 +3,57 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { 
-  DollarSign, 
-  TrendingUp, 
-  TrendingDown, 
-  Clock, 
-  CheckCircle, 
+import {
+  DollarSign,
+  TrendingUp,
+  TrendingDown,
+  Clock,
+  CheckCircle,
   XCircle,
   ArrowUpRight,
-  ArrowDownRight
+  ArrowDownRight,
+  Loader
 } from "lucide-react";
 import DashboardLayout from "@/components/DashboardLayout";
 import MarketOverviewWidget from "@/components/MarketOverviewWidget";
+import TradingViewCrossRates from "@/components/TradingViewCrossRates";
+import { useEffect, useState } from "react";
+import api from "@/lib/api";
+import { AxiosError } from "axios";
+import { useToast } from "@/hooks/use-toast";
 
 const Dashboard = () => {
+  const [user, setUser] = useState<userType>(null)
+  const { toast } = useToast();
+  useEffect(() => {
+    const getUser = async () => {
+      const LOCALSTORAGE_TOKEN = localStorage.getItem('authToken')
+      if (!LOCALSTORAGE_TOKEN) {
+        window.location.href = "/login";
+        return
+      }
+      try {
+        api.defaults.headers.common["Authorization"] = `Bearer ${LOCALSTORAGE_TOKEN}`;
+        const response = await api.get<profileResponse>('/user/getUser',)
+        setUser(response.data.user)
+      } catch (err) {
+        if (err instanceof AxiosError) {
+          toast({
+            title: "Error",
+            description: err.response?.data.message,
+            variant: "destructive",
+          });
+        } else {
+          toast({
+            title: "Error",
+            description: 'Failed to load Signup. Please try again later or reload page',
+            variant: "destructive",
+          });
+        }
+      }
+    }
+    getUser()
+  },[])
   // Dummy data
   const userStats = {
     totalBalance: 12450.50,
@@ -67,17 +104,23 @@ const Dashboard = () => {
     }
   };
 
+  if(!user){
+    return (<div className="h-screen w-full flex justify-center items-center">
+      <Loader />
+    </div>)
+  }
+
   return (
     <DashboardLayout>
       <div className="space-y-6">
         {/* Welcome Section */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-white">Welcome back, John!</h1>
+            <h1 className="text-3xl font-bold text-white">Welcome back, <span className="capitalize">{user.firstName ?? 'user'}</span>!</h1>
             <p className="text-gray-400">Here's your trading overview</p>
           </div>
           <Avatar className="h-12 w-12">
-            <AvatarFallback className="bg-primary text-white">JD</AvatarFallback>
+            <AvatarFallback className="bg-primary text-white">{user.firstName[0].toUpperCase() ?? 'U'}{user.lastName[0].toUpperCase() ?? 'S'}</AvatarFallback>
           </Avatar>
         </div>
 
@@ -89,7 +132,7 @@ const Dashboard = () => {
               <DollarSign className="h-4 w-4 text-green-500" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-white">${userStats.totalBalance.toLocaleString()}</div>
+              <div className="text-2xl font-bold text-white">${user.wallet.balance.toLocaleString() ?? 0}</div>
               <p className="text-xs text-gray-400">+12.5% from last month</p>
             </CardContent>
           </Card>
@@ -100,7 +143,7 @@ const Dashboard = () => {
               <TrendingUp className="h-4 w-4 text-green-500" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-green-500">${userStats.totalProfit.toLocaleString()}</div>
+              <div className="text-2xl font-bold text-green-500">${user.wallet.assetValue.toLocaleString() ?? 0}</div>
               <p className="text-xs text-gray-400">+8.2% this month</p>
             </CardContent>
           </Card>
@@ -122,7 +165,7 @@ const Dashboard = () => {
               <TrendingUp className="h-4 w-4 text-blue-500" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-white">{userStats.activeInvestments}</div>
+              <div className="text-2xl font-bold text-white">{user.wallet.watchList.length.toLocaleString() ?? 0}</div>
               <p className="text-xs text-gray-400">2 new this week</p>
             </CardContent>
           </Card>
@@ -205,6 +248,16 @@ const Dashboard = () => {
           </CardHeader>
           <CardContent>
             <MarketOverviewWidget height="400" />
+          </CardContent>
+        </Card>
+
+        {/* Market Cross Rate */}
+        <Card className="glass border-white/10">
+          <CardHeader>
+            <CardTitle className="text-white">Market Cross Rate</CardTitle>
+          </CardHeader>
+          <CardContent className="h-[500px]">
+            <TradingViewCrossRates />
           </CardContent>
         </Card>
       </div>
