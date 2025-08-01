@@ -76,7 +76,7 @@ const Market = () => {
           <div className="flex gap-3">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-              <Input placeholder="Search markets..." className="pl-10 w-64 bg-black/50" />
+              <Input placeholder={t('dashboard.market.searchMarkets')} className="pl-10 w-64 bg-black/50" />
             </div>
           </div>
         </div>
@@ -122,16 +122,16 @@ const Market = () => {
                       </Button>
                     </div>
                     
-                    <div className="grid grid-cols-2 gap-4 text-sm">
-                      <div>
-                        <p className="text-gray-400">24h High</p>
-                        <p className="text-white font-medium">${market.high.toLocaleString()}</p>
-                      </div>
-                      <div>
-                        <p className="text-gray-400">24h Low</p>
-                        <p className="text-white font-medium">${market.low.toLocaleString()}</p>
-                      </div>
-                    </div>
+                     <div className="grid grid-cols-2 gap-4 text-sm">
+                       <div>
+                         <p className="text-gray-400">{t('dashboard.market.high24h')}</p>
+                         <p className="text-white font-medium">${market.high.toLocaleString()}</p>
+                       </div>
+                       <div>
+                         <p className="text-gray-400">{t('dashboard.market.low24h')}</p>
+                         <p className="text-white font-medium">${market.low.toLocaleString()}</p>
+                       </div>
+                     </div>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -141,19 +141,19 @@ const Market = () => {
 
         {/* Trading Charts */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <Card className="glass border-white/10">
-            <CardHeader>
-              <CardTitle className="text-white">Bitcoin Chart</CardTitle>
-            </CardHeader>
+           <Card className="glass border-white/10">
+             <CardHeader>
+               <CardTitle className="text-white">{t('dashboard.market.bitcoinChart')}</CardTitle>
+             </CardHeader>
             <CardContent>
               <TradingViewWidget symbol="BINANCE:BTCUSDT" height="600" />
             </CardContent>
           </Card>
 
-          <Card className="glass border-white/10">
-            <CardHeader>
-              <CardTitle className="text-white">Ethereum Chart</CardTitle>
-            </CardHeader>
+           <Card className="glass border-white/10">
+             <CardHeader>
+               <CardTitle className="text-white">{t('dashboard.market.ethereumChart')}</CardTitle>
+             </CardHeader>
             <CardContent>
               <TradingViewWidget symbol="BINANCE:ETHUSDT" height="600" />
             </CardContent>
@@ -171,13 +171,13 @@ const Market = () => {
           <CardContent>
             <div className="space-y-2">
               {/* Header */}
-              <div className="grid grid-cols-5 gap-4 py-3 px-4 text-sm font-medium text-gray-400 border-b border-white/10">
-                <div>Pair</div>
-                <div className="text-right">{t('dashboard.market.price')}</div>
-                <div className="text-right">{t('dashboard.market.change')}</div>
-                <div className="text-right">{t('dashboard.market.volume')}</div>
-                <div className="text-right">Action</div>
-              </div>
+               <div className="grid grid-cols-5 gap-4 py-3 px-4 text-sm font-medium text-gray-400 border-b border-white/10">
+                 <div>{t('dashboard.market.pair')}</div>
+                 <div className="text-right">{t('dashboard.market.price')}</div>
+                 <div className="text-right">{t('dashboard.market.change')}</div>
+                 <div className="text-right">{t('dashboard.market.volume')}</div>
+                 <div className="text-right">{t('dashboard.market.action')}</div>
+               </div>
               
               {/* Market Rows */}
               {allMarkets.map((market, index) => (

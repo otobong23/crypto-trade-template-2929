@@ -131,9 +131,9 @@ const Plans = () => {
             <div className="flex items-center justify-between">
               <CardTitle className="text-white flex items-center gap-2">
                 <Star className="w-5 h-5 text-primary" />
-                Your Current Plan
+                {t('dashboard.plans.currentPlan')}
               </CardTitle>
-              <Badge className="bg-primary/20 text-primary">Active</Badge>
+              <Badge className="bg-primary/20 text-primary">{t('dashboard.plans.active')}</Badge>
             </div>
           </CardHeader>
           <CardContent>
@@ -148,7 +148,7 @@ const Plans = () => {
               </div>
               <div className="text-right">
                 <p className="text-2xl font-bold text-white">${currentPlan.price.toLocaleString()}</p>
-                <p className="text-sm text-gray-400">Investment Amount</p>
+                <p className="text-sm text-gray-400">{t('dashboard.plans.investmentAmount')}</p>
               </div>
             </div>
           </CardContent>
@@ -167,9 +167,9 @@ const Plans = () => {
               >
                 <Card className={`glass border-white/10 h-full ${plan.popular ? 'border-primary/50 relative' : ''}`}>
                   {plan.popular && (
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                      <Badge className="bg-primary text-white">Most Popular</Badge>
-                    </div>
+                     <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                       <Badge className="bg-primary text-white">{t('dashboard.plans.mostPopular')}</Badge>
+                     </div>
                   )}
                   
                   <CardHeader>
@@ -206,7 +206,7 @@ const Plans = () => {
                       variant={plan.popular ? 'default' : 'outline'}
                       disabled={currentPlan.id === plan.id}
                     >
-                      {currentPlan.id === plan.id ? 'Current Plan' : t('dashboard.plans.selectPlan')}
+                      {currentPlan.id === plan.id ? t('dashboard.plans.currentPlan') : t('dashboard.plans.selectPlan')}
                     </Button>
                   </CardContent>
                 </Card>
