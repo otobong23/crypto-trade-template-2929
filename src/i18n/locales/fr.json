@@ -10,7 +10,8 @@
     "title": "Tradez avec confiance, grandissez avec",
     "titleHighlight": "Tradephere",
     "subtitle": "Rejoignez des milliers de traders prospères utilisant notre plateforme avancée. Commencez avec seulement 500$ et regardez vos investissements croître avec nos stratégies éprouvées.",
-    "cta": "Commencer à trader maintenant"
+    "cta": "Commencer à trader maintenant",
+    "badge": "Plateforme crypto de nouvelle génération"
   },
   "features": {
     "title": "Pourquoi choisir Tradephere ?",
@@ -426,7 +427,13 @@
       "systemSettingsUpdated": "Paramètres du système mis à jour avec succès",
       "error": "Erreur",
       "passwordsDoNotMatch": "Les mots de passe ne correspondent pas",
-      "fillAllFields": "Veuillez remplir tous les champs"
+      "fillAllFields": "Veuillez remplir tous les champs",
+      "passwordTooShort": "Le mot de passe doit contenir au moins 6 caractères",
+      "systemInformation": "Informations Système",
+      "platformVersion": "Version de la Plateforme",
+      "lastUpdated": "Dernière Mise à Jour",
+      "serverStatus": "État du Serveur",
+      "online": "En ligne"
     }
   },
   "auth": {
@@ -442,20 +449,27 @@
       "fillAllFields": "Veuillez remplir tous les champs"
     },
     "signup": {
-      "title": "Créer un compte",
-      "subtitle": "Inscrivez-vous pour commencer à trader",
-      "name": "Nom complet",
-      "email": "Email",
+      "title": "Créer un Compte",
+      "subtitle": "Rejoignez Trade Phere aujourd'hui",
+      "firstName": "Prénom",
+      "lastName": "Nom",
+      "username": "Nom d'utilisateur",
       "password": "Mot de passe",
-      "confirmPassword": "Confirmer Mot de Passe",
-      "signUp": "S'inscrire",
+      "confirmPassword": "Confirmer le Mot de Passe",
+      "createAccount": "Créer un Compte",
+      "creatingAccount": "Création du Compte...",
+      "firstNamePlaceholder": "Jean",
+      "lastNamePlaceholder": "Dupont",
+      "usernamePlaceholder": "Choisissez un nom d'utilisateur",
+      "passwordPlaceholder": "Créez un mot de passe",
+      "confirmPasswordPlaceholder": "Confirmez votre mot de passe",
       "haveAccount": "Vous avez déjà un compte ?",
-      "signIn": "Se Connecter",
-      "error": "Erreur",
-      "fillAllFields": "Veuillez remplir tous les champs",
+      "signIn": "Connectez-vous ici",
+      "backToHome": "Retour à l'Accueil",
       "passwordsDoNotMatch": "Les mots de passe ne correspondent pas",
+      "fillAllFields": "Veuillez remplir tous les champs",
       "accountCreated": "Compte Créé",
-      "accountCreatedSuccess": "Votre compte a été créé avec succès !"
+      "signupFailed": "Échec de création du compte. Veuillez réessayer plus tard"
     }
   },
   "footer": {

@@ -7,8 +7,10 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { Settings, Key, Wallet } from "lucide-react";
 import AdminLayout from "@/components/AdminLayout";
+import { useTranslation } from "react-i18next";
 
 const AdminSettings = () => {
+  const { t } = useTranslation();
   const { toast } = useToast();
   
   const [passwordData, setPasswordData] = useState({
@@ -28,8 +30,8 @@ const AdminSettings = () => {
     
     if (passwordData.newPassword !== passwordData.confirmPassword) {
       toast({
-        title: "Error",
-        description: "New passwords don't match",
+        title: t("common.error"),
+        description: t("admin.settings.passwordsDoNotMatch"),
         variant: "destructive",
       });
       return;
@@ -37,16 +39,16 @@ const AdminSettings = () => {
 
     if (passwordData.newPassword.length < 6) {
       toast({
-        title: "Error", 
-        description: "Password must be at least 6 characters",
+        title: t("common.error"), 
+        description: t("admin.settings.passwordTooShort"),
         variant: "destructive",
       });
       return;
     }
 
     toast({
-      title: "Password Updated",
-      description: "Admin password has been changed successfully",
+      title: t("admin.settings.passwordUpdated"),
+      description: t("admin.settings.passwordUpdatedSuccess"),
     });
 
     setPasswordData({
@@ -60,8 +62,8 @@ const AdminSettings = () => {
     e.preventDefault();
     
     toast({
-      title: "Wallet Addresses Updated",
-      description: "Cryptocurrency wallet addresses have been updated",
+      title: t("admin.settings.addressesUpdated"),
+      description: t("admin.settings.walletAddressesUpdated"),
     });
   };
 
@@ -71,8 +73,8 @@ const AdminSettings = () => {
         <div className="flex items-center gap-3">
           <Settings className="w-8 h-8 text-primary" />
           <div>
-            <h1 className="text-3xl font-bold text-white">Admin Settings</h1>
-            <p className="text-gray-400">Manage system configuration</p>
+            <h1 className="text-3xl font-bold text-white">{t("admin.settings.title")}</h1>
+            <p className="text-gray-400">{t("admin.settings.subtitle")}</p>
           </div>
         </div>
 
@@ -82,13 +84,13 @@ const AdminSettings = () => {
             <CardHeader>
               <CardTitle className="text-white flex items-center gap-2">
                 <Key className="w-5 h-5" />
-                Change Password
+                {t("admin.settings.changePassword")}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <form onSubmit={handlePasswordChange} className="space-y-4">
                 <div>
-                  <Label htmlFor="currentPassword">Current Password</Label>
+                  <Label htmlFor="currentPassword">{t("admin.settings.currentPassword")}</Label>
                   <Input
                     id="currentPassword"
                     type="password"
@@ -103,7 +105,7 @@ const AdminSettings = () => {
                 </div>
                 
                 <div>
-                  <Label htmlFor="newPassword">New Password</Label>
+                  <Label htmlFor="newPassword">{t("admin.settings.newPassword")}</Label>
                   <Input
                     id="newPassword"
                     type="password"
@@ -118,7 +120,7 @@ const AdminSettings = () => {
                 </div>
                 
                 <div>
-                  <Label htmlFor="confirmPassword">Confirm New Password</Label>
+                  <Label htmlFor="confirmPassword">{t("admin.settings.confirmPassword")}</Label>
                   <Input
                     id="confirmPassword"
                     type="password"
@@ -133,7 +135,7 @@ const AdminSettings = () => {
                 </div>
                 
                 <Button type="submit" className="w-full button-gradient">
-                  Update Password
+                  {t("admin.settings.updatePassword")}
                 </Button>
               </form>
             </CardContent>
@@ -144,13 +146,13 @@ const AdminSettings = () => {
             <CardHeader>
               <CardTitle className="text-white flex items-center gap-2">
                 <Wallet className="w-5 h-5" />
-                Cryptocurrency Wallet Addresses
+                {t("admin.settings.walletAddresses")}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleWalletUpdate} className="space-y-4">
                 <div>
-                  <Label htmlFor="bitcoin">Bitcoin (BTC) Address</Label>
+                  <Label htmlFor="bitcoin">{t("admin.settings.bitcoinAddress")}</Label>
                   <Input
                     id="bitcoin"
                     type="text"
@@ -165,7 +167,7 @@ const AdminSettings = () => {
                 </div>
                 
                 <div>
-                  <Label htmlFor="ethereum">Ethereum (ETH) Address</Label>
+                  <Label htmlFor="ethereum">{t("admin.settings.ethereumAddress")}</Label>
                   <Input
                     id="ethereum"
                     type="text"
@@ -180,7 +182,7 @@ const AdminSettings = () => {
                 </div>
                 
                 <div>
-                  <Label htmlFor="usdt">USDT Address</Label>
+                  <Label htmlFor="usdt">{t("admin.settings.usdtAddress")}</Label>
                   <Input
                     id="usdt"
                     type="text"
@@ -195,7 +197,7 @@ const AdminSettings = () => {
                 </div>
                 
                 <Button type="submit" className="w-full button-gradient">
-                  Update Wallet Addresses
+                  {t("admin.settings.updateAddresses")}
                 </Button>
               </form>
             </CardContent>
@@ -205,21 +207,21 @@ const AdminSettings = () => {
         {/* System Information */}
         <Card className="glass border-white/10">
           <CardHeader>
-            <CardTitle className="text-white">System Information</CardTitle>
+            <CardTitle className="text-white">{t("admin.settings.systemInformation")}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="text-center p-4 rounded-lg bg-black/20">
-                <p className="text-gray-400 text-sm">Platform Version</p>
+                <p className="text-gray-400 text-sm">{t("admin.settings.platformVersion")}</p>
                 <p className="text-lg font-bold text-white">v2.1.0</p>
               </div>
               <div className="text-center p-4 rounded-lg bg-black/20">
-                <p className="text-gray-400 text-sm">Last Updated</p>
+                <p className="text-gray-400 text-sm">{t("admin.settings.lastUpdated")}</p>
                 <p className="text-lg font-bold text-white">2024-01-20</p>
               </div>
               <div className="text-center p-4 rounded-lg bg-black/20">
-                <p className="text-gray-400 text-sm">Server Status</p>
-                <p className="text-lg font-bold text-green-500">Online</p>
+                <p className="text-gray-400 text-sm">{t("admin.settings.serverStatus")}</p>
+                <p className="text-lg font-bold text-green-500">{t("admin.settings.online")}</p>
               </div>
             </div>
           </CardContent>

@@ -10,7 +10,8 @@
     "title": "自信交易，与Tradephere共同成长",
     "titleHighlight": "Tradephere",
     "subtitle": "加入数千名成功交易者，使用我们的先进平台。最低仅需$500，通过我们的成熟策略让您的投资增长。",
-    "cta": "立即开始交易"
+    "cta": "立即开始交易",
+    "badge": "新一代加密货币交易平台"
   },
   "features": {
     "title": "为什么选择Tradephere？",
@@ -395,7 +396,13 @@
       "systemSettingsUpdated": "系统设置更新成功",
       "error": "错误",
       "passwordsDoNotMatch": "密码不匹配",
-      "fillAllFields": "请填写所有字段"
+      "fillAllFields": "请填写所有字段",
+      "passwordTooShort": "密码必须至少6个字符",
+      "systemInformation": "系统信息",
+      "platformVersion": "平台版本",
+      "lastUpdated": "最后更新",
+      "serverStatus": "服务器状态",
+      "online": "在线"
     }
   },
   "auth": {
@@ -412,19 +419,26 @@
     },
     "signup": {
       "title": "创建账户",
-      "subtitle": "注册以开始交易",
-      "name": "全名",
-      "email": "邮箱",
+      "subtitle": "立即加入Trade Phere",
+      "firstName": "名",
+      "lastName": "姓",
+      "username": "用户名",
       "password": "密码",
       "confirmPassword": "确认密码",
-      "signUp": "注册",
+      "createAccount": "创建账户",
+      "creatingAccount": "创建账户中...",
+      "firstNamePlaceholder": "明",
+      "lastNamePlaceholder": "李",
+      "usernamePlaceholder": "选择用户名",
+      "passwordPlaceholder": "创建密码",
+      "confirmPasswordPlaceholder": "确认您的密码",
       "haveAccount": "已有账户？",
-      "signIn": "登录",
-      "error": "错误",
-      "fillAllFields": "请填写所有字段",
+      "signIn": "在此登录",
+      "backToHome": "返回首页",
       "passwordsDoNotMatch": "密码不匹配",
+      "fillAllFields": "请填写所有字段",
       "accountCreated": "账户已创建",
-      "accountCreatedSuccess": "您的账户已成功创建！"
+      "signupFailed": "账户创建失败。请稍后重试"
     }
   },
   "common": {

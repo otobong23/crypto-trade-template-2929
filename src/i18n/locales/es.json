@@ -10,7 +10,8 @@
     "title": "Opera con Confianza, Crece con",
     "titleHighlight": "Tradephere",
     "subtitle": "Únete a miles de traders exitosos que usan nuestra plataforma avanzada. Comienza con tan solo $500 y ve crecer tus inversiones con nuestras estrategias probadas.",
-    "cta": "Empezar a Operar Ahora"
+    "cta": "Empezar a Operar Ahora",
+    "badge": "Plataforma cripto de nueva generación"
   },
   "features": {
     "title": "¿Por qué elegir Tradephere?",
@@ -426,7 +427,13 @@
       "systemSettingsUpdated": "Configuración del sistema actualizada exitosamente",
       "error": "Error",
       "passwordsDoNotMatch": "Las contraseñas no coinciden",
-      "fillAllFields": "Por favor llena todos los campos"
+      "fillAllFields": "Por favor llena todos los campos",
+      "passwordTooShort": "La contraseña debe tener al menos 6 caracteres",
+      "systemInformation": "Información del Sistema",
+      "platformVersion": "Versión de la Plataforma",
+      "lastUpdated": "Última Actualización",
+      "serverStatus": "Estado del Servidor",
+      "online": "En línea"
     }
   },
   "auth": {
@@ -442,20 +449,27 @@
       "fillAllFields": "Por favor llena todos los campos"
     },
     "signup": {
-      "title": "Crear cuenta",
-      "subtitle": "Regístrate para comenzar a operar",
-      "name": "Nombre completo",
-      "email": "Email",
+      "title": "Crear Cuenta",
+      "subtitle": "Únete a Trade Phere hoy",
+      "firstName": "Nombre",
+      "lastName": "Apellido",
+      "username": "Usuario",
       "password": "Contraseña",
       "confirmPassword": "Confirmar Contraseña",
-      "signUp": "Registrarse",
+      "createAccount": "Crear Cuenta",
+      "creatingAccount": "Creando Cuenta...",
+      "firstNamePlaceholder": "Juan",
+      "lastNamePlaceholder": "Pérez",
+      "usernamePlaceholder": "Elige un usuario",
+      "passwordPlaceholder": "Crea una contraseña",
+      "confirmPasswordPlaceholder": "Confirma tu contraseña",
       "haveAccount": "¿Ya tienes una cuenta?",
-      "signIn": "Iniciar Sesión",
-      "error": "Error",
-      "fillAllFields": "Por favor llena todos los campos",
+      "signIn": "Inicia sesión aquí",
+      "backToHome": "Volver al Inicio",
       "passwordsDoNotMatch": "Las contraseñas no coinciden",
+      "fillAllFields": "Por favor llena todos los campos",
       "accountCreated": "Cuenta Creada",
-      "accountCreatedSuccess": "¡Tu cuenta ha sido creada exitosamente!"
+      "signupFailed": "Error al crear cuenta. Inténtalo de nuevo más tarde"
     }
   },
   "footer": {

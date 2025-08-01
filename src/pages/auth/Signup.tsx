@@ -8,8 +8,10 @@ import { useToast } from "@/hooks/use-toast";
 import { Link } from "react-router-dom";
 import api from "@/lib/api";
 import { AxiosError } from "axios";
+import { useTranslation } from "react-i18next";
 
 const Signup = () => {
+  const { t } = useTranslation();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
@@ -25,8 +27,8 @@ const Signup = () => {
     // Validate passwords match
     if (password !== confirmPassword) {
       toast({
-        title: "Error",
-        description: "Passwords do not match",
+        title: t("common.error"),
+        description: t("auth.signup.passwordsDoNotMatch"),
         variant: "destructive",
       });
       setIsLoading(false);
@@ -41,7 +43,7 @@ const Signup = () => {
             firstName, lastName, username, password
           })
           toast({
-            title: "Account Created",
+            title: t("auth.signup.accountCreated"),
             description: response.data.message,
           });
           localStorage.setItem("authToken", response.data.token);
@@ -51,22 +53,22 @@ const Signup = () => {
         } catch (err) {
           if (err instanceof AxiosError) {
             toast({
-              title: "Error",
+              title: t("common.error"),
               description: err.response?.data.message,
               variant: "destructive",
             });
           } else {
             toast({
-              title: "Error",
-              description: 'Failed to load Signup. Please try again later or reload page',
+              title: t("common.error"),
+              description: t("auth.signup.signupFailed"),
               variant: "destructive",
             });
           }
         }
       } else {
         toast({
-          title: "Error",
-          description: "Please fill in all fields",
+          title: t("common.error"),
+          description: t("auth.signup.fillAllFields"),
           variant: "destructive",
         });
       }
@@ -84,18 +86,18 @@ const Signup = () => {
       >
         <Card className="glass border-white/10">
           <CardHeader className="text-center">
-            <CardTitle className="text-2xl font-bold">Create Account</CardTitle>
-            <p className="text-muted-foreground">Join Trade Phere today</p>
+            <CardTitle className="text-2xl font-bold">{t("auth.signup.title")}</CardTitle>
+            <p className="text-muted-foreground">{t("auth.signup.subtitle")}</p>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSignup} className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="firstName">First Name</Label>
+                  <Label htmlFor="firstName">{t("auth.signup.firstName")}</Label>
                   <Input
                     id="firstName"
                     type="text"
-                    placeholder="John"
+                    placeholder={t("auth.signup.firstNamePlaceholder")}
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
                     required
@@ -104,11 +106,11 @@ const Signup = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="lastName">Last Name</Label>
+                  <Label htmlFor="lastName">{t("auth.signup.lastName")}</Label>
                   <Input
                     id="lastName"
                     type="text"
-                    placeholder="Doe"
+                    placeholder={t("auth.signup.lastNamePlaceholder")}
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
                     required
@@ -118,11 +120,11 @@ const Signup = () => {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="username">Username</Label>
+                <Label htmlFor="username">{t("auth.signup.username")}</Label>
                 <Input
                   id="username"
                   type="text"
-                  placeholder="Choose a username"
+                  placeholder={t("auth.signup.usernamePlaceholder")}
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   required
@@ -131,11 +133,11 @@ const Signup = () => {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password">{t("auth.signup.password")}</Label>
                 <Input
                   id="password"
                   type="password"
-                  placeholder="Create a password"
+                  placeholder={t("auth.signup.passwordPlaceholder")}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
@@ -144,11 +146,11 @@ const Signup = () => {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="confirmPassword">Confirm Password</Label>
+                <Label htmlFor="confirmPassword">{t("auth.signup.confirmPassword")}</Label>
                 <Input
                   id="confirmPassword"
                   type="password"
-                  placeholder="Confirm your password"
+                  placeholder={t("auth.signup.confirmPasswordPlaceholder")}
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   required
@@ -161,20 +163,20 @@ const Signup = () => {
                 className="w-full button-gradient"
                 disabled={isLoading}
               >
-                {isLoading ? "Creating Account..." : "Create Account"}
+                {isLoading ? t("auth.signup.creatingAccount") : t("auth.signup.createAccount")}
               </Button>
             </form>
 
             <div className="mt-6 text-center">
               <p className="text-sm text-muted-foreground">
-                Already have an account?{" "}
+                {t("auth.signup.haveAccount")}{" "}
                 <Link to="/login" className="text-primary hover:underline">
-                  Sign in here
+                  {t("auth.signup.signIn")}
                 </Link>
               </p>
               <p className="text-sm text-muted-foreground mt-2">
                 <Link to="/" className="text-primary hover:underline">
-                  Back to Home
+                  {t("auth.signup.backToHome")}
                 </Link>
               </p>
             </div>

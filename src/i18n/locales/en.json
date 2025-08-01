@@ -10,7 +10,8 @@
     "title": "Trade with Confidence, Grow with",
     "titleHighlight": "Tradephere",
     "subtitle": "Join thousands of successful traders using our advanced platform. Start with as little as $500 and watch your investments grow with our proven strategies.",
-    "cta": "Start Trading Now"
+    "cta": "Start Trading Now",
+    "badge": "Next-gen crypto trading platform"
   },
   "features": {
     "title": "Why Choose Tradephere?",
@@ -426,7 +427,13 @@
       "systemSettingsUpdated": "System settings updated successfully",
       "error": "Error",
       "passwordsDoNotMatch": "Passwords do not match",
-      "fillAllFields": "Please fill all fields"
+      "fillAllFields": "Please fill all fields",
+      "passwordTooShort": "Password must be at least 6 characters",
+      "systemInformation": "System Information",
+      "platformVersion": "Platform Version",
+      "lastUpdated": "Last Updated",
+      "serverStatus": "Server Status",
+      "online": "Online"
     }
   },
   "auth": {
@@ -442,20 +449,27 @@
       "fillAllFields": "Please fill all fields"
     },
     "signup": {
-      "title": "Create account",
-      "subtitle": "Sign up to start trading",
-      "name": "Full Name",
-      "email": "Email",
+      "title": "Create Account",
+      "subtitle": "Join Trade Phere today",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "username": "Username",
       "password": "Password",
       "confirmPassword": "Confirm Password",
-      "signUp": "Sign Up",
+      "createAccount": "Create Account",
+      "creatingAccount": "Creating Account...",
+      "firstNamePlaceholder": "John",
+      "lastNamePlaceholder": "Doe",
+      "usernamePlaceholder": "Choose a username",
+      "passwordPlaceholder": "Create a password",
+      "confirmPasswordPlaceholder": "Confirm your password",
       "haveAccount": "Already have an account?",
-      "signIn": "Sign In",
-      "error": "Error",
-      "fillAllFields": "Please fill all fields",
+      "signIn": "Sign in here",
+      "backToHome": "Back to Home",
       "passwordsDoNotMatch": "Passwords do not match",
+      "fillAllFields": "Please fill in all fields",
       "accountCreated": "Account Created",
-      "accountCreatedSuccess": "Your account has been created successfully!"
+      "signupFailed": "Failed to create account. Please try again later"
     }
   },
   "footer": {
