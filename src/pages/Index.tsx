@@ -143,20 +143,6 @@ const Index = () => {
           >
             {t('hero.subtitle')}
           </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="flex gap-4 items-start"
-          >
-            <Button size="lg" onClick={() => navigate('/login', { replace: false })} className="button-gradient px-6">
-              {t('auth.login.login')}
-            </Button>
-            <Button size="lg" onClick={() => navigate('/signup', { replace: false })} variant="link" className="text-white">
-              {t('auth.signup.signIn')} <ArrowRight className="ml-2 w-4 h-4" />
-            </Button>
-          </motion.div>
         </div>
 
         <motion.div
