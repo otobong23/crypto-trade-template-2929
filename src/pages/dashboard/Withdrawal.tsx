@@ -61,7 +61,7 @@ const Withdrawal = () => {
   ];
 
   const handleWithdrawal = async () => {
-    if (!amount || !address) {
+    if (!amount || !selectedCrypto) {
       toast({
         title: "Error",
         description: "Please fill in all fields",
@@ -86,7 +86,7 @@ const Withdrawal = () => {
       toast({
         title: "Withdrawal Requested",
         description: "Your withdrawal is being processed",
-        variant: "destructive"
+        variant: "default"
       });
       navigate("/dashboard/history");
     } catch (err) {
@@ -173,10 +173,10 @@ const Withdrawal = () => {
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <Label htmlFor="address">Wallet Address</Label>
+              <Label htmlFor="address">Account Number</Label>
               <Input
                 id="address"
-                placeholder="Enter wallet address"
+                placeholder="Enter account number"
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
                 className="bg-black/50"
