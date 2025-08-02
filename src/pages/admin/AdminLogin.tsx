@@ -39,14 +39,14 @@ const AdminLogin = () => {
       } catch (err) {
         if (err instanceof AxiosError) {
           toast({
-            title: "Error",
+            title: t('admin.login.error'),
             description: err.response?.data.message,
             variant: "destructive",
           });
         } else {
           toast({
-            title: "Error",
-            description: 'Failed to load Login. Please try again later or reload page',
+            title: t('admin.login.error'),
+            description: t('admin.login.loginFailed'),
             variant: "destructive",
           });
         }
@@ -56,8 +56,8 @@ const AdminLogin = () => {
       }
     } else {
       toast({
-        title: "Error",
-        description: "Please fill in all fields",
+        title: t('admin.login.error'),
+        description: t('admin.login.fillAllFields'),
         variant: "destructive",
       });
     }
@@ -82,7 +82,7 @@ const AdminLogin = () => {
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <Label htmlFor="username">Username</Label>
+                <Label htmlFor="username">{t('admin.login.username')}</Label>
                 <Input
                   id="username"
                   type="text"
@@ -93,7 +93,7 @@ const AdminLogin = () => {
                 />
               </div>
               <div>
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password">{t('admin.login.password')}</Label>
                 <Input
                   id="password"
                   type="password"
@@ -108,7 +108,7 @@ const AdminLogin = () => {
                 className="w-full button-gradient"
                 disabled={isLoading}
               >
-                {isLoading ? "Logging in..." : "Login"}
+                {isLoading ? t('admin.login.loggingIn') : t('admin.login.login')}
               </Button>
             </form>
           </CardContent>

@@ -306,7 +306,9 @@
       "users": "用户",
       "transactions": "交易",
       "settings": "设置",
-      "logout": "退出"
+      "logout": "退出",
+      "adminPanel": "管理员面板",
+      "admin": "管理员"
     },
     "login": {
       "title": "管理员登录",
@@ -314,8 +316,11 @@
       "username": "用户名",
       "password": "密码",
       "login": "登录",
+      "loggingIn": "登录中...",
       "error": "错误",
-      "invalidCredentials": "无效凭据"
+      "invalidCredentials": "无效凭据",
+      "loginFailed": "登录失败。请稍后重试或重新加载页面",
+      "fillAllFields": "请填写所有字段"
     },
     "dashboard": {
       "title": "管理员仪表板",

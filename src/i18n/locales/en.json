@@ -337,16 +337,21 @@
       "users": "Users",
       "transactions": "Transactions",
       "settings": "Settings",
-      "logout": "Logout"
+      "logout": "Logout",
+      "adminPanel": "Admin Panel",
+      "admin": "Admin"
     },
     "login": {
       "title": "Admin Login",
-      "subtitle": "Sign in to your admin panel",
+      "subtitle": "Access your admin panel",
       "username": "Username",
       "password": "Password",
       "login": "Login",
+      "loggingIn": "Logging in...",
       "error": "Error",
-      "invalidCredentials": "Invalid credentials"
+      "invalidCredentials": "Invalid credentials",
+      "loginFailed": "Failed to login. Please try again later or reload page",
+      "fillAllFields": "Please fill in all fields"
     },
     "dashboard": {
       "title": "Admin Dashboard",

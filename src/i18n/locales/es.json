@@ -337,16 +337,21 @@
       "users": "Usuarios",
       "transactions": "Transacciones",
       "settings": "Configuración",
-      "logout": "Cerrar sesión"
+      "logout": "Cerrar sesión",
+      "adminPanel": "Panel de Administración",
+      "admin": "Administrador"
     },
     "login": {
-      "title": "Inicio de sesión de admin",
-      "subtitle": "Inicia sesión en tu panel de administrador",
+      "title": "Acceso de Administrador",
+      "subtitle": "Accede a tu panel de administración",
       "username": "Usuario",
       "password": "Contraseña",
       "login": "Iniciar sesión",
+      "loggingIn": "Iniciando sesión...",
       "error": "Error",
-      "invalidCredentials": "Credenciales inválidas"
+      "invalidCredentials": "Credenciales inválidas",
+      "loginFailed": "Error al iniciar sesión. Inténtalo más tarde o recarga la página",
+      "fillAllFields": "Por favor completa todos los campos"
     },
     "dashboard": {
       "title": "Panel de Administrador",

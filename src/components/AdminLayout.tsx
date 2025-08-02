@@ -14,20 +14,22 @@ import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from 
 import { Link, useLocation } from "react-router-dom";
 import tradephereLogoSrc from "@/assets/trade_phere.svg";
 import LanguageSwitcher from "./LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 
 interface AdminLayoutProps {
   children: React.ReactNode;
 }
 
 const AdminLayout = ({ children }: AdminLayoutProps) => {
+  const { t } = useTranslation();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const location = useLocation();
 
   const navItems = [
-    { name: "Dashboard", href: "/admin/dashboard", icon: Home },
-    { name: "All Users", href: "/admin/users", icon: Users },
-    { name: "Transactions", href: "/admin/transactions", icon: History },
-    { name: "Settings", href: "/admin/settings", icon: Settings },
+    { name: t("admin.nav.dashboard"), href: "/admin/dashboard", icon: Home },
+    { name: t("admin.nav.users"), href: "/admin/users", icon: Users },
+    { name: t("admin.nav.transactions"), href: "/admin/transactions", icon: History },
+    { name: t("admin.nav.settings"), href: "/admin/settings", icon: Settings },
   ];
 
   const handleLogout = () => {
@@ -41,7 +43,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
       <div className="p-6 border-b border-white/10">
         <div className="flex items-center gap-2">
           <Shield className="w-8 h-8 text-red-500" />
-          <span className="font-bold text-lg">Admin Panel</span>
+          <span className="font-bold text-lg">{t("admin.nav.adminPanel")}</span>
         </div>
       </div>
 
@@ -76,7 +78,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
           className="w-full justify-start text-gray-300 hover:bg-red-500/10 hover:text-red-400"
         >
           <LogOut className="w-5 h-5 mr-3" />
-          Logout
+          {t("admin.nav.logout")}
         </Button>
       </div>
     </div>
@@ -119,7 +121,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
             <LanguageSwitcher />
             <div className="flex items-center gap-2 text-white">
               <Shield className="w-5 h-5 text-red-500" />
-              <span className="text-sm">Admin</span>
+              <span className="text-sm">{t("admin.nav.admin")}</span>
             </div>
           </div>
         </header>

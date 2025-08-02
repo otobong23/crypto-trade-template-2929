@@ -337,16 +337,21 @@
       "users": "Utilisateurs",
       "transactions": "Transactions",
       "settings": "Paramètres",
-      "logout": "Déconnexion"
+      "logout": "Déconnexion",
+      "adminPanel": "Panneau d'Administration",
+      "admin": "Administrateur"
     },
     "login": {
       "title": "Connexion Administrateur",
-      "subtitle": "Connectez-vous à votre panneau d'administration",
+      "subtitle": "Accédez à votre panneau d'administration",
       "username": "Nom d'utilisateur",
       "password": "Mot de passe",
-      "login": "Connexion",
+      "login": "Se connecter",
+      "loggingIn": "Connexion en cours...",
       "error": "Erreur",
-      "invalidCredentials": "Identifiants invalides"
+      "invalidCredentials": "Identifiants invalides",
+      "loginFailed": "Échec de la connexion. Veuillez réessayer plus tard ou recharger la page",
+      "fillAllFields": "Veuillez remplir tous les champs"
     },
     "dashboard": {
       "title": "Tableau de Bord Administrateur",
