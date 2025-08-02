@@ -34,6 +34,84 @@ const Index = () => {
           className="absolute inset-0 -z-10 bg-[#0A0A0A]"
         />
 
+        {/* add login and signup button */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1, duration: 0.6 }}
+          className="md:flex items-center gap-3 z-20 hidden mb-5"
+        >
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="relative group"
+          >
+            <Button
+              onClick={() => navigate('/login', { replace: false })}
+              variant="ghost"
+              size="sm"
+              className="relative px-6 py-2 text-white hover:text-black transition-all duration-300 border border-white/20 hover:border-white/40 rounded-full backdrop-blur-sm hover:bg-white/90"
+            >
+              <span className="relative z-10 font-medium">
+                {t('auth.login.login')}
+              </span>
+            </Button>
+          </motion.div>
+
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="relative group"
+          >
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full blur opacity-70 group-hover:opacity-100 transition duration-300"></div>
+            <Button
+              onClick={() => navigate('/signup', { replace: false })}
+              size="sm"
+              className="relative px-6 py-2 bg-black text-white rounded-full font-medium hover:bg-gray-900 transition-all duration-300 border border-transparent"
+            >
+              <span className="relative z-10">
+                {t('auth.signup.signIn')}
+              </span>
+            </Button>
+          </motion.div>
+        </motion.div>
+
+        {/* Mobile Auth Buttons - Full Width */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1, duration: 0.6 }}
+          className="md:hidden flex gap-2 z-20 mb-5"
+        >
+          <motion.div
+            whileTap={{ scale: 0.95 }}
+            className="relative group flex-1"
+          >
+            <Button
+              onClick={() => navigate('/login', { replace: false })}
+              variant="ghost"
+              className="w-full h-12 text-white hover:text-black transition-all duration-300 border border-white/20 hover:border-white/40 rounded-xl backdrop-blur-sm hover:bg-white/90 font-medium"
+            >
+              {t('auth.login.login')}
+            </Button>
+          </motion.div>
+
+          <motion.div
+            whileTap={{ scale: 0.95 }}
+            className="relative group flex-1"
+          >
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-xl blur opacity-70 group-active:opacity-100 transition duration-300"></div>
+            <Button
+              onClick={() => navigate('/signup', { replace: false })}
+              className="relative w-full h-12 bg-black text-white rounded-xl font-medium hover:bg-gray-900 transition-all duration-300 border border-transparent"
+            >
+              <span className="relative z-10">
+                {t('auth.signup.signIn')}
+              </span>
+            </Button>
+          </motion.div>
+        </motion.div>
+
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -75,7 +153,7 @@ const Index = () => {
             <Button size="lg" onClick={() => navigate('/login', { replace: false })} className="button-gradient px-6">
               {t('auth.login.login')}
             </Button>
-            <Button size="lg" variant="link" className="text-white">
+            <Button size="lg" onClick={() => navigate('/signup', { replace: false })} variant="link" className="text-white">
               {t('auth.signup.signIn')} <ArrowRight className="ml-2 w-4 h-4" />
             </Button>
           </motion.div>
