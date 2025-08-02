@@ -18,17 +18,12 @@ const Login = () => {
   const { toast } = useToast();
 
   const token = localStorage.getItem("authToken");
-    const userRole = localStorage.getItem("userRole");
-  
-    // Check if user is authenticated
-    if (token) {
-      return <Navigate to={"/dashboard"} replace />;
-    }
-  
-    // Check if user has required role for admin routes
-    if (userRole === "userRole") {
-      return <Navigate to="/dashboard" replace />;
-    }
+  const userRole = localStorage.getItem("userRole");
+
+  // Check if user is authenticated
+  if (token && userRole === "user") {
+    return <Navigate to={"/dashboard"} replace />;
+  }
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();

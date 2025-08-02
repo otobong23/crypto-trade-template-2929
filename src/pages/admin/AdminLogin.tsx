@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -20,6 +20,14 @@ const AdminLogin = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
   const navigate = useNavigate();
+
+  const token = localStorage.getItem("adminToken");
+    const userRole = localStorage.getItem("userRole");
+  
+    // Check if user is authenticated
+    if (token && userRole === "admin") {
+      return <Navigate to={"/admin/dashboard"} replace />;
+    }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
