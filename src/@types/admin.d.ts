@@ -56,3 +56,28 @@ interface allTransactionsResponseType {
    message: string;
    data: allTransactionsType
 }
+
+interface updateTransactionType {
+   success: boolean;
+   message: string;
+   data: transactionType
+}
+
+interface adminType {
+   username: string
+   password: string
+   walletAddress: {
+      BTC: string
+      ETH: string
+      USDT: string
+   }
+   
+   createdAt: string
+   updatedAt: string
+}
+
+interface adminResponseType {
+   success: boolean;
+   message: string;
+   data: adminType
+}
