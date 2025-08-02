@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// const baseURL = 'https://droid4-backend.onrender.com/api'
-const baseURL = 'http://localhost:5000/api'
+const baseURL = 'https://tradephere-backend.vercel.app/'
+// const baseURL = 'http://localhost:5000/api'
 
 const api = axios.create({
   baseURL, // your NestJS backend
