@@ -1,5 +1,6 @@
 
 interface transactionType {
+   _id: string;
    userId: string
    username: string
    amount: number
@@ -19,6 +20,7 @@ interface transactionListType {
    page: number
    total: number
    totalPages: number
+   limit: number
    user: {
       username: string
       balance: string

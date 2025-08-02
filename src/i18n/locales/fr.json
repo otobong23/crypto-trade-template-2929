@@ -367,11 +367,23 @@
       "quickActions": "Actions Rapides",
       "viewAllUsers": "Voir Tous les Utilisateurs",
       "viewTransactions": "Voir les Transactions",
-      "systemSettings": "Paramètres du Système"
+      "systemSettings": "Paramètres du Système",
+      "subtitle": "Aperçu de votre système",
+      "totalTransactions": "Total des Transactions",
+      "completedTransactions": "Transactions Terminées",
+      "rejectedTransactions": "Transactions Rejetées",
+      "newUsersWeek": "+12% depuis la semaine dernière",
+      "monthlyGrowth": "+8% depuis le mois dernier",
+      "depositsGrowth": "+15% depuis le mois dernier",
+      "withdrawalsChange": "+5% depuis le mois dernier",
+      "requiresAttention": "Nécessite une attention",
+      "successfullyProcessed": "Traitées avec succès",
+      "failedTransactions": "Transactions échouées",
+      "recentTransactions": "Transactions Récentes"
     },
     "users": {
       "title": "Tous les Utilisateurs",
-      "subtitle": "Gérer les comptes utilisateurs",
+      "subtitle": "Gérer les comptes utilisateur et surveiller l'activité",
       "searchUsers": "Rechercher Utilisateurs",
       "filterByStatus": "Filtrer par Statut",
       "allStatuses": "Tous les Statuts",
@@ -382,7 +394,11 @@
       "joined": "Rejoint",
       "actions": "Actions",
       "view": "Voir",
-      "noUsers": "Aucun utilisateur trouvé"
+      "noUsers": "Aucun utilisateur trouvé",
+      "totalUsers": "Total des Utilisateurs",
+      "filterUsers": "Filtrer les Utilisateurs",
+      "searchPlaceholder": "Rechercher par nom d'utilisateur, nom ou email...",
+      "usersList": "Liste des Utilisateurs ({{count}})"
     },
     "userDetail": {
       "title": "Détails de l'Utilisateur",
@@ -414,7 +430,7 @@
     },
     "transactions": {
       "title": "Toutes les Transactions",
-      "subtitle": "Gérer et approuver les transactions",
+      "subtitle": "Gérer et approuver toutes les transactions de la plateforme",
       "filterByType": "Filtrer par Type",
       "filterByStatus": "Filtrer par Statut",
       "searchTransactions": "Rechercher Transactions",
@@ -431,7 +447,22 @@
       "noTransactions": "Aucune transaction trouvée",
       "transactionApproved": "Transaction Approuvée",
       "transactionRejected": "Transaction Rejetée",
-      "transactionUpdated": "Transaction mise à jour avec succès"
+      "transactionUpdated": "Transaction mise à jour avec succès",
+      "total": "Total",
+      "filterTransactions": "Filtrer les Transactions",
+      "searchPlaceholder": "Rechercher par utilisateur, type ou cryptomonnaie...",
+      "allStatus": "Tous les Statuts",
+      "deposit": "Dépôt",
+      "withdrawal": "Retrait",
+      "pending": "En Attente",
+      "completed": "Terminé",
+      "rejected": "Rejeté",
+      "transactionsList": "Liste des Transactions ({{count}})",
+      "approved": "Transaction Approuvée",
+      "markedCompleted": "La transaction a été marquée comme terminée",
+      "hasBeenRejected": "La transaction a été rejetée",
+      "downloadingReceipt": "Téléchargement du Reçu",
+      "receiptFor": "Reçu pour la transaction de {{user}}"
     },
     "settings": {
       "title": "Paramètres Administrateur",
@@ -545,6 +576,14 @@
     "success": "Succès",
     "error": "Erreur",
     "warning": "Avertissement",
-    "info": "Information"
+    "info": "Information",
+    "status": {
+      "active": "Actif",
+      "inactive": "Inactif",
+      "suspended": "Suspendu",
+      "pending": "En Attente",
+      "completed": "Terminé",
+      "rejected": "Rejeté"
+    }
   }
 }

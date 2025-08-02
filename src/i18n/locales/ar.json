@@ -336,7 +336,9 @@
       "users": "المستخدمون",
       "transactions": "المعاملات",
       "settings": "الإعدادات",
-      "logout": "تسجيل الخروج"
+      "logout": "تسجيل الخروج",
+      "adminPanel": "لوحة الإدارة",
+      "admin": "مشرف"
     },
     "login": {
       "title": "تسجيل دخول المدير",
@@ -345,7 +347,10 @@
       "password": "كلمة المرور",
       "login": "تسجيل الدخول",
       "error": "خطأ",
-      "invalidCredentials": "بيانات اعتماد غير صحيحة"
+      "invalidCredentials": "بيانات اعتماد غير صحيحة",
+      "loggingIn": "جارٍ تسجيل الدخول...",
+      "loginFailed": "فشل تسجيل الدخول. حاول مرة أخرى لاحقاً أو أعد تحميل الصفحة",
+      "fillAllFields": "يرجى ملء جميع الحقول"
     },
     "dashboard": {
       "title": "لوحة تحكم المدير",
@@ -361,11 +366,23 @@
       "quickActions": "إجراءات سريعة",
       "viewAllUsers": "عرض جميع المستخدمين",
       "viewTransactions": "عرض المعاملات",
-      "systemSettings": "إعدادات النظام"
+      "systemSettings": "إعدادات النظام",
+      "subtitle": "نظرة عامة على نظامك",
+      "totalTransactions": "إجمالي المعاملات",
+      "completedTransactions": "المعاملات المكتملة",
+      "rejectedTransactions": "المعاملات المرفوضة",
+      "newUsersWeek": "+12% منذ الأسبوع الماضي",
+      "monthlyGrowth": "+8% منذ الشهر الماضي",
+      "depositsGrowth": "+15% منذ الشهر الماضي",
+      "withdrawalsChange": "+5% منذ الشهر الماضي",
+      "requiresAttention": "يتطلب الانتباه",
+      "successfullyProcessed": "تمت المعالجة بنجاح",
+      "failedTransactions": "المعاملات الفاشلة",
+      "recentTransactions": "المعاملات الأخيرة"
     },
     "users": {
       "title": "جميع المستخدمين",
-      "subtitle": "إدارة حسابات المستخدمين",
+      "subtitle": "إدارة حسابات المستخدمين ومراقبة النشاط",
       "searchUsers": "البحث عن المستخدمين",
       "filterByStatus": "تصفية حسب الحالة",
       "allStatuses": "جميع الحالات",
@@ -376,7 +393,11 @@
       "joined": "تاريخ الانضمام",
       "actions": "الإجراءات",
       "view": "عرض",
-      "noUsers": "لم يتم العثور على مستخدمين"
+      "noUsers": "لم يتم العثور على مستخدمين",
+      "totalUsers": "إجمالي المستخدمين",
+      "filterUsers": "تصفية المستخدمين",
+      "searchPlaceholder": "البحث بالاسم المستخدم أو الاسم أو البريد الإلكتروني...",
+      "usersList": "قائمة المستخدمين ({{count}})"
     },
     "userDetail": {
       "title": "تفاصيل المستخدم",
@@ -408,7 +429,7 @@
     },
     "transactions": {
       "title": "جميع المعاملات",
-      "subtitle": "إدارة والموافقة على المعاملات",
+      "subtitle": "إدارة والموافقة على جميع معاملات المنصة",
       "filterByType": "تصفية حسب النوع",
       "filterByStatus": "تصفية حسب الحالة",
       "searchTransactions": "البحث في المعاملات",
@@ -425,7 +446,22 @@
       "noTransactions": "لم يتم العثور على معاملات",
       "transactionApproved": "تمت الموافقة على المعاملة",
       "transactionRejected": "تم رفض المعاملة",
-      "transactionUpdated": "تم تحديث المعاملة بنجاح"
+      "transactionUpdated": "تم تحديث المعاملة بنجاح",
+      "total": "المجموع",
+      "filterTransactions": "تصفية المعاملات",
+      "searchPlaceholder": "البحث بالمستخدم أو النوع أو العملة المشفرة...",
+      "allStatus": "جميع الحالات",
+      "deposit": "إيداع",
+      "withdrawal": "سحب",
+      "pending": "في الانتظار",
+      "completed": "مكتمل",
+      "rejected": "مرفوض",
+      "transactionsList": "قائمة المعاملات ({{count}})",
+      "approved": "تمت الموافقة على المعاملة",
+      "markedCompleted": "تم وضع علامة على المعاملة كمكتملة",
+      "hasBeenRejected": "تم رفض المعاملة",
+      "downloadingReceipt": "تحميل الإيصال",
+      "receiptFor": "إيصال لمعاملة {{user}}"
     },
     "settings": {
       "title": "إعدادات المدير",
@@ -513,6 +549,14 @@
     "success": "نجح",
     "error": "خطأ",
     "warning": "تحذير",
-    "info": "معلومات"
+    "info": "معلومات",
+    "status": {
+      "active": "نشط",
+      "inactive": "غير نشط",
+      "suspended": "معلق",
+      "pending": "في الانتظار",
+      "completed": "مكتمل",
+      "rejected": "مرفوض"
+    }
   }
 }

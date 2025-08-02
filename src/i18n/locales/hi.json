@@ -336,7 +336,9 @@
       "users": "उपयोगकर्ता",
       "transactions": "लेनदेन",
       "settings": "सेटिंग्स",
-      "logout": "लॉग आउट"
+      "logout": "लॉग आउट",
+      "adminPanel": "प्रशासक पैनल",
+      "admin": "प्रशासक"
     },
     "login": {
       "title": "व्यवस्थापक लॉगिन",
@@ -345,7 +347,10 @@
       "password": "पासवर्ड",
       "login": "लॉगिन",
       "error": "त्रुटि",
-      "invalidCredentials": "अमान्य क्रेडेंशियल"
+      "invalidCredentials": "अमान्य क्रेडेंशियल",
+      "loggingIn": "लॉग इन हो रहे हैं...",
+      "loginFailed": "लॉगिन विफल। बाद में पुनः प्रयास करें या पृष्ठ को पुनः लोड करें",
+      "fillAllFields": "कृपया सभी फ़ील्ड भरें"
     },
     "dashboard": {
       "title": "व्यवस्थापक डैशबोर्ड",
@@ -361,22 +366,38 @@
       "quickActions": "त्वरित कार्य",
       "viewAllUsers": "सभी उपयोगकर्ता देखें",
       "viewTransactions": "लेनदेन देखें",
-      "systemSettings": "सिस्टम सेटिंग्स"
+      "systemSettings": "सिस्टम सेटिंग्स",
+      "subtitle": "आपके सिस्टम का अवलोकन",
+      "totalTransactions": "कुल लेनदेन",
+      "completedTransactions": "पूर्ण लेनदेन",
+      "rejectedTransactions": "अस्वीकृत लेनदेन",
+      "newUsersWeek": "पिछले सप्ताह से +12%",
+      "monthlyGrowth": "पिछले महीने से +8%",
+      "depositsGrowth": "पिछले महीने से +15%",
+      "withdrawalsChange": "पिछले महीने से +5%",
+      "requiresAttention": "ध्यान की आवश्यकता",
+      "successfullyProcessed": "सफलतापूर्वक संसाधित",
+      "failedTransactions": "असफल लेनदेन",
+      "recentTransactions": "हाल के लेनदेन"
     },
     "users": {
       "title": "सभी उपयोगकर्ता",
-      "subtitle": "उपयोगकर्ता खातों का प्रबंधन करें",
+      "subtitle": "उपयोगकर्ता खातों का प्रबंधन और गतिविधि की निगरानी",
       "searchUsers": "उपयोगकर्ता खोजें",
       "filterByStatus": "स्थिति के अनुसार फ़िल्टर करें",
       "allStatuses": "सभी स्थितियां",
       "name": "नाम",
       "email": "ईमेल",
-      "balance": "शेष",
+      "balance": "शेष राशि",
       "status": "स्थिति",
       "joined": "शामिल हुआ",
       "actions": "कार्य",
       "view": "देखें",
-      "noUsers": "कोई उपयोगकर्ता नहीं मिला"
+      "noUsers": "कोई उपयोगकर्ता नहीं मिला",
+      "totalUsers": "कुल उपयोगकर्ता",
+      "filterUsers": "उपयोगकर्ताओं को फ़िल्टर करें",
+      "searchPlaceholder": "उपयोगकर्ता नाम, नाम या ईमेल से खोजें...",
+      "usersList": "उपयोगकर्ता सूची ({{count}})"
     },
     "userDetail": {
       "title": "उपयोगकर्ता विवरण",
@@ -408,7 +429,7 @@
     },
     "transactions": {
       "title": "सभी लेनदेन",
-      "subtitle": "लेनदेन प्रबंधित करें और अनुमोदित करें",
+      "subtitle": "सभी प्लेटफ़ॉर्म लेनदेन का प्रबंधन और अनुमोदन",
       "filterByType": "प्रकार के अनुसार फ़िल्टर करें",
       "filterByStatus": "स्थिति के अनुसार फ़िल्टर करें",
       "searchTransactions": "लेनदेन खोजें",
@@ -425,7 +446,22 @@
       "noTransactions": "कोई लेनदेन नहीं मिला",
       "transactionApproved": "लेनदेन अनुमोदित",
       "transactionRejected": "लेनदेन अस्वीकृत",
-      "transactionUpdated": "लेनदेन सफलतापूर्वक अपडेट किया गया"
+      "transactionUpdated": "लेनदेन सफलतापूर्वक अपडेट किया गया",
+      "total": "कुल",
+      "filterTransactions": "लेनदेन फ़िल्टर करें",
+      "searchPlaceholder": "उपयोगकर्ता, प्रकार या क्रिप्टोकरेंसी से खोजें...",
+      "allStatus": "सभी स्थितियां",
+      "deposit": "जमा",
+      "withdrawal": "निकासी",
+      "pending": "लंबित",
+      "completed": "पूर्ण",
+      "rejected": "अस्वीकृत",
+      "transactionsList": "लेनदेन सूची ({{count}})",
+      "approved": "लेनदेन अनुमोदित",
+      "markedCompleted": "लेनदेन को पूर्ण के रूप में चिह्नित किया गया है",
+      "hasBeenRejected": "लेनदेन को अस्वीकार कर दिया गया है",
+      "downloadingReceipt": "रसीद डाउनलोड कर रहे हैं",
+      "receiptFor": "{{user}} लेनदेन के लिए रसीद"
     },
     "settings": {
       "title": "व्यवस्थापक सेटिंग्स",
@@ -513,6 +549,14 @@
     "success": "सफलता",
     "error": "त्रुटि",
     "warning": "चेतावनी",
-    "info": "जानकारी"
+    "info": "जानकारी",
+    "status": {
+      "active": "सक्रिय",
+      "inactive": "निष्क्रिय",
+      "suspended": "निलंबित",
+      "pending": "लंबित",
+      "completed": "पूर्ण",
+      "rejected": "अस्वीकृत"
+    }
   }
 }

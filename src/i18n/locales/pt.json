@@ -349,7 +349,9 @@
       "users": "Usuários",
       "transactions": "Transações",
       "settings": "Configurações",
-      "logout": "Sair"
+      "logout": "Sair",
+      "adminPanel": "Painel de Administração",
+      "admin": "Administrador"
     },
     "login": {
       "title": "Login de administrador",
@@ -358,7 +360,10 @@
       "password": "Senha",
       "login": "Entrar",
       "error": "Erro",
-      "invalidCredentials": "Credenciais inválidas"
+      "invalidCredentials": "Credenciais inválidas",
+      "loggingIn": "Fazendo login...",
+      "loginFailed": "Falha no login. Tente novamente mais tarde ou recarregue a página",
+      "fillAllFields": "Por favor, preencha todos os campos"
     },
     "dashboard": {
       "title": "Painel de administrador",
@@ -374,11 +379,23 @@
       "quickActions": "Ações rápidas",
       "viewAllUsers": "Ver todos os usuários",
       "viewTransactions": "Ver transações",
-      "systemSettings": "Configurações do sistema"
+      "systemSettings": "Configurações do sistema",
+      "subtitle": "Visão geral do seu sistema",
+      "totalTransactions": "Total de Transações",
+      "completedTransactions": "Transações Completadas",
+      "rejectedTransactions": "Transações Rejeitadas",
+      "newUsersWeek": "+12% da semana passada",
+      "monthlyGrowth": "+8% do mês passado",
+      "depositsGrowth": "+15% do mês passado",
+      "withdrawalsChange": "+5% do mês passado",
+      "requiresAttention": "Requer atenção",
+      "successfullyProcessed": "Processadas com sucesso",
+      "failedTransactions": "Transações falhadas",
+      "recentTransactions": "Transações Recentes"
     },
     "users": {
       "title": "Todos os usuários",
-      "subtitle": "Gerenciar contas de usuários",
+      "subtitle": "Gerenciar contas de usuário e monitorar atividade",
       "searchUsers": "Buscar usuários",
       "filterByStatus": "Filtrar por status",
       "allStatuses": "Todos os status",
@@ -389,7 +406,11 @@
       "joined": "Entrou",
       "actions": "Ações",
       "view": "Ver",
-      "noUsers": "Nenhum usuário encontrado"
+      "noUsers": "Nenhum usuário encontrado",
+      "totalUsers": "Total de Usuários",
+      "filterUsers": "Filtrar Usuários",
+      "searchPlaceholder": "Procurar por nome de usuário, nome ou email...",
+      "usersList": "Lista de Usuários ({{count}})"
     },
     "userDetail": {
       "title": "Detalhes do usuário",
@@ -421,11 +442,11 @@
     },
     "transactions": {
       "title": "Todas as transações",
-      "subtitle": "Gerenciar e aprovar transações",
+      "subtitle": "Gerenciar e aprovar todas as transações da plataforma",
       "filterByType": "Filtrar por tipo",
       "filterByStatus": "Filtrar por status",
       "searchTransactions": "Buscar transações",
-      "allTypes": "Todos os tipos",
+      "allTypes": "Todos os Tipos",
       "allStatuses": "Todos os status",
       "user": "Usuário",
       "type": "Tipo",
@@ -438,7 +459,22 @@
       "noTransactions": "Nenhuma transação encontrada",
       "transactionApproved": "Transação aprovada",
       "transactionRejected": "Transação rejeitada",
-      "transactionUpdated": "Transação atualizada com sucesso"
+      "transactionUpdated": "Transação atualizada com sucesso",
+      "total": "Total",
+      "filterTransactions": "Filtrar Transações",
+      "searchPlaceholder": "Procurar por usuário, tipo ou criptomoeda...",
+      "allStatus": "Todos os Status",
+      "deposit": "Depósito",
+      "withdrawal": "Saque",
+      "pending": "Pendente",
+      "completed": "Completado",
+      "rejected": "Rejeitado",
+      "transactionsList": "Lista de Transações ({{count}})",
+      "approved": "Transação Aprovada",
+      "markedCompleted": "A transação foi marcada como concluída",
+      "hasBeenRejected": "A transação foi rejeitada",
+      "downloadingReceipt": "Baixando Recibo",
+      "receiptFor": "Recibo para transação de {{user}}"
     },
     "settings": {
       "title": "Configurações de administrador",
@@ -526,6 +562,14 @@
     "success": "Sucesso",
     "error": "Erro",
     "warning": "Aviso",
-    "info": "Informação"
+    "info": "Informação",
+    "status": {
+      "active": "Ativo",
+      "inactive": "Inativo",
+      "suspended": "Suspenso",
+      "pending": "Pendente",
+      "completed": "Completado",
+      "rejected": "Rejeitado"
+    }
   }
 }

@@ -16,3 +16,43 @@ interface loginResponseType {
    message: string;
    access_token: string
 }
+
+interface allUserType {
+   users: userType[],
+   limit: number,
+   page: number
+   total: number
+   totalPages: number
+}
+
+interface allTransactionsType {
+   transactions: transactionType[]
+   page: number
+   total: number
+   totalPages: number
+   limit: number
+}
+
+interface allUserResponseType {
+   success: boolean;
+   message: string;
+   data: allUserType
+}
+
+interface searchUsersResponse {
+   success: boolean;
+   message: string;
+   data: userType[]
+}
+
+interface userResponseType {
+   success: boolean;
+   message: string;
+   data: userType
+}
+
+interface allTransactionsResponseType {
+   success: boolean;
+   message: string;
+   data: allTransactionsType
+}

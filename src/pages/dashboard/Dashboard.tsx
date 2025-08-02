@@ -12,7 +12,8 @@ import {
   XCircle,
   ArrowUpRight,
   ArrowDownRight,
-  Loader
+  Loader,
+  Loader2
 } from "lucide-react";
 import DashboardLayout from "@/components/DashboardLayout";
 import MarketOverviewWidget from "@/components/MarketOverviewWidget";
@@ -24,6 +25,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "react-i18next";
 
 const Dashboard = () => {
+  const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<userType>(null)
   const { toast } = useToast();
   const { t } = useTranslation();
@@ -34,6 +36,7 @@ const Dashboard = () => {
         window.location.href = "/login";
         return
       }
+      setLoading(true);
       try {
         api.defaults.headers.common["Authorization"] = `Bearer ${LOCALSTORAGE_TOKEN}`;
         const response = await api.get<profileResponse>('/user/getUser',)
@@ -52,6 +55,8 @@ const Dashboard = () => {
             variant: "destructive",
           });
         }
+      } finally {
+        setLoading(false);
       }
     }
     getUser()
@@ -101,8 +106,25 @@ const Dashboard = () => {
 
   if (!user) {
     return (<div className="h-screen w-full flex justify-center items-center">
-      <Loader />
+      <div className="flex items-center justify-center min-h-[400px]">
+        <div className="text-center space-y-4">
+          <p className="text-gray-400">Loading</p>
+        </div>
+      </div>
     </div>)
+  }
+
+  if (loading) {
+    return (
+      <DashboardLayout>
+        <div className="flex items-center justify-center min-h-[400px]">
+          <div className="text-center space-y-4">
+            <Loader2 className="w-8 h-8 animate-spin text-primary mx-auto" />
+            <p className="text-gray-400">Loading dashboard data...</p>
+          </div>
+        </div>
+      </DashboardLayout>
+    );
   }
 
   return (

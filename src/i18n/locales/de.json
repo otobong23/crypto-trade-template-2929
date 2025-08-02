@@ -336,7 +336,9 @@
       "users": "Benutzer",
       "transactions": "Transaktionen",
       "settings": "Einstellungen",
-      "logout": "Abmelden"
+      "logout": "Abmelden",
+      "adminPanel": "Admin-Panel",
+      "admin": "Administrator"
     },
     "login": {
       "title": "Admin-Anmeldung",
@@ -345,7 +347,10 @@
       "password": "Passwort",
       "login": "Anmelden",
       "error": "Fehler",
-      "invalidCredentials": "Ungültige Anmeldedaten"
+      "invalidCredentials": "Ungültige Anmeldedaten",
+      "loggingIn": "Anmeldung...",
+      "loginFailed": "Anmeldung fehlgeschlagen. Bitte versuchen Sie es später erneut oder laden Sie die Seite neu",
+      "fillAllFields": "Bitte füllen Sie alle Felder aus"
     },
     "dashboard": {
       "title": "Admin-Dashboard",
@@ -361,11 +366,23 @@
       "quickActions": "Schnellaktionen",
       "viewAllUsers": "Alle Benutzer anzeigen",
       "viewTransactions": "Transaktionen anzeigen",
-      "systemSettings": "Systemeinstellungen"
+      "systemSettings": "Systemeinstellungen",
+      "subtitle": "Übersicht über Ihr System",
+      "totalTransactions": "Transaktionen Gesamt",
+      "completedTransactions": "Abgeschlossene Transaktionen",
+      "rejectedTransactions": "Abgelehnte Transaktionen",
+      "newUsersWeek": "+12% seit letzter Woche",
+      "monthlyGrowth": "+8% seit letztem Monat",
+      "depositsGrowth": "+15% seit letztem Monat",
+      "withdrawalsChange": "+5% seit letztem Monat",
+      "requiresAttention": "Erfordert Aufmerksamkeit",
+      "successfullyProcessed": "Erfolgreich verarbeitet",
+      "failedTransactions": "Fehlgeschlagene Transaktionen",
+      "recentTransactions": "Neueste Transaktionen"
     },
     "users": {
       "title": "Alle Benutzer",
-      "subtitle": "Benutzerkonten verwalten",
+      "subtitle": "Benutzerkonten verwalten und Aktivitäten überwachen",
       "searchUsers": "Benutzer suchen",
       "filterByStatus": "Nach Status filtern",
       "allStatuses": "Alle Status",
@@ -376,7 +393,11 @@
       "joined": "Beigetreten",
       "actions": "Aktionen",
       "view": "Anzeigen",
-      "noUsers": "Keine Benutzer gefunden"
+      "noUsers": "Keine Benutzer gefunden",
+      "totalUsers": "Benutzer Gesamt",
+      "filterUsers": "Benutzer Filtern",
+      "searchPlaceholder": "Nach Benutzername, Name oder E-Mail suchen...",
+      "usersList": "Benutzerliste ({{count}})"
     },
     "userDetail": {
       "title": "Benutzerdetails",
@@ -408,7 +429,7 @@
     },
     "transactions": {
       "title": "Alle Transaktionen",
-      "subtitle": "Transaktionen verwalten und genehmigen",
+      "subtitle": "Alle Plattform-Transaktionen verwalten und genehmigen",
       "filterByType": "Nach Typ filtern",
       "filterByStatus": "Nach Status filtern",
       "searchTransactions": "Transaktionen suchen",
@@ -425,7 +446,22 @@
       "noTransactions": "Keine Transaktionen gefunden",
       "transactionApproved": "Transaktion genehmigt",
       "transactionRejected": "Transaktion abgelehnt",
-      "transactionUpdated": "Transaktion wurde erfolgreich aktualisiert"
+      "transactionUpdated": "Transaktion wurde erfolgreich aktualisiert",
+      "total": "Gesamt",
+      "filterTransactions": "Transaktionen Filtern",
+      "searchPlaceholder": "Nach Benutzer, Typ oder Kryptowährung suchen...",
+      "allStatus": "Alle Status",
+      "deposit": "Einzahlung",
+      "withdrawal": "Auszahlung",
+      "pending": "Ausstehend",
+      "completed": "Abgeschlossen",
+      "rejected": "Abgelehnt",
+      "transactionsList": "Transaktionsliste ({{count}})",
+      "approved": "Transaktion Genehmigt",
+      "markedCompleted": "Die Transaktion wurde als abgeschlossen markiert",
+      "hasBeenRejected": "Die Transaktion wurde abgelehnt",
+      "downloadingReceipt": "Beleg wird heruntergeladen",
+      "receiptFor": "Beleg für {{user}} Transaktion"
     },
     "settings": {
       "title": "Admin-Einstellungen",
@@ -526,6 +562,14 @@
     "success": "Erfolg",
     "error": "Fehler",
     "warning": "Warnung",
-    "info": "Information"
+    "info": "Information",
+    "status": {
+      "active": "Aktiv",
+      "inactive": "Inaktiv",
+      "suspended": "Gesperrt",
+      "pending": "Ausstehend",
+      "completed": "Abgeschlossen",
+      "rejected": "Abgelehnt"
+    }
   }
 }

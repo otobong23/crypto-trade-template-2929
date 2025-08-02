@@ -305,7 +305,9 @@
       "users": "사용자",
       "transactions": "거래",
       "settings": "설정",
-      "logout": "로그아웃"
+      "logout": "로그아웃",
+      "adminPanel": "관리자 패널",
+      "admin": "관리자"
     },
     "login": {
       "title": "관리자 로그인",
@@ -314,7 +316,10 @@
       "password": "비밀번호",
       "login": "로그인",
       "error": "오류",
-      "invalidCredentials": "잘못된 자격 증명"
+      "invalidCredentials": "잘못된 자격 증명",
+      "loggingIn": "로그인 중...",
+      "loginFailed": "로그인에 실패했습니다. 나중에 다시 시도하거나 페이지를 새로고침하세요",
+      "fillAllFields": "모든 필드를 입력해주세요"
     },
     "dashboard": {
       "title": "관리자 대시보드",
@@ -330,11 +335,23 @@
       "quickActions": "빠른 작업",
       "viewAllUsers": "모든 사용자 보기",
       "viewTransactions": "거래 보기",
-      "systemSettings": "시스템 설정"
+      "systemSettings": "시스템 설정",
+      "subtitle": "시스템 개요",
+      "totalTransactions": "총 거래수",
+      "completedTransactions": "완료된 거래",
+      "rejectedTransactions": "거부된 거래",
+      "newUsersWeek": "지난 주 대비 +12%",
+      "monthlyGrowth": "지난 달 대비 +8%",
+      "depositsGrowth": "지난 달 대비 +15%",
+      "withdrawalsChange": "지난 달 대비 +5%",
+      "requiresAttention": "주의 필요",
+      "successfullyProcessed": "성공적으로 처리됨",
+      "failedTransactions": "실패한 거래",
+      "recentTransactions": "최근 거래"
     },
     "users": {
       "title": "모든 사용자",
-      "subtitle": "사용자 계정 관리",
+      "subtitle": "사용자 계정 관리 및 활동 모니터링",
       "searchUsers": "사용자 검색",
       "filterByStatus": "상태별 필터",
       "allStatuses": "모든 상태",
@@ -345,7 +362,11 @@
       "joined": "가입일",
       "actions": "작업",
       "view": "보기",
-      "noUsers": "사용자를 찾을 수 없습니다"
+      "noUsers": "사용자를 찾을 수 없습니다",
+      "totalUsers": "총 사용자수",
+      "filterUsers": "사용자 필터링",
+      "searchPlaceholder": "사용자명, 이름, 이메일로 검색...",
+      "usersList": "사용자 목록 ({{count}})"
     },
     "userDetail": {
       "title": "사용자 세부정보",
@@ -377,7 +398,7 @@
     },
     "transactions": {
       "title": "모든 거래",
-      "subtitle": "거래 관리 및 승인",
+      "subtitle": "모든 플랫폼 거래 관리 및 승인",
       "filterByType": "유형별 필터",
       "filterByStatus": "상태별 필터",
       "searchTransactions": "거래 검색",
@@ -394,7 +415,22 @@
       "noTransactions": "거래를 찾을 수 없습니다",
       "transactionApproved": "거래가 승인되었습니다",
       "transactionRejected": "거래가 거부되었습니다",
-      "transactionUpdated": "거래가 성공적으로 업데이트되었습니다"
+      "transactionUpdated": "거래가 성공적으로 업데이트되었습니다",
+      "total": "총계",
+      "filterTransactions": "거래 필터링",
+      "searchPlaceholder": "사용자, 유형, 암호화폐로 검색...",
+      "allStatus": "모든 상태",
+      "deposit": "입금",
+      "withdrawal": "출금",
+      "pending": "대기 중",
+      "completed": "완료",
+      "rejected": "거부됨",
+      "transactionsList": "거래 목록 ({{count}})",
+      "approved": "거래 승인됨",
+      "markedCompleted": "거래가 완료로 표시되었습니다",
+      "hasBeenRejected": "거래가 거부되었습니다",
+      "downloadingReceipt": "영수증 다운로드 중",
+      "receiptFor": "{{user}} 거래 영수증"
     },
     "settings": {
       "title": "관리자 설정",
@@ -482,6 +518,14 @@
     "success": "성공",
     "error": "오류",
     "warning": "경고",
-    "info": "정보"
+    "info": "정보",
+    "status": {
+      "active": "활성",
+      "inactive": "비활성",
+      "suspended": "정지됨",
+      "pending": "대기 중",
+      "completed": "완료",
+      "rejected": "거부됨"
+    }
   }
 }

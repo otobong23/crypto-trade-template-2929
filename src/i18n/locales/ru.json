@@ -305,7 +305,9 @@
       "users": "Пользователи",
       "transactions": "Транзакции",
       "settings": "Настройки",
-      "logout": "Выйти"
+      "logout": "Выйти",
+      "adminPanel": "Административная панель",
+      "admin": "Администратор"
     },
     "login": {
       "title": "Вход администратора",
@@ -314,7 +316,10 @@
       "password": "Пароль",
       "login": "Войти",
       "error": "Ошибка",
-      "invalidCredentials": "Неверные учётные данные"
+      "invalidCredentials": "Неверные учётные данные",
+      "loggingIn": "Выполняется вход...",
+      "loginFailed": "Ошибка входа. Попробуйте позже или перезагрузите страницу",
+      "fillAllFields": "Пожалуйста, заполните все поля"
     },
     "dashboard": {
       "title": "Панель администратора",
@@ -330,11 +335,23 @@
       "quickActions": "Быстрые действия",
       "viewAllUsers": "Показать всех пользователей",
       "viewTransactions": "Показать транзакции",
-      "systemSettings": "Настройки системы"
+      "systemSettings": "Настройки системы",
+      "subtitle": "Обзор вашей системы",
+      "totalTransactions": "Всего транзакций",
+      "completedTransactions": "Завершенные транзакции",
+      "rejectedTransactions": "Отклоненные транзакции",
+      "newUsersWeek": "+12% с прошлой недели",
+      "monthlyGrowth": "+8% с прошлого месяца",
+      "depositsGrowth": "+15% с прошлого месяца",
+      "withdrawalsChange": "+5% с прошлого месяца",
+      "requiresAttention": "Требует внимания",
+      "successfullyProcessed": "Успешно обработаны",
+      "failedTransactions": "Неудачные транзакции",
+      "recentTransactions": "Последние транзакции"
     },
     "users": {
       "title": "Все пользователи",
-      "subtitle": "Управление учётными записями пользователей",
+      "subtitle": "Управление учетными записями пользователей и мониторинг активности",
       "searchUsers": "Поиск пользователей",
       "filterByStatus": "Фильтр по статусу",
       "allStatuses": "Все статусы",
@@ -345,7 +362,11 @@
       "joined": "Присоединился",
       "actions": "Действия",
       "view": "Просмотр",
-      "noUsers": "Пользователи не найдены"
+      "noUsers": "Пользователи не найдены",
+      "totalUsers": "Всего пользователей",
+      "filterUsers": "Фильтр пользователей",
+      "searchPlaceholder": "Поиск по имени пользователя, имени или email...",
+      "usersList": "Список пользователей ({{count}})"
     },
     "userDetail": {
       "title": "Детали пользователя",
@@ -377,7 +398,7 @@
     },
     "transactions": {
       "title": "Все транзакции",
-      "subtitle": "Управление и одобрение транзакций",
+      "subtitle": "Управление и одобрение всех транзакций платформы",
       "filterByType": "Фильтр по типу",
       "filterByStatus": "Фильтр по статусу",
       "searchTransactions": "Поиск транзакций",
@@ -394,7 +415,22 @@
       "noTransactions": "Транзакции не найдены",
       "transactionApproved": "Транзакция одобрена",
       "transactionRejected": "Транзакция отклонена",
-      "transactionUpdated": "Транзакция успешно обновлена"
+      "transactionUpdated": "Транзакция успешно обновлена",
+      "total": "Всего",
+      "filterTransactions": "Фильтр транзакций",
+      "searchPlaceholder": "Поиск по пользователю, типу или криптовалюте...",
+      "allStatus": "Все статусы",
+      "deposit": "Депозит",
+      "withdrawal": "Вывод",
+      "pending": "В ожидании",
+      "completed": "Завершено",
+      "rejected": "Отклонено",
+      "transactionsList": "Список транзакций ({{count}})",
+      "approved": "Транзакция одобрена",
+      "markedCompleted": "Транзакция отмечена как завершенная",
+      "hasBeenRejected": "Транзакция была отклонена",
+      "downloadingReceipt": "Загрузка квитанции",
+      "receiptFor": "Квитанция для транзакции {{user}}"
     },
     "settings": {
       "title": "Настройки администратора",
@@ -482,6 +518,14 @@
     "success": "Успех",
     "error": "Ошибка",
     "warning": "Предупреждение",
-    "info": "Информация"
+    "info": "Информация",
+    "status": {
+      "active": "Активный",
+      "inactive": "Неактивный",
+      "suspended": "Приостановлен",
+      "pending": "В ожидании",
+      "completed": "Завершено",
+      "rejected": "Отклонено"
+    }
   }
 }

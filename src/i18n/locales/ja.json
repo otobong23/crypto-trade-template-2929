@@ -336,7 +336,9 @@
       "users": "ユーザー",
       "transactions": "取引",
       "settings": "設定",
-      "logout": "ログアウト"
+      "logout": "ログアウト",
+      "adminPanel": "管理パネル",
+      "admin": "管理者"
     },
     "login": {
       "title": "管理者ログイン",
@@ -345,7 +347,10 @@
       "password": "パスワード",
       "login": "ログイン",
       "error": "エラー",
-      "invalidCredentials": "無効な認証情報"
+      "invalidCredentials": "無効な認証情報",
+      "loggingIn": "ログイン中...",
+      "loginFailed": "ログインに失敗しました。後でもう一度試すか、ページを再読み込みしてください",
+      "fillAllFields": "すべてのフィールドを入力してください"
     },
     "dashboard": {
       "title": "管理者ダッシュボード",
@@ -361,11 +366,23 @@
       "quickActions": "クイックアクション",
       "viewAllUsers": "全ユーザーを表示",
       "viewTransactions": "取引を表示",
-      "systemSettings": "システム設定"
+      "systemSettings": "システム設定",
+      "subtitle": "システムの概要",
+      "totalTransactions": "総取引数",
+      "completedTransactions": "完了した取引",
+      "rejectedTransactions": "拒否された取引",
+      "newUsersWeek": "先週から+12%",
+      "monthlyGrowth": "先月から+8%",
+      "depositsGrowth": "先月から+15%",
+      "withdrawalsChange": "先月から+5%",
+      "requiresAttention": "注意が必要",
+      "successfullyProcessed": "正常に処理済み",
+      "failedTransactions": "失敗した取引",
+      "recentTransactions": "最近の取引"
     },
     "users": {
       "title": "全ユーザー",
-      "subtitle": "ユーザーアカウントを管理",
+      "subtitle": "ユーザーアカウントの管理とアクティビティの監視",
       "searchUsers": "ユーザーを検索",
       "filterByStatus": "ステータスでフィルター",
       "allStatuses": "すべてのステータス",
@@ -376,7 +393,11 @@
       "joined": "参加日",
       "actions": "アクション",
       "view": "表示",
-      "noUsers": "ユーザーが見つかりません"
+      "noUsers": "ユーザーが見つかりません",
+      "totalUsers": "ユーザー総数",
+      "filterUsers": "ユーザーをフィルター",
+      "searchPlaceholder": "ユーザー名、名前、メールで検索...",
+      "usersList": "ユーザーリスト ({{count}})"
     },
     "userDetail": {
       "title": "ユーザー詳細",
@@ -408,7 +429,7 @@
     },
     "transactions": {
       "title": "全取引",
-      "subtitle": "取引を管理・承認",
+      "subtitle": "プラットフォームの全取引を管理・承認",
       "filterByType": "タイプでフィルター",
       "filterByStatus": "ステータスでフィルター",
       "searchTransactions": "取引を検索",
@@ -425,7 +446,22 @@
       "noTransactions": "取引が見つかりません",
       "transactionApproved": "取引が承認されました",
       "transactionRejected": "取引が拒否されました",
-      "transactionUpdated": "取引が正常に更新されました"
+      "transactionUpdated": "取引が正常に更新されました",
+      "total": "合計",
+      "filterTransactions": "取引をフィルター",
+      "searchPlaceholder": "ユーザー、タイプ、暗号通貨で検索...",
+      "allStatus": "すべてのステータス",
+      "deposit": "入金",
+      "withdrawal": "出金",
+      "pending": "保留中",
+      "completed": "完了",
+      "rejected": "拒否",
+      "transactionsList": "取引リスト ({{count}})",
+      "approved": "取引が承認されました",
+      "markedCompleted": "取引が完了としてマークされました",
+      "hasBeenRejected": "取引が拒否されました",
+      "downloadingReceipt": "レシートをダウンロード中",
+      "receiptFor": "{{user}} の取引レシート"
     },
     "settings": {
       "title": "管理者設定",
@@ -513,6 +549,14 @@
     "success": "成功",
     "error": "エラー",
     "warning": "警告",
-    "info": "情報"
+    "info": "情報",
+    "status": {
+      "active": "アクティブ",
+      "inactive": "非アクティブ",
+      "suspended": "停止中",
+      "pending": "保留中",
+      "completed": "完了",
+      "rejected": "拒否"
+    }
   }
 }

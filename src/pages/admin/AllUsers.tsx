@@ -1,76 +1,205 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Search, Eye, Edit } from "lucide-react";
+import { Search, Eye, Edit, Loader2, User, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import AdminLayout from "@/components/AdminLayout";
+import { useToast } from "@/hooks/use-toast";
+import api from "@/lib/api";
+import { AxiosError } from "axios";
 
 const AllUsers = () => {
   const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState("");
+  const [users, setUsers] = useState<userType[]>([]);
+  const [searchedUsers, setSearchedUsers] = useState<userType[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [searching, setSearching] = useState(false);
+  const [isSearchMode, setIsSearchMode] = useState(false);
+  const { toast } = useToast();
+  const [userStats, setUserStats] = useState({
+    total: 0,
+    totalPages: 0,
+    page: 1
+  });
 
-  const users = [
-    { id: 1, firstName: "John", lastName: "Doe", username: "john_doe", email: "john@example.com", balance: 15420.50, status: "Active", joinDate: "2024-01-15" },
-    { id: 2, firstName: "Jane", lastName: "Smith", username: "jane_smith", email: "jane@example.com", balance: 8750.25, status: "Active", joinDate: "2024-01-10" },
-    { id: 3, firstName: "Mike", lastName: "Wilson", username: "mike_wilson", email: "mike@example.com", balance: 22100.75, status: "Active", joinDate: "2024-01-08" },
-    { id: 4, firstName: "Sarah", lastName: "Connor", username: "sarah_connor", email: "sarah@example.com", balance: 450.00, status: "Suspended", joinDate: "2024-01-05" },
-    { id: 5, firstName: "Alex", lastName: "Jones", username: "alex_jones", email: "alex@example.com", balance: 33250.10, status: "Active", joinDate: "2024-01-03" },
-    { id: 6, firstName: "Emma", lastName: "Davis", username: "emma_davis", email: "emma@example.com", balance: 7890.50, status: "Active", joinDate: "2024-01-01" },
-    { id: 7, firstName: "Robert", lastName: "Brown", username: "robert_brown", email: "robert@example.com", balance: 12600.25, status: "Inactive", joinDate: "2023-12-28" },
-    { id: 8, firstName: "Lisa", lastName: "Taylor", username: "lisa_taylor", email: "lisa@example.com", balance: 19850.75, status: "Active", joinDate: "2023-12-25" },
-  ];
+  useEffect(() => {
+    const getAllData = async () => {
+      const LOCALSTORAGE_TOKEN = localStorage.getItem('adminToken');
+      if (!LOCALSTORAGE_TOKEN) {
+        window.location.href = "/admin/login";
+        return;
+      }
 
-  const filteredUsers = users.filter(user =>
-    user.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    user.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    user.lastName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    user.email.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+      setLoading(true);
+      try {
+        api.defaults.headers.common["Authorization"] = `Bearer ${LOCALSTORAGE_TOKEN}`;
+        // Fetch users
+        const allUsersResponse = await api.get<allUserResponseType>(`/admin/users?limit=50&page=${userStats.page}`);
+        setUsers(allUsersResponse.data.data.users);
+        setUserStats({
+          total: allUsersResponse.data.data.total,
+          totalPages: allUsersResponse.data.data.totalPages,
+          page: allUsersResponse.data.data.page
+        });
+      } catch (err) {
+        console.log(err);
+        if (err instanceof AxiosError) {
+          toast({
+            title: "Error",
+            description: err.response?.data.message || "Failed to load users",
+            variant: "destructive",
+          });
+        } else {
+          toast({
+            title: "Error",
+            description: 'Failed to load users data. Please try again later or reload page',
+            variant: "destructive",
+          });
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const getStatusColor = (status: string) => {
-    switch (status.toLowerCase()) {
-      case "active":
-        return "bg-green-500/10 text-green-500";
-      case "inactive":
-        return "bg-gray-500/10 text-gray-500";
-      case "suspended":
-        return "bg-red-500/10 text-red-500";
-      default:
-        return "bg-gray-500/10 text-gray-500";
+    getAllData();
+  }, [userStats.page, toast]);
+
+  const handleSearch = async () => {
+    if (!searchTerm.trim()) {
+      setIsSearchMode(false);
+      setSearchedUsers([]);
+      return;
+    }
+
+    const LOCALSTORAGE_TOKEN = localStorage.getItem('adminToken');
+    if (!LOCALSTORAGE_TOKEN) {
+      window.location.href = "/admin/login";
+      return;
+    }
+
+    setSearching(true);
+    try {
+      api.defaults.headers.common["Authorization"] = `Bearer ${LOCALSTORAGE_TOKEN}`;
+      const allUsersResponse = await api.get<searchUsersResponse>(`/admin/users/search?keyword=${searchTerm}`);
+      setSearchedUsers(allUsersResponse.data.data);
+      setIsSearchMode(true);
+    } catch (err) {
+      console.log(err);
+      if (err instanceof AxiosError) {
+        toast({
+          title: "Error",
+          description: err.response?.data.message || "Failed to search users",
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: "Error",
+          description: 'Failed to search users. Please try again later',
+          variant: "destructive",
+        });
+      }
+    } finally {
+      setSearching(false);
     }
   };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
+  const clearSearch = () => {
+    setSearchTerm("");
+    setIsSearchMode(false);
+    setSearchedUsers([]);
+  };
+
+  const changePage = async (newPage: number) => {
+    setUserStats(prev => ({ ...prev, page: newPage }));
+  };
+
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString();
+  };
+
+  const getStatusColor = (verified: boolean) => {
+    return verified
+      ? "bg-green-500/10 text-green-500"
+      : "bg-gray-500/10 text-gray-500";
+  };
+
+  const getStatusText = (verified: boolean) => {
+    return verified ? "Verified" : "Unverified";
+  };
+
+  // Determine which users to display
+  const displayUsers = isSearchMode ? searchedUsers : users;
+  const displayCount = isSearchMode ? searchedUsers.length : userStats.total;
+
+  if (loading) {
+    return (
+      <AdminLayout>
+        <div className="flex items-center justify-center min-h-[400px]">
+          <div className="text-center space-y-4">
+            <Loader2 className="w-8 h-8 animate-spin text-primary mx-auto" />
+            <p className="text-gray-400">Loading users data...</p>
+          </div>
+        </div>
+      </AdminLayout>
+    );
+  }
 
   return (
     <AdminLayout>
       <div className="space-y-6">
-        <div className="flex justify-between items-center">
+        <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
           <div>
             <h1 className="text-3xl font-bold text-white">{t('admin.users.title')}</h1>
             <p className="text-gray-400">{t('admin.users.subtitle')}</p>
           </div>
           <div className="text-white">
-            {t('admin.users.totalUsers')}: <span className="font-bold">{users.length}</span>
+            {t('admin.users.totalUsers')}: <span className="font-bold">{userStats.total}</span>
           </div>
         </div>
 
         {/* Search Filter */}
         <Card className="glass border-white/10">
           <CardHeader>
-            <CardTitle className="text-white">{t('admin.users.filterUsers')}</CardTitle>
+            <CardTitle className="text-white flex items-center justify-between">
+              {t('admin.users.filterUsers')}
+              {isSearchMode && (
+                <Button variant="outline" size="sm" onClick={clearSearch}>
+                  Clear Search
+                </Button>
+              )}
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-              <Input
-                placeholder={t('admin.users.searchPlaceholder')}
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 bg-black/50"
-              />
+              <div className="flex gap-3">
+                <Input
+                  placeholder={t('admin.users.searchPlaceholder')}
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  onKeyPress={handleKeyPress}
+                  className="pl-10 bg-black/50"
+                />
+                <Button onClick={handleSearch} disabled={searching}>
+                  {searching ? (
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                  ) : (
+                    <Search className="text-white w-4 h-4" />
+                  )}
+                </Button>
+              </div>
             </div>
           </CardContent>
         </Card>
@@ -78,53 +207,129 @@ const AllUsers = () => {
         {/* Users List */}
         <Card className="glass border-white/10">
           <CardHeader>
-            <CardTitle className="text-white">{t('admin.users.usersList', { count: filteredUsers.length })}</CardTitle>
+            <CardTitle className="text-white">
+              {isSearchMode
+                ? `Search Results (${displayCount})`
+                : `${t('admin.users.usersList', { count: displayCount })}`
+              }
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              {filteredUsers.map((user) => (
-                <motion.div
-                  key={user.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="flex items-center justify-between p-4 rounded-lg bg-black/20 hover:bg-black/30 transition-colors"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
-                      <span className="text-primary font-bold">
-                        {user.firstName[0]}{user.lastName[0]}
-                      </span>
+              {displayUsers.length > 0 ? (
+                displayUsers.map((user, index) => (
+                  <motion.div
+                    key={`${user.username}-${index}`}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: index * 0.05 }}
+                    className="flex flex-col md:flex-row md:items-center md:justify-between p-4 rounded-lg bg-black/20 hover:bg-black/30 transition-colors space-y-3 md:space-y-0"
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
+                        {user.firstName && user.lastName ? (
+                          <span className="text-primary font-bold">
+                            {user.firstName[0]}{user.lastName[0]}
+                          </span>
+                        ) : (
+                          <User className="w-6 h-6 text-primary" />
+                        )}
+                      </div>
+                      <div>
+                        <p className="text-white font-medium">
+                          {user.firstName && user.lastName
+                            ? `${user.firstName} ${user.lastName}`
+                            : user.username
+                          }
+                        </p>
+                        <p className="text-sm text-gray-400">@{user.username}</p>
+                        <p className="text-xs text-gray-500">
+                          Joined: {formatDate(user.createdAt)}
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-white font-medium">
-                        {user.firstName} {user.lastName}
-                      </p>
-                      <p className="text-sm text-gray-400">@{user.username}</p>
-                      <p className="text-xs text-gray-500">{user.email}</p>
+
+                    <div className="flex flex-col md:flex-row md:items-center gap-4">
+                      <div className="flex justify-between md:block md:text-right">
+                        <div>
+                          <p className="text-white font-medium">
+                            ${user.wallet?.balance?.toLocaleString() || '0.00'}
+                          </p>
+                          <p className="text-xs text-gray-400">{t('admin.users.balance')}</p>
+                        </div>
+                        <div className="md:mt-1">
+                          <p className="text-sm text-gray-300">
+                            Assets: ${user.wallet?.assetValue?.toLocaleString() || '0.00'}
+                          </p>
+                          {user.wallet?.assetLoss > 0 && (
+                            <p className="text-xs text-red-400">
+                              Loss: ${user.wallet.assetLoss.toLocaleString()}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="flex items-center justify-between md:justify-end gap-4">
+                        <Badge className={getStatusColor(user.verified)}>
+                          {getStatusText(user.verified)}
+                        </Badge>
+
+                        <div className="flex gap-2">
+                          <Link to={`/admin/users/${user.username}`}>
+                            <Button size="sm" variant="outline">
+                              <Eye className="w-4 h-4" />
+                            </Button>
+                          </Link>
+                          <Link to={`/admin/users/${user.username}`}>
+                            <Button size="sm" variant="outline">
+                              <Edit className="w-4 h-4" />
+                            </Button>
+                          </Link>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  
-                  <div className="flex items-center gap-4">
-                    <div className="text-right">
-                      <p className="text-white font-medium">${user.balance.toLocaleString()}</p>
-                      <p className="text-xs text-gray-400">{t('admin.users.balance')}</p>
-                    </div>
-                    
-                    <Badge className={getStatusColor(user.status)}>
-                      {t(`common.status.${user.status.toLowerCase()}`)}
-                    </Badge>
-                    
-                    <div className="flex gap-2">
-                      <Link to={`/admin/users/${user.id}`}>
-                        <Button size="sm" variant="outline">
-                          <Eye className="w-4 h-4" />
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                ))
+              ) : (
+                <div className="text-center py-8">
+                  <p className="text-gray-400">
+                    {isSearchMode ? "No users found matching your search" : "No users found"}
+                  </p>
+                </div>
+              )}
             </div>
+
+            {/* Pagination - only show when not in search mode */}
+            {!isSearchMode && userStats.totalPages > 1 && (
+              <div className="flex items-center justify-between mt-6 pt-4 border-t border-white/10">
+                <p className="text-sm text-gray-400">
+                  Showing {((userStats.page - 1) * 50) + 1} to {Math.min(userStats.page * 50, userStats.total)} of {userStats.total} users
+                </p>
+                <div className="flex items-center gap-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => changePage(userStats.page - 1)}
+                    disabled={userStats.page === 1 || loading}
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                    Previous
+                  </Button>
+                  <span className="text-white px-3 py-1 bg-primary/20 rounded text-sm">
+                    {userStats.page} of {userStats.totalPages}
+                  </span>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => changePage(userStats.page + 1)}
+                    disabled={userStats.page === userStats.totalPages || loading}
+                  >
+                    Next
+                    <ChevronRight className="w-4 h-4" />
+                  </Button>
+                </div>
+              </div>
+            )}
           </CardContent>
         </Card>
       </div>

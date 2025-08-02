@@ -367,11 +367,23 @@
       "quickActions": "Acciones Rápidas",
       "viewAllUsers": "Ver Todos los Usuarios",
       "viewTransactions": "Ver Transacciones",
-      "systemSettings": "Configuración del Sistema"
+      "systemSettings": "Configuración del Sistema",
+      "subtitle": "Resumen de tu sistema",
+      "totalTransactions": "Total de Transacciones",
+      "completedTransactions": "Transacciones Completadas",
+      "rejectedTransactions": "Transacciones Rechazadas",
+      "newUsersWeek": "+12% desde la semana pasada",
+      "monthlyGrowth": "+8% desde el mes pasado",
+      "depositsGrowth": "+15% desde el mes pasado",
+      "withdrawalsChange": "+5% desde el mes pasado",
+      "requiresAttention": "Requiere atención",
+      "successfullyProcessed": "Procesadas exitosamente",
+      "failedTransactions": "Transacciones fallidas",
+      "recentTransactions": "Transacciones Recientes"
     },
     "users": {
       "title": "Todos los Usuarios",
-      "subtitle": "Gestionar cuentas de usuarios",
+      "subtitle": "Gestionar cuentas de usuario y monitorear actividad",
       "searchUsers": "Buscar Usuarios",
       "filterByStatus": "Filtrar por Estado",
       "allStatuses": "Todos los Estados",
@@ -382,7 +394,11 @@
       "joined": "Se unió",
       "actions": "Acciones",
       "view": "Ver",
-      "noUsers": "No se encontraron usuarios"
+      "noUsers": "No se encontraron usuarios",
+      "totalUsers": "Total de Usuarios",
+      "filterUsers": "Filtrar Usuarios",
+      "searchPlaceholder": "Buscar por nombre de usuario, nombre o email...",
+      "usersList": "Lista de Usuarios ({{count}})"
     },
     "userDetail": {
       "title": "Detalles del Usuario",
@@ -414,7 +430,7 @@
     },
     "transactions": {
       "title": "Todas las Transacciones",
-      "subtitle": "Gestionar y aprobar transacciones",
+      "subtitle": "Gestionar y aprobar todas las transacciones de la plataforma",
       "filterByType": "Filtrar por Tipo",
       "filterByStatus": "Filtrar por Estado",
       "searchTransactions": "Buscar Transacciones",
@@ -431,7 +447,22 @@
       "noTransactions": "No se encontraron transacciones",
       "transactionApproved": "Transacción Aprobada",
       "transactionRejected": "Transacción Rechazada",
-      "transactionUpdated": "Transacción actualizada exitosamente"
+      "transactionUpdated": "Transacción actualizada exitosamente",
+      "total": "Total",
+      "filterTransactions": "Filtrar Transacciones",
+      "searchPlaceholder": "Buscar por usuario, tipo o criptomoneda...",
+      "allStatus": "Todos los Estados",
+      "deposit": "Depósito",
+      "withdrawal": "Retiro",
+      "pending": "Pendiente",
+      "completed": "Completado",
+      "rejected": "Rechazado",
+      "transactionsList": "Lista de Transacciones ({{count}})",
+      "approved": "Transacción Aprobada",
+      "markedCompleted": "La transacción ha sido marcada como completada",
+      "hasBeenRejected": "La transacción ha sido rechazada",
+      "downloadingReceipt": "Descargando Recibo",
+      "receiptFor": "Recibo para la transacción de {{user}}"
     },
     "settings": {
       "title": "Configuración de Admin",
@@ -545,6 +576,14 @@
     "success": "Éxito",
     "error": "Error",
     "warning": "Advertencia",
-    "info": "Información"
+    "info": "Información",
+    "status": {
+      "active": "Activo",
+      "inactive": "Inactivo",
+      "suspended": "Suspendido",
+      "pending": "Pendiente",
+      "completed": "Completado",
+      "rejected": "Rechazado"
+    }
   }
 }
