@@ -27,6 +27,7 @@ import { useTranslation } from "react-i18next";
 const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<userType>(null)
+  const [transaction, setTransactions] = useState<transactionType[]>()
   const { toast } = useToast();
   const { t } = useTranslation();
   useEffect(() => {
@@ -39,8 +40,12 @@ const Dashboard = () => {
       setLoading(true);
       try {
         api.defaults.headers.common["Authorization"] = `Bearer ${LOCALSTORAGE_TOKEN}`;
-        const response = await api.get<profileResponse>('/user/getUser',)
-        setUser(response.data.user)
+        const [userResponse, transactionResponse] = await Promise.all([
+          await api.get<profileResponse>('/user/getUser'),
+          await api.get<transactionListResponseType>(`/user/getTransactions?limit=${5}&page=1`)
+        ])
+        setUser(userResponse.data.user)
+        setTransactions(transactionResponse.data.data.transactions)
       } catch (err) {
         if (err instanceof AxiosError) {
           toast({
@@ -196,25 +201,29 @@ const Dashboard = () => {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                {recentTransactions.map((transaction) => (
-                  <div key={transaction.id} className="flex items-center justify-between p-3 rounded-lg bg-black/20">
+                {transaction.length ? transaction.map((transaction) => (
+                  <div key={transaction._id} className="flex items-center justify-between p-3 rounded-lg bg-black/20">
                     <div className="flex items-center gap-3">
                       {getStatusIcon(transaction.status)}
                       <div>
                         <p className="text-white font-medium">{transaction.type}</p>
-                        <p className="text-sm text-gray-400">{transaction.date} • {transaction.crypto}</p>
+                        <p className="text-sm text-gray-400">{transaction.updatedAt} • {transaction.blockchain}</p>
                       </div>
                     </div>
                     <div className="text-right">
-                      <p className={`font-medium ${transaction.type === 'Deposit' ? 'text-green-500' : 'text-orange-500'}`}>
-                        {transaction.type === 'Deposit' ? '+' : '-'}${transaction.amount}
+                      <p className={`font-medium ${transaction.type === 'deposit' ? 'text-green-500' : 'text-orange-500'}`}>
+                        {transaction.type === 'deposit' ? '+' : '-'}${transaction.amount}
                       </p>
                       <Badge className={getStatusColor(transaction.status)}>
                         {transaction.status}
                       </Badge>
                     </div>
                   </div>
-                ))}
+                )) : (
+                  <div className="text-center py-8">
+                    <p className="text-gray-400">{t('dashboard.history.noTransactions')}</p>
+                  </div>
+                )}
               </div>
               <Button variant="outline" className="w-full mt-4">
                 {t('dashboard.home.viewAll')}
