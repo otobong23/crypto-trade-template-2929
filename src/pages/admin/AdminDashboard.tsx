@@ -47,12 +47,12 @@ const AdminDashboard = () => {
   };
 
   const getStatusColor = (status: string) => {
-    switch (status) {
-      case "Completed":
+    switch (status.toLowerCase()) {
+      case "completed":
         return "bg-green-500/10 text-green-500";
-      case "Pending":
+      case "pending":
         return "bg-yellow-500/10 text-yellow-500";
-      case "Rejected":
+      case "rejected":
         return "bg-red-500/10 text-red-500";
       default:
         return "bg-gray-500/10 text-gray-500";
@@ -180,7 +180,7 @@ const AdminDashboard = () => {
                       <p className="text-sm text-gray-400">{transaction.type}</p>
                     </div>
                     <Badge className={getStatusColor(transaction.status)}>
-                      {transaction.status}
+                      {t(`common.status.${transaction.status.toLowerCase()}`)}
                     </Badge>
                   </div>
                 </div>

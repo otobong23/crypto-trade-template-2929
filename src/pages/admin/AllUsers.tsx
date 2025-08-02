@@ -32,12 +32,12 @@ const AllUsers = () => {
   );
 
   const getStatusColor = (status: string) => {
-    switch (status) {
-      case "Active":
+    switch (status.toLowerCase()) {
+      case "active":
         return "bg-green-500/10 text-green-500";
-      case "Inactive":
+      case "inactive":
         return "bg-gray-500/10 text-gray-500";
-      case "Suspended":
+      case "suspended":
         return "bg-red-500/10 text-red-500";
       default:
         return "bg-gray-500/10 text-gray-500";
@@ -111,7 +111,7 @@ const AllUsers = () => {
                     </div>
                     
                     <Badge className={getStatusColor(user.status)}>
-                      {user.status}
+                      {t(`common.status.${user.status.toLowerCase()}`)}
                     </Badge>
                     
                     <div className="flex gap-2">
