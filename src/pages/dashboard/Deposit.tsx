@@ -8,6 +8,9 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import DashboardLayout from "@/components/DashboardLayout";
 import { useTranslation } from "react-i18next";
+import btcImage from '@/assets/btc.png'
+import ethImage from '@/assets/eth.png'
+import usdtImage from '@/assets/usdt.png'
 
 const Deposit = () => {
   const { t } = useTranslation();
@@ -68,7 +71,7 @@ const Deposit = () => {
                 >
                   <div className="text-center">
                     <div className="w-12 h-12 mx-auto mb-2 rounded-full bg-primary/20 flex items-center justify-center">
-                      <span className="font-bold text-primary">{crypto.symbol}</span>
+                      <img src={crypto.symbol === 'BTC' ? btcImage : crypto.symbol === 'ETH' ? ethImage : usdtImage} className="w-6 object-cover" />
                     </div>
                     <p className="text-white font-medium">{crypto.name}</p>
                     <p className="text-sm text-gray-400">{crypto.symbol}</p>

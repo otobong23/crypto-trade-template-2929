@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import api from "@/lib/api";
 import { AxiosError } from "axios";
 
@@ -16,6 +16,19 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+
+  const token = localStorage.getItem("authToken");
+    const userRole = localStorage.getItem("userRole");
+  
+    // Check if user is authenticated
+    if (token) {
+      return <Navigate to={"/dashboard"} replace />;
+    }
+  
+    // Check if user has required role for admin routes
+    if (userRole === "userRole") {
+      return <Navigate to="/dashboard" replace />;
+    }
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();

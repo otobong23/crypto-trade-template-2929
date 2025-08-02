@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CardSpotlight } from "./CardSpotlight";
+import { useNavigate } from "react-router-dom";
 
 const PricingTier = ({
   name,
@@ -15,7 +16,9 @@ const PricingTier = ({
   description: string;
   features: string[];
   isPopular?: boolean;
-}) => (
+}) => {
+  const navigate = useNavigate()
+  return (
   <CardSpotlight className={`h-full ${isPopular ? "border-primary" : "border-white/10"} border-2`}>
     <div className="relative h-full p-6 flex flex-col">
       {isPopular && (
@@ -37,12 +40,12 @@ const PricingTier = ({
           </li>
         ))}
       </ul>
-      <Button className="button-gradient w-full">
+      <Button onClick={() => navigate('/dashboard', { replace: false })} className="button-gradient w-full">
         Start Trading
       </Button>
     </div>
   </CardSpotlight>
-);
+)}
 
 export const PricingSection = () => {
   return (

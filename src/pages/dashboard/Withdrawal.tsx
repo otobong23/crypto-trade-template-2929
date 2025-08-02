@@ -11,6 +11,9 @@ import api from "@/lib/api";
 import { AxiosError } from "axios";
 import { DollarSign, Loader } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import btcImage from '@/assets/btc.png'
+import ethImage from '@/assets/eth.png'
+import usdtImage from '@/assets/usdt.png'
 
 const Withdrawal = () => {
   const { t } = useTranslation();
@@ -146,7 +149,7 @@ const Withdrawal = () => {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
-                        <span className="font-bold text-primary">{crypto.symbol}</span>
+                        <img src={crypto.symbol === 'BTC' ? btcImage : crypto.symbol === 'ETH' ? ethImage : usdtImage} className="w-6 object-cover" />
                       </div>
                       <div>
                         <p className="text-white font-medium">{crypto.name}</p>

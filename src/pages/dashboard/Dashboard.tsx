@@ -23,6 +23,7 @@ import api from "@/lib/api";
 import { AxiosError } from "axios";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   const [loading, setLoading] = useState(true);
@@ -141,9 +142,17 @@ const Dashboard = () => {
             <h1 className="text-3xl font-bold text-white">{t('dashboard.home.welcome')}, <span className="capitalize">{user.firstName ?? 'user'}</span>!</h1>
             <p className="text-gray-400">Here's your trading overview</p>
           </div>
-          <Avatar className="h-12 w-12">
-            <AvatarFallback className="bg-primary text-white">{user.firstName[0].toUpperCase() ?? 'U'}{user.lastName[0].toUpperCase() ?? 'S'}</AvatarFallback>
-          </Avatar>
+          <div className="flex gap-3">
+            <Button asChild className="flex-1">
+              <Link to="/dashboard/deposit">{t('dashboard.wallet.deposit')}</Link>
+            </Button>
+            <Button asChild variant="outline" className="flex-1">
+              <Link to="/dashboard/withdrawal">{t('dashboard.wallet.withdraw')}</Link>
+            </Button>
+            <Avatar className="h-12 w-12">
+              <AvatarFallback className="bg-primary text-white">{user.firstName[0].toUpperCase() ?? 'U'}{user.lastName[0].toUpperCase() ?? 'S'}</AvatarFallback>
+            </Avatar>
+          </div>
         </div>
 
         {/* Stats Cards */}
@@ -192,6 +201,16 @@ const Dashboard = () => {
             </CardContent>
           </Card>
         </div>
+
+        {/* Market Chart */}
+        <Card className="glass border-white/10">
+          <CardHeader>
+            <CardTitle className="text-white">{t('dashboard.home.portfolioOverview')}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <MarketOverviewWidget height="400" />
+          </CardContent>
+        </Card>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Recent Transactions */}
@@ -266,16 +285,6 @@ const Dashboard = () => {
             </CardContent>
           </Card>
         </div>
-
-        {/* Market Chart */}
-        <Card className="glass border-white/10">
-          <CardHeader>
-            <CardTitle className="text-white">{t('dashboard.home.portfolioOverview')}</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <MarketOverviewWidget height="400" />
-          </CardContent>
-        </Card>
 
         {/* Market Cross Rate */}
         <Card className="glass border-white/10">
