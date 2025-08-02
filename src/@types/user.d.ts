@@ -14,6 +14,7 @@ interface signResponse {
 interface walletType {
    balance: number;
    assetValue: number;
+   assetLoss: number;
    watchList: string[]
 }
 
@@ -29,5 +30,5 @@ interface userType {
 
 interface profileResponse {
    success: boolean;
-   user: userType;y
+   user: userType;
 }

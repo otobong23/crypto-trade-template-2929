@@ -8,6 +8,8 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { Shield } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { AxiosError } from "axios";
+import api from "@/lib/api";
 
 const AdminLogin = () => {
   const { t } = useTranslation();
@@ -24,25 +26,41 @@ const AdminLogin = () => {
     setIsLoading(true);
 
     // Dummy admin credentials
-    if (formData.username === "admin" && formData.password === "admin123") {
-      localStorage.setItem("adminToken", "dummy-admin-token");
-      localStorage.setItem("userRole", "admin");
-      
-      toast({
-        title: "Login Successful",
-        description: "Welcome to admin panel",
-      });
-      
-      navigate("/admin/dashboard");
+    if (formData.username && formData.password) {
+      try {
+        const response = await api.post<loginResponseType>('/admin/login', { username: formData.username, password: formData.password })
+        toast({
+          title: "Login Successful",
+          description: response.data.message,
+        });
+        localStorage.setItem("adminToken", response.data.access_token);
+        localStorage.setItem("userRole", "admin");
+        navigate("/admin/dashboard");
+      } catch (err) {
+        if (err instanceof AxiosError) {
+          toast({
+            title: "Error",
+            description: err.response?.data.message,
+            variant: "destructive",
+          });
+        } else {
+          toast({
+            title: "Error",
+            description: 'Failed to load Login. Please try again later or reload page',
+            variant: "destructive",
+          });
+        }
+
+      } finally {
+        setIsLoading(false);
+      }
     } else {
       toast({
-        title: "Login Failed",
-        description: "Invalid admin credentials",
+        title: "Error",
+        description: "Please fill in all fields",
         variant: "destructive",
       });
     }
-    
-    setIsLoading(false);
   };
 
   return (

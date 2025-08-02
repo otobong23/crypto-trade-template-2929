@@ -163,7 +163,9 @@
       "email": "Indirizzo email",
       "subject": "Oggetto",
       "message": "Il tuo messaggio",
-      "send": "Invia messaggio"
+      "send": "Invia messaggio",
+      "title": "Inviaci un Messaggio",
+      "lastName": "Cognome"
     },
     "info": {
       "title": "Informazioni di contatto",
@@ -172,13 +174,28 @@
       "response": "Tempo di risposta",
       "responseValue": "Entro 24 ore",
       "support": "Orari di supporto",
-      "supportValue": "Disponibile 24/7"
+      "supportValue": "Disponibile 24/7",
+      "location": "Posizione",
+      "phone": "Telefono"
     },
     "chat": {
       "title": "Supporto chat dal vivo",
       "subtitle": "Ottieni aiuto istantaneo dal nostro team di supporto",
       "placeholder": "Digita il tuo messaggio...",
-      "send": "Invia"
+      "send": "Invia",
+      "description": "Hai bisogno di assistenza immediata? Il nostro supporto chat dal vivo è disponibile 24/7 per aiutarti con qualsiasi domanda.",
+      "openChat": "Apri Chat dal Vivo",
+      "support": "Supporto dal Vivo",
+      "greeting": "Ciao! Come possiamo aiutarti oggi?",
+      "sampleMessage": "Ho una domanda sul mio account",
+      "response": "Grazie per averci contattato! Il nostro team ti aiuterà a breve."
+    },
+    "hours": {
+      "title": "Orari di Apertura",
+      "weekdays": "Lunedì - Venerdì",
+      "saturday": "Sabato",
+      "sunday": "Domenica",
+      "closed": "Chiuso"
     }
   },
   "dashboard": {
@@ -213,7 +230,11 @@
       "minDeposit": "Deposito minimo",
       "dailyReturn": "Rendimento giornaliero",
       "duration": "Durata",
-      "totalReturn": "Rendimento totale"
+      "totalReturn": "Rendimento totale",
+      "currentPlan": "Il Tuo Piano Attuale",
+      "active": "Attivo",
+      "mostPopular": "Più Popolare",
+      "investmentAmount": "Importo dell'Investimento"
     },
     "wallet": {
       "title": "Panoramica portafoglio",
@@ -253,7 +274,14 @@
       "change": "Variazione",
       "volume": "Volume",
       "marketCap": "Capitalizzazione di mercato",
-      "startTrading": "Inizia trading"
+      "startTrading": "Inizia trading",
+      "searchMarkets": "Cerca mercati...",
+      "pair": "Coppia",
+      "action": "Azione",
+      "high24h": "Max 24h",
+      "low24h": "Min 24h",
+      "bitcoinChart": "Grafico Bitcoin",
+      "ethereumChart": "Grafico Ethereum"
     },
     "deposit": {
       "title": "Deposita fondi",
@@ -439,7 +467,14 @@
       "noAccount": "Non hai un account?",
       "signUp": "Registrati",
       "error": "Errore",
-      "fillAllFields": "Compila tutti i campi"
+      "fillAllFields": "Compila tutti i campi",
+      "username": "Nome utente",
+      "usernamePlaceholder": "Inserisci il tuo nome utente",
+      "passwordPlaceholder": "Inserisci la tua password",
+      "signIn": "Accedi",
+      "signingIn": "Accesso...",
+      "signUpHere": "Registrati qui",
+      "backToHome": "Torna alla Home"
     },
     "signup": {
       "title": "Crea account",

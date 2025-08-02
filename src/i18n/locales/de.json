@@ -163,7 +163,9 @@
       "email": "E-Mail-Adresse",
       "subject": "Betreff",
       "message": "Ihre Nachricht",
-      "send": "Nachricht senden"
+      "send": "Nachricht senden",
+      "title": "Senden Sie uns eine Nachricht",
+      "lastName": "Nachname"
     },
     "info": {
       "title": "Kontaktinformationen",
@@ -172,13 +174,28 @@
       "response": "Antwortzeit",
       "responseValue": "Innerhalb von 24 Stunden",
       "support": "Support-Zeiten",
-      "supportValue": "24/7 verfügbar"
+      "supportValue": "24/7 verfügbar",
+      "location": "Standort",
+      "phone": "Telefon"
     },
     "chat": {
       "title": "Live-Chat-Support",
       "subtitle": "Erhalten Sie sofortige Hilfe von unserem Support-Team",
       "placeholder": "Geben Sie Ihre Nachricht ein...",
-      "send": "Senden"
+      "send": "Senden",
+      "description": "Benötigen Sie sofortige Hilfe? Unser Live-Chat-Support ist 24/7 verfügbar, um Ihnen bei allen Fragen zu helfen.",
+      "openChat": "Live-Chat Öffnen",
+      "support": "Live-Support",
+      "greeting": "Hallo! Wie können wir Ihnen heute helfen?",
+      "sampleMessage": "Ich habe eine Frage zu meinem Konto",
+      "response": "Vielen Dank für Ihre Kontaktaufnahme! Unser Team wird Ihnen in Kürze helfen."
+    },
+    "hours": {
+      "title": "Geschäftszeiten",
+      "weekdays": "Montag - Freitag",
+      "saturday": "Samstag",
+      "sunday": "Sonntag",
+      "closed": "Geschlossen"
     }
   },
   "dashboard": {
@@ -213,7 +230,11 @@
       "minDeposit": "Mindesteinzahlung",
       "dailyReturn": "Tägliche Rendite",
       "duration": "Laufzeit",
-      "totalReturn": "Gesamtrendite"
+      "totalReturn": "Gesamtrendite",
+      "currentPlan": "Ihr Aktueller Plan",
+      "active": "Aktiv",
+      "mostPopular": "Beliebteste",
+      "investmentAmount": "Investitionsbetrag"
     },
     "wallet": {
       "title": "Wallet-Übersicht",
@@ -253,7 +274,14 @@
       "change": "Änderung",
       "volume": "Volumen",
       "marketCap": "Marktkapitalisierung",
-      "startTrading": "Trading starten"
+      "startTrading": "Trading starten",
+      "searchMarkets": "Märkte suchen...",
+      "pair": "Paar",
+      "action": "Aktion",
+      "high24h": "24h Hoch",
+      "low24h": "24h Tief",
+      "bitcoinChart": "Bitcoin Chart",
+      "ethereumChart": "Ethereum Chart"
     },
     "deposit": {
       "title": "Geld einzahlen",
@@ -439,7 +467,14 @@
       "noAccount": "Haben Sie kein Konto?",
       "signUp": "Registrieren",
       "error": "Fehler",
-      "fillAllFields": "Bitte füllen Sie alle Felder aus"
+      "fillAllFields": "Bitte füllen Sie alle Felder aus",
+      "username": "Benutzername",
+      "usernamePlaceholder": "Geben Sie Ihren Benutzernamen ein",
+      "passwordPlaceholder": "Geben Sie Ihr Passwort ein",
+      "signIn": "Anmelden",
+      "signingIn": "Anmeldung...",
+      "signUpHere": "Hier registrieren",
+      "backToHome": "Zurück zur Startseite"
     },
     "signup": {
       "title": "Konto erstellen",

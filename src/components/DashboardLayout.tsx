@@ -12,7 +12,7 @@ import {
   Loader
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Link, useLocation } from "react-router-dom";
 import tradephereLogoSrc from "@/assets/trade_phere.svg";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -144,6 +144,10 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
           </Button>
         </SheetTrigger>
         <SheetContent side="left" className="p-0 w-72">
+          <SheetTitle className="sr-only">Sidebar Navigation</SheetTitle>
+          <SheetDescription className="sr-only">
+            Access different sections of the app using the sidebar links.
+          </SheetDescription>
           <SidebarContent />
         </SheetContent>
       </Sheet>

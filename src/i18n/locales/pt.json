@@ -163,7 +163,9 @@
       "email": "Endereço de e-mail",
       "subject": "Assunto",
       "message": "Sua mensagem",
-      "send": "Enviar mensagem"
+      "send": "Enviar mensagem",
+      "title": "Envie-nos uma Mensagem",
+      "lastName": "Sobrenome"
     },
     "info": {
       "title": "Informações de contato",
@@ -172,13 +174,28 @@
       "response": "Tempo de resposta",
       "responseValue": "Dentro de 24 horas",
       "support": "Horário de suporte",
-      "supportValue": "Disponível 24/7"
+      "supportValue": "Disponível 24/7",
+      "location": "Localização",
+      "phone": "Telefone"
     },
     "chat": {
       "title": "Suporte via chat ao vivo",
       "subtitle": "Obtenha ajuda instantânea da nossa equipe de suporte",
       "placeholder": "Digite sua mensagem...",
-      "send": "Enviar"
+      "send": "Enviar",
+      "description": "Precisa de assistência imediata? Nosso suporte de chat ao vivo está disponível 24/7 para ajudar com qualquer dúvida.",
+      "openChat": "Abrir Chat ao Vivo",
+      "support": "Suporte ao Vivo",
+      "greeting": "Olá! Como podemos ajudá-lo hoje?",
+      "sampleMessage": "Tenho uma pergunta sobre minha conta",
+      "response": "Obrigado por entrar em contato! Nossa equipe o ajudará em breve."
+    },
+    "hours": {
+      "title": "Horário de Funcionamento",
+      "weekdays": "Segunda - Sexta",
+      "saturday": "Sábado",
+      "sunday": "Domingo",
+      "closed": "Fechado"
     }
   },
   "footer": {
@@ -226,7 +243,11 @@
       "minDeposit": "Depósito mínimo",
       "dailyReturn": "Retorno diário",
       "duration": "Duração",
-      "totalReturn": "Retorno total"
+      "totalReturn": "Retorno total",
+      "currentPlan": "Seu Plano Atual",
+      "active": "Ativo",
+      "mostPopular": "Mais Popular",
+      "investmentAmount": "Valor do Investimento"
     },
     "wallet": {
       "title": "Visão geral da carteira",
@@ -266,7 +287,14 @@
       "change": "Mudança",
       "volume": "Volume",
       "marketCap": "Cap. de mercado",
-      "startTrading": "Começar a negociar"
+      "startTrading": "Começar a negociar",
+      "searchMarkets": "Buscar mercados...",
+      "pair": "Par",
+      "action": "Ação",
+      "high24h": "Máx 24h",
+      "low24h": "Mín 24h",
+      "bitcoinChart": "Gráfico Bitcoin",
+      "ethereumChart": "Gráfico Ethereum"
     },
     "deposit": {
       "title": "Depositar fundos",
@@ -452,7 +480,14 @@
       "noAccount": "Não tem uma conta?",
       "signUp": "Cadastrar",
       "error": "Erro",
-      "fillAllFields": "Preencha todos os campos"
+      "fillAllFields": "Preencha todos os campos",
+      "username": "Nome de usuário",
+      "usernamePlaceholder": "Digite seu nome de usuário",
+      "passwordPlaceholder": "Digite sua senha",
+      "signIn": "Entrar",
+      "signingIn": "Entrando...",
+      "signUpHere": "Cadastre-se aqui",
+      "backToHome": "Voltar ao Início"
     },
     "signup": {
       "title": "Criar conta",

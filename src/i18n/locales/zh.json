@@ -120,7 +120,9 @@
       "email": "邮箱地址",
       "subject": "主题",
       "message": "您的留言",
-      "send": "发送信息"
+      "send": "发送信息",
+      "title": "发送消息给我们",
+      "lastName": "姓氏"
     },
     "info": {
       "title": "联系方式",
@@ -129,13 +131,28 @@
       "response": "响应时间",
       "responseValue": "24小时内",
       "support": "支持时间",
-      "supportValue": "全天候"
+      "supportValue": "全天候",
+      "location": "位置",
+      "phone": "电话"
     },
     "chat": {
       "title": "在线聊天支持",
       "subtitle": "即时获得支持团队帮助",
       "placeholder": "请输入您的消息...",
-      "send": "发送"
+      "send": "发送",
+      "description": "需要立即帮助吗？我们的在线客服支持24/7全天候为您解答任何问题。",
+      "openChat": "打开在线客服",
+      "support": "在线支持",
+      "greeting": "您好！今天我们如何为您提供帮助？",
+      "sampleMessage": "我对我的账户有疑问",
+      "response": "感谢您联系我们！我们的团队将很快为您提供帮助。"
+    },
+    "hours": {
+      "title": "营业时间",
+      "weekdays": "周一 - 周五",
+      "saturday": "周六",
+      "sunday": "周日",
+      "closed": "关闭"
     }
   },
   "footer": {
@@ -183,7 +200,11 @@
       "minDeposit": "最低存款",
       "dailyReturn": "日收益率",
       "duration": "期限",
-      "totalReturn": "总收益"
+      "totalReturn": "总收益",
+      "currentPlan": "您的当前计划",
+      "active": "活跃",
+      "mostPopular": "最受欢迎",
+      "investmentAmount": "投资金额"
     },
     "wallet": {
       "title": "钱包概览",
@@ -223,7 +244,14 @@
       "change": "变化",
       "volume": "交易量",
       "marketCap": "市值",
-      "startTrading": "开始交易"
+      "startTrading": "开始交易",
+      "searchMarkets": "搜索市场...",
+      "pair": "交易对",
+      "action": "操作",
+      "high24h": "24小时最高",
+      "low24h": "24小时最低",
+      "bitcoinChart": "比特币图表",
+      "ethereumChart": "以太坊图表"
     },
     "deposit": {
       "title": "充值资金",
@@ -415,7 +443,14 @@
       "noAccount": "没有账户？",
       "signUp": "注册",
       "error": "错误",
-      "fillAllFields": "请填写所有字段"
+      "fillAllFields": "请填写所有字段",
+      "username": "用户名",
+      "usernamePlaceholder": "输入您的用户名",
+      "passwordPlaceholder": "输入您的密码",
+      "signIn": "登录",
+      "signingIn": "登录中...",
+      "signUpHere": "在这里注册",
+      "backToHome": "返回首页"
     },
     "signup": {
       "title": "创建账户",

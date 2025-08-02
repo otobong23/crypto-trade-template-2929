@@ -2,27 +2,59 @@ import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { 
-  Wallet as WalletIcon, 
-  ArrowUpRight, 
-  ArrowDownLeft, 
+import {
+  Wallet as WalletIcon,
+  ArrowUpRight,
+  ArrowDownLeft,
   TrendingUp,
   Plus,
   Minus,
-  ArrowDownRight
+  ArrowDownRight,
+  Loader
 } from "lucide-react";
 import DashboardLayout from "@/components/DashboardLayout";
 import MarketOverviewWidget from "@/components/MarketOverviewWidget";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useEffect, useState } from "react";
+import { useToast } from "@/hooks/use-toast";
+import api from "@/lib/api";
+import { AxiosError } from "axios";
 
 const Wallet = () => {
   const { t } = useTranslation();
-  const walletBalance = {
-    total: 12450.50,
-    available: 11200.25,
-    locked: 1250.25
-  };
+  const [user, setUser] = useState<userType>(null)
+  const { toast } = useToast();
+
+  useEffect(() => {
+    const getUser = async () => {
+      const LOCALSTORAGE_TOKEN = localStorage.getItem('authToken')
+      if (!LOCALSTORAGE_TOKEN) {
+        window.location.href = "/login";
+        return
+      }
+      try {
+        api.defaults.headers.common["Authorization"] = `Bearer ${LOCALSTORAGE_TOKEN}`;
+        const response = await api.get<profileResponse>('/user/getUser',)
+        setUser(response.data.user)
+      } catch (err) {
+        if (err instanceof AxiosError) {
+          toast({
+            title: "Error",
+            description: err.response?.data.message,
+            variant: "destructive",
+          });
+        } else {
+          toast({
+            title: "Error",
+            description: 'Failed to load Signup. Please try again later or reload page',
+            variant: "destructive",
+          });
+        }
+      }
+    }
+    getUser()
+  }, [])
 
   const cryptoBalances = [
     { symbol: "BTC", amount: 0.285, value: 12895.50, change: 2.45, positive: true },
@@ -38,23 +70,29 @@ const Wallet = () => {
     { pair: "SOL/USDT", price: 98.50, change: 8.90, volume: "650M", positive: true },
   ];
 
+  if (!user) {
+      return (<div className="h-screen w-full flex justify-center items-center">
+        <Loader />
+      </div>)
+    }
+
   return (
     <DashboardLayout>
       <div className="space-y-6">
         {/* Header */}
-         <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold text-white">{t('dashboard.wallet.title')}</h1>
             <p className="text-gray-400">{t('dashboard.wallet.subtitle')}</p>
           </div>
           <div className="flex gap-3">
-             <Button asChild className="button-gradient">
+            <Button asChild className="button-gradient">
               <Link to="/dashboard/deposit">
                 <Plus className="w-4 h-4 mr-2" />
                 {t('dashboard.wallet.deposit')}
               </Link>
             </Button>
-             <Button asChild variant="outline">
+            <Button asChild variant="outline">
               <Link to="/dashboard/withdrawal">
                 <Minus className="w-4 h-4 mr-2" />
                 {t('dashboard.wallet.withdraw')}
@@ -66,34 +104,34 @@ const Wallet = () => {
         {/* Wallet Balance Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <Card className="glass border-white/10">
-             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-gray-400">{t('dashboard.wallet.totalBalance')}</CardTitle>
               <WalletIcon className="h-4 w-4 text-primary" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-white">${walletBalance.total.toLocaleString()}</div>
+              <div className="text-2xl font-bold text-white">${user.wallet.balance && user.wallet.assetValue ? (user.wallet.balance + user.wallet.assetValue).toLocaleString() : 0}</div>
               <p className="text-xs text-green-500">+12.5% from last month</p>
             </CardContent>
           </Card>
 
           <Card className="glass border-white/10">
-             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-gray-400">{t('dashboard.wallet.availableBalance')}</CardTitle>
               <ArrowUpRight className="h-4 w-4 text-green-500" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-white">${walletBalance.available.toLocaleString()}</div>
+              <div className="text-2xl font-bold text-white">${user.wallet.balance ? user.wallet.balance.toLocaleString() : 0}</div>
               <p className="text-xs text-gray-400">Ready for trading</p>
             </CardContent>
           </Card>
 
           <Card className="glass border-white/10">
-             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-gray-400">Locked Balance</CardTitle>
               <ArrowDownLeft className="h-4 w-4 text-orange-500" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-white">${walletBalance.locked.toLocaleString()}</div>
+              <div className="text-2xl font-bold text-white">${user.wallet.assetValue ? user.wallet.assetValue.toLocaleString() : 0}</div>
               <p className="text-xs text-gray-400">In active trades</p>
             </CardContent>
           </Card>
@@ -102,7 +140,7 @@ const Wallet = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Crypto Holdings */}
           <Card className="glass border-white/10">
-             <CardHeader>
+            <CardHeader>
               <CardTitle className="text-white">{t('dashboard.wallet.cryptoHoldings')}</CardTitle>
             </CardHeader>
             <CardContent>
@@ -132,7 +170,7 @@ const Wallet = () => {
                   </div>
                 ))}
               </div>
-               <div className="flex gap-3 mt-4">
+              <div className="flex gap-3 mt-4">
                 <Button asChild className="flex-1">
                   <Link to="/dashboard/deposit">{t('dashboard.wallet.deposit')}</Link>
                 </Button>
@@ -145,7 +183,7 @@ const Wallet = () => {
 
           {/* Markets */}
           <Card className="glass border-white/10">
-             <CardHeader className="flex items-center justify-between">
+            <CardHeader className="flex items-center justify-between">
               <CardTitle className="text-white">Markets</CardTitle>
               <Button asChild variant="ghost" size="sm">
                 <Link to="/dashboard/market">{t('dashboard.home.viewAll')}</Link>
@@ -169,7 +207,7 @@ const Wallet = () => {
                   </div>
                 ))}
               </div>
-               <Button asChild variant="outline" className="w-full mt-4">
+              <Button asChild variant="outline" className="w-full mt-4">
                 <Link to="/dashboard/market">Explore All Markets</Link>
               </Button>
             </CardContent>
@@ -178,7 +216,7 @@ const Wallet = () => {
 
         {/* Market Chart */}
         <Card className="glass border-white/10">
-           <CardHeader>
+          <CardHeader>
             <CardTitle className="text-white">Live Market Overview</CardTitle>
           </CardHeader>
           <CardContent>

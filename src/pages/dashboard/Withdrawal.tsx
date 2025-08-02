@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -7,22 +7,58 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import DashboardLayout from "@/components/DashboardLayout";
 import { useTranslation } from "react-i18next";
+import api from "@/lib/api";
+import { AxiosError } from "axios";
+import { DollarSign, Loader } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Withdrawal = () => {
   const { t } = useTranslation();
-  const [selectedCrypto, setSelectedCrypto] = useState("");
   const [amount, setAmount] = useState("");
   const [address, setAddress] = useState("");
+  const [selectedCrypto, setSelectedCrypto] = useState('')
   const { toast } = useToast();
+  const navigate = useNavigate();
+  const [user, setUser] = useState<userType>(null)
+
+  useEffect(() => {
+    const getUser = async () => {
+      const LOCALSTORAGE_TOKEN = localStorage.getItem('authToken')
+      if (!LOCALSTORAGE_TOKEN) {
+        window.location.href = "/login";
+        return
+      }
+      try {
+        api.defaults.headers.common["Authorization"] = `Bearer ${LOCALSTORAGE_TOKEN}`;
+        const response = await api.get<profileResponse>('/user/getUser',)
+        setUser(response.data.user)
+      } catch (err) {
+        if (err instanceof AxiosError) {
+          toast({
+            title: "Error",
+            description: err.response?.data.message,
+            variant: "destructive",
+          });
+        } else {
+          toast({
+            title: "Error",
+            description: 'Failed to load Signup. Please try again later or reload page',
+            variant: "destructive",
+          });
+        }
+      }
+    }
+    getUser()
+  }, [])
 
   const cryptos = [
-    { symbol: "BTC", name: "Bitcoin", balance: 0.285 },
-    { symbol: "ETH", name: "Ethereum", balance: 4.52 },
-    { symbol: "USDT", name: "Tether", balance: 5000 },
+    { symbol: "BTC", name: "Bitcoin", balance: 110000 },
+    { symbol: "ETH", name: "Ethereum", balance: 2500 },
+    { symbol: "USDT", name: "Tether", balance: 1 },
   ];
 
-  const handleWithdrawal = () => {
-    if (!selectedCrypto || !amount || !address) {
+  const handleWithdrawal = async () => {
+    if (!amount || !address) {
       toast({
         title: "Error",
         description: "Please fill in all fields",
@@ -30,12 +66,48 @@ const Withdrawal = () => {
       });
       return;
     }
-    
-    toast({
-      title: "Withdrawal Requested",
-      description: "Your withdrawal is being processed",
-    });
+
+    const LOCALSTORAGE_TOKEN = localStorage.getItem('authToken')
+    if (!LOCALSTORAGE_TOKEN) {
+      window.location.href = "/login";
+      return
+    }
+
+    try {
+      api.defaults.headers.common["Authorization"] = `Bearer ${LOCALSTORAGE_TOKEN}`;
+      const response = await api.post<transactionResponseType>('/user/withdraw/', {
+        amount,
+        blockchain: selectedCrypto,
+        walletAddress: address
+      })
+      toast({
+        title: "Withdrawal Requested",
+        description: "Your withdrawal is being processed",
+        variant: "destructive"
+      });
+      navigate("/dashboard/history");
+    } catch (err) {
+      if (err instanceof AxiosError) {
+        toast({
+          title: "Error",
+          description: err.response?.data.message,
+          variant: "default",
+        });
+      } else {
+        toast({
+          title: "Error",
+          description: 'Failed to load Signup. Please try again later or reload page',
+          variant: "destructive",
+        });
+      }
+    }
   };
+
+  if (!user) {
+    return (<div className="h-screen w-full flex justify-center items-center">
+      <Loader />
+    </div>)
+  }
 
   return (
     <DashboardLayout>
@@ -46,8 +118,19 @@ const Withdrawal = () => {
         </div>
 
         <Card className="glass border-white/10">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-xl font-medium text-gray-400">{t('dashboard.home.totalBalance')}</CardTitle>
+            <DollarSign className="h-4 w-4 text-green-500" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold text-white">${user.wallet.balance ? user.wallet.balance.toLocaleString() : 0}</div>
+            <p className="text-xs text-gray-400">+12.5% from last month</p>
+          </CardContent>
+        </Card>
+
+        <Card className="glass border-white/10">
           <CardHeader>
-            <CardTitle className="text-white">Select Cryptocurrency</CardTitle>
+            <CardTitle className="text-white">Select Crypto</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
@@ -55,11 +138,10 @@ const Withdrawal = () => {
                 <div
                   key={crypto.symbol}
                   onClick={() => setSelectedCrypto(crypto.symbol)}
-                  className={`p-4 rounded-lg border cursor-pointer transition-colors ${
-                    selectedCrypto === crypto.symbol
-                      ? "border-primary bg-primary/10"
-                      : "border-white/10 hover:border-white/20"
-                  }`}
+                  className={`p-4 rounded-lg border cursor-pointer transition-colors ${selectedCrypto === crypto.symbol
+                    ? "border-primary bg-primary/10"
+                    : "border-white/10 hover:border-white/20"
+                    }`}
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
@@ -72,8 +154,8 @@ const Withdrawal = () => {
                       </div>
                     </div>
                     <div className="text-right">
-                      <p className="text-white font-medium">{crypto.balance} {crypto.symbol}</p>
-                      <p className="text-sm text-gray-400">Available</p>
+                      <p className="text-white font-medium">{crypto.balance} USDT</p>
+                      <p className="text-sm text-gray-400">Current Price</p>
                     </div>
                   </div>
                 </div>

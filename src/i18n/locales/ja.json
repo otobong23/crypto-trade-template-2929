@@ -163,7 +163,9 @@
       "email": "メールアドレス",
       "subject": "件名",
       "message": "メッセージ",
-      "send": "メッセージを送信"
+      "send": "メッセージを送信",
+      "title": "メッセージを送る",
+      "lastName": "姓"
     },
     "info": {
       "title": "連絡先情報",
@@ -172,13 +174,28 @@
       "response": "応答時間",
       "responseValue": "24時間以内",
       "support": "サポート時間",
-      "supportValue": "24時間365日対応"
+      "supportValue": "24時間365日対応",
+      "location": "場所",
+      "phone": "電話"
     },
     "chat": {
       "title": "ライブチャットサポート",
       "subtitle": "サポートチームから即座にヘルプを受ける",
       "placeholder": "メッセージを入力...",
-      "send": "送信"
+      "send": "送信",
+      "description": "即座のサポートが必要ですか？私たちのライブチャットサポートは24時間年中無休でご質問にお答えします。",
+      "openChat": "ライブチャットを開く",
+      "support": "ライブサポート",
+      "greeting": "こんにちは！今日はどのようにお手伝いできますか？",
+      "sampleMessage": "アカウントについて質問があります",
+      "response": "お問い合わせありがとうございます！チームが間もなくお手伝いします。"
+    },
+    "hours": {
+      "title": "営業時間",
+      "weekdays": "月曜日 - 金曜日",
+      "saturday": "土曜日",
+      "sunday": "日曜日",
+      "closed": "閉店"
     }
   },
   "dashboard": {
@@ -213,7 +230,11 @@
       "minDeposit": "最小入金額",
       "dailyReturn": "日次リターン",
       "duration": "期間",
-      "totalReturn": "総リターン"
+      "totalReturn": "総リターン",
+      "currentPlan": "あなたの現在のプラン",
+      "active": "アクティブ",
+      "mostPopular": "最も人気",
+      "investmentAmount": "投資額"
     },
     "wallet": {
       "title": "ウォレット概要",
@@ -253,7 +274,14 @@
       "change": "変化",
       "volume": "取引量",
       "marketCap": "時価総額",
-      "startTrading": "取引開始"
+      "startTrading": "取引開始",
+      "searchMarkets": "マーケットを検索...",
+      "pair": "ペア",
+      "action": "アクション",
+      "high24h": "24時間高値",
+      "low24h": "24時間安値",
+      "bitcoinChart": "ビットコインチャート",
+      "ethereumChart": "イーサリアムチャート"
     },
     "deposit": {
       "title": "資金入金",
@@ -439,7 +467,14 @@
       "noAccount": "アカウントをお持ちでない方",
       "signUp": "サインアップ",
       "error": "エラー",
-      "fillAllFields": "すべてのフィールドを入力してください"
+      "fillAllFields": "すべてのフィールドを入力してください",
+      "username": "ユーザー名",
+      "usernamePlaceholder": "ユーザー名を入力",
+      "passwordPlaceholder": "パスワードを入力",
+      "signIn": "サインイン",
+      "signingIn": "サインイン中...",
+      "signUpHere": "こちらでサインアップ",
+      "backToHome": "ホームに戻る"
     },
     "signup": {
       "title": "アカウント作成",

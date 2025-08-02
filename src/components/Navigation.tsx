@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import tradephereLogoSrc from "@/assets/trade_phere.svg";
 import { Button } from "./ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
+import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from "./ui/sheet";
 import LanguageSwitcher from "./LanguageSwitcher";
 
 const Navigation = () => {
@@ -51,11 +51,10 @@ const Navigation = () => {
 
   return (
     <header
-      className={`fixed top-3.5 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 rounded-full ${
-        isScrolled 
-          ? "h-14 bg-[#1B1B1B]/40 backdrop-blur-xl border border-white/10 scale-95 w-[90%] max-w-2xl" 
+      className={`fixed top-3.5 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 rounded-full ${isScrolled
+          ? "h-14 bg-[#1B1B1B]/40 backdrop-blur-xl border border-white/10 scale-95 w-[90%] max-w-2xl"
           : "h-14 bg-[#1B1B1B] w-[95%] max-w-3xl"
-      }`}
+        }`}
     >
       <div className="mx-auto h-full px-6">
         <nav className="flex items-center justify-between h-full">
@@ -92,6 +91,10 @@ const Navigation = () => {
                 </Button>
               </SheetTrigger>
               <SheetContent className="bg-[#1B1B1B]">
+                <SheetTitle className="sr-only">Sidebar Navigation</SheetTitle>
+                <SheetDescription className="sr-only">
+                  Access different sections of the app using the sidebar links.
+                </SheetDescription>
                 <div className="flex flex-col gap-4 mt-8">
                   {navItems.map((item) => (
                     <a
@@ -106,7 +109,7 @@ const Navigation = () => {
                   <div className="mt-4 space-y-3">
                     <LanguageSwitcher />
                     <Link to="/login" className="w-full">
-                      <Button 
+                      <Button
                         onClick={() => setIsMobileMenuOpen(false)}
                         className="button-gradient w-full"
                       >

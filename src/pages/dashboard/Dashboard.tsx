@@ -56,12 +56,6 @@ const Dashboard = () => {
     }
     getUser()
   }, [])
-  const userStats = {
-    totalBalance: 12450.50,
-    totalProfit: 2340.75,
-    totalLoss: 450.25,
-    activeInvestments: 5
-  };
 
   const recentTransactions = [
     { id: 1, type: "Deposit", amount: 1000, status: "Completed", date: "2024-01-15", crypto: "BTC" },
@@ -133,7 +127,7 @@ const Dashboard = () => {
               <DollarSign className="h-4 w-4 text-green-500" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-white">${user.wallet.balance.toLocaleString() ?? 0}</div>
+              <div className="text-2xl font-bold text-white">${user.wallet.balance ? user.wallet.balance.toLocaleString() : 0}</div>
               <p className="text-xs text-gray-400">+12.5% from last month</p>
             </CardContent>
           </Card>
@@ -144,7 +138,7 @@ const Dashboard = () => {
               <TrendingUp className="h-4 w-4 text-green-500" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-green-500">${user.wallet.assetValue.toLocaleString() ?? 0}</div>
+              <div className="text-2xl font-bold text-green-500">${user.wallet.assetValue ? user.wallet.assetValue.toLocaleString() : 0}</div>
               <p className="text-xs text-gray-400">+8.2% this month</p>
             </CardContent>
           </Card>
@@ -155,7 +149,7 @@ const Dashboard = () => {
               <TrendingDown className="h-4 w-4 text-red-500" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-red-500">${userStats.totalLoss.toLocaleString()}</div>
+              <div className="text-2xl font-bold text-red-500">${user.wallet.assetLoss ? user.wallet.assetLoss.toLocaleString() : 0}</div>
               <p className="text-xs text-gray-400">-2.1% this month</p>
             </CardContent>
           </Card>
@@ -166,7 +160,7 @@ const Dashboard = () => {
               <TrendingUp className="h-4 w-4 text-blue-500" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-white">{user.wallet.watchList.length.toLocaleString() ?? 0}</div>
+              <div className="text-2xl font-bold text-white">{user.wallet.watchList ? user.wallet.watchList.length.toLocaleString() : 0}</div>
               <p className="text-xs text-gray-400">2 new this week</p>
             </CardContent>
           </Card>

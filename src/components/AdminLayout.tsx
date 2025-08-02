@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { 
-  Home, 
-  Users, 
-  History, 
-  Settings, 
-  LogOut, 
+import {
+  Home,
+  Users,
+  History,
+  Settings,
+  LogOut,
   Menu,
   Shield
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Link, useLocation } from "react-router-dom";
 import tradephereLogoSrc from "@/assets/trade_phere.svg";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -44,23 +44,22 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
           <span className="font-bold text-lg">Admin Panel</span>
         </div>
       </div>
-      
+
       <nav className="flex-1 p-4">
         <div className="space-y-2">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = location.pathname === item.href;
-            
+
             return (
               <Link
                 key={item.name}
                 to={item.href}
                 onClick={() => setIsSidebarOpen(false)}
-                className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
-                  isActive 
-                    ? "bg-red-500 text-white" 
+                className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${isActive
+                    ? "bg-red-500 text-white"
                     : "text-gray-300 hover:bg-white/10"
-                }`}
+                  }`}
               >
                 <Icon className="w-5 h-5" />
                 {item.name}
@@ -102,6 +101,10 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
           </Button>
         </SheetTrigger>
         <SheetContent side="left" className="p-0 w-72">
+          <SheetTitle className="sr-only">Sidebar Navigation</SheetTitle>
+          <SheetDescription className="sr-only">
+            Access different sections of the app using the sidebar links.
+          </SheetDescription>
           <SidebarContent />
         </SheetContent>
       </Sheet>
@@ -111,7 +114,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
         {/* Top Bar */}
         <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b border-white/10 bg-[#1B1B1B]/80 backdrop-blur-xl px-4 sm:px-6">
           <div className="flex-1" />
-          
+
           <div className="flex items-center gap-4">
             <LanguageSwitcher />
             <div className="flex items-center gap-2 text-white">

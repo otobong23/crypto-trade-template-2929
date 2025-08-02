@@ -330,6 +330,9 @@ missing_keys = {
                 "ru": "График Ethereum",
                 "hi": "एथेरियम चार्ट"
             }
+        },
+        "deposit": {
+            
         }
     },
     "auth": {
