@@ -46,7 +46,7 @@ const Index = () => {
         <div className="absolute inset-0 bg-black/70" />
 
         {/* Gradient Overlay for Enhanced Visual Appeal */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/30 to-transparent" />
 
         {/* Subtle Pattern Overlay for Texture */}
         <div
