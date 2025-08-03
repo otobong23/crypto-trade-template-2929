@@ -36,14 +36,14 @@ const Index = () => {
         {/* Enhanced Background with Image and Overlays */}
         {/* Background Image */}
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-contain bg-center bg-no-repeat"
           style={{
             backgroundImage: 'url("/crypto.webp")',
           }}
         />
 
         {/* Light Dark Overlay for Better Text Readability */}
-        <div className="absolute inset-0 bg-black/70" />
+        <div className="absolute inset-0 bg-black/40" />
 
         {/* Gradient Overlay for Enhanced Visual Appeal */}
         <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/30 to-transparent" />
