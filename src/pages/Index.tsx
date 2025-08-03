@@ -33,6 +33,32 @@ const Index = () => {
         <div
           className="absolute inset-0 -z-10 bg-[#0A0A0A]"
         />
+        {/* Enhanced Background with Image and Overlays */}
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: 'url("/crypto.jpg")',
+          }}
+        />
+
+        {/* Light Dark Overlay for Better Text Readability */}
+        <div className="absolute inset-0 bg-black/40" />
+
+        {/* Gradient Overlay for Enhanced Visual Appeal */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/30 to-transparent" />
+
+        {/* Subtle Pattern Overlay for Texture */}
+        <div
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage: `
+                radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.3) 0%, transparent 50%)
+              `
+          }}
+        />
 
         {/* add login and signup button */}
         <motion.div
