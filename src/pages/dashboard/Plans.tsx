@@ -372,8 +372,8 @@ const Plans = () => {
             <div className="flex items-center justify-between">
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="text-4xl font-bold text-orange-400">{currentPlan.returnRate}</div>
-                  <TrendingUp className="w-8 h-8 text-orange-400" />
+                  <div className="text-4xl font-bold text-white">{currentPlan.returnRate}</div>
+                  <TrendingUp className="w-8 h-8 text-primary" />
                 </div>
                 <h3 className="text-xl font-bold text-white">{currentPlan.name}</h3>
                 <p className="text-gray-400 mb-2">{currentPlan.description}</p>
@@ -416,8 +416,8 @@ const Plans = () => {
                   <CardHeader>
                     {/* Return Rate Display */}
                     <div className="flex items-center gap-2 mb-3">
-                      <div className="text-4xl font-bold text-orange-400">{plan.returnRate}</div>
-                      <TrendingUp className="w-8 h-8 text-orange-400" />
+                      <div className="text-4xl font-bold text-white">{plan.returnRate}</div>
+                      <TrendingUp className="w-8 h-8 text-primary" />
                     </div>
                     
                     <CardTitle className="text-white">{plan.name}</CardTitle>
