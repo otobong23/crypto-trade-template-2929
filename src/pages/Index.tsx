@@ -31,7 +31,7 @@ const Index = () => {
       >
         {/* Background */}
         <div
-          className="absolute inset-0 -z-10 bg-[#0A0A0A]"
+          className="absolute inset-0 -z-10 bg-[#0A0A0A] overflow-hidden"
         />
         {/* Enhanced Background with Image and Overlays */}
         {/* Background Image */}
@@ -43,10 +43,10 @@ const Index = () => {
         />
 
         {/* Light Dark Overlay for Better Text Readability */}
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-black/70" />
 
         {/* Gradient Overlay for Enhanced Visual Appeal */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/30 to-transparent" />
 
         {/* Subtle Pattern Overlay for Texture */}
         <div
