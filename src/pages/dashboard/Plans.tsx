@@ -330,7 +330,7 @@ const Plans = () => {
     }
   ];
 
-  const currentPlan = plans[1]; // Simulate user having Growth Plan
+  const currentPlan = plans[0]; // Simulate user having Growth Plan
 
   return (
     <DashboardLayout>
