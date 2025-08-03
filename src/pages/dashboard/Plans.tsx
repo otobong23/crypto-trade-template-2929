@@ -9,7 +9,7 @@
 
 // const Plans = () => {
 //   const { t } = useTranslation();
-  
+
 //   const plans = [
 //     {
 //       id: 1,
@@ -171,7 +171,7 @@
 //                        <Badge className="bg-primary text-white">{t('dashboard.plans.mostPopular')}</Badge>
 //                      </div>
 //                   )}
-                  
+
 //                   <CardHeader>
 //                     <CardTitle className="text-white">{plan.name}</CardTitle>
 //                     <div className="text-3xl font-bold text-white">
@@ -179,7 +179,7 @@
 //                     </div>
 //                     <p className="text-gray-400">{plan.description}</p>
 //                   </CardHeader>
-                  
+
 //                   <CardContent className="space-y-4">
 //                      <div className="space-y-2">
 //                       <div className="flex justify-between text-sm">
@@ -191,7 +191,7 @@
 //                         <span className="text-primary font-medium">{plan.duration}</span>
 //                       </div>
 //                     </div>
-                    
+
 //                     <div className="space-y-3">
 //                       {plan.features.map((feature, idx) => (
 //                         <div key={idx} className="flex items-center gap-2">
@@ -200,7 +200,7 @@
 //                         </div>
 //                       ))}
 //                     </div>
-                    
+
 //                      <Button 
 //                       className={`w-full ${plan.popular ? 'button-gradient' : ''}`}
 //                       variant={plan.popular ? 'default' : 'outline'}
@@ -230,10 +230,12 @@ import { CheckCircle, Star, ArrowRight, TrendingUp } from "lucide-react";
 import DashboardLayout from "@/components/DashboardLayout";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useCallback, useState } from "react";
 
 const Plans = () => {
   const { t } = useTranslation();
-  
+  const [userCurrentPlans, setUserCurrentPlan] = useState<number | null>(null)
+
   const plans = [
     {
       id: 1,
@@ -330,7 +332,13 @@ const Plans = () => {
     }
   ];
 
-  const currentPlan = plans[0]; // Simulate user having Growth Plan
+  const currentPlan = useCallback(() => {
+    if (userCurrentPlans) {
+      return plans[userCurrentPlans];
+    } else {
+      return null
+    }
+  }, [userCurrentPlans]); // Simulate user having Growth Plan
 
   return (
     <DashboardLayout>
@@ -358,7 +366,7 @@ const Plans = () => {
         </div>
 
         {/* Current Plan */}
-        <Card className="glass border-primary/30 bg-gradient-to-r from-primary/5 to-transparent">
+        {currentPlan ? (<Card className="glass border-primary/30 bg-gradient-to-r from-primary/5 to-transparent">
           <CardHeader>
             <div className="flex items-center justify-between">
               <CardTitle className="text-white flex items-center gap-2">
@@ -372,28 +380,32 @@ const Plans = () => {
             <div className="flex items-center justify-between">
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="text-4xl font-bold text-white">{currentPlan.returnRate}</div>
+                  <div className="text-4xl font-bold text-white">{currentPlan().returnRate}</div>
                   <TrendingUp className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold text-white">{currentPlan.name}</h3>
-                <p className="text-gray-400 mb-2">{currentPlan.description}</p>
-                
+                <h3 className="text-xl font-bold text-white">{currentPlan().name}</h3>
+                <p className="text-gray-400 mb-2">{currentPlan().description}</p>
+
                 <div className="bg-gray-800/50 rounded-lg p-3 mb-3 max-w-md">
-                  <p className="text-sm text-gray-300">{currentPlan.withdrawalInfo}</p>
+                  <p className="text-sm text-gray-300">{currentPlan().withdrawalInfo}</p>
                 </div>
-                
+
                 <p className="text-sm text-gray-400">
-                  Return Rate: <span className="text-green-500 font-medium">{currentPlan.returnRate}</span> • 
-                  Duration: <span className="text-primary font-medium">{currentPlan.duration}</span>
+                  Return Rate: <span className="text-green-500 font-medium">{currentPlan().returnRate}</span> •
+                  Duration: <span className="text-primary font-medium">{currentPlan().duration}</span>
                 </p>
               </div>
               <div className="text-right">
-                <p className="text-3xl font-bold text-white">${currentPlan.price.toLocaleString()}</p>
+                <p className="text-3xl font-bold text-white">${currentPlan().price.toLocaleString()}</p>
                 <p className="text-sm text-gray-400">Current Investment</p>
               </div>
             </div>
           </CardContent>
-        </Card>
+        </Card>) : (
+          <div className="text-center py-8">
+            <p className="text-gray-400">you have no active plans</p>
+          </div>
+        )}
 
         {/* Available Plans */}
         <div>
@@ -412,28 +424,28 @@ const Plans = () => {
                       <Badge className="bg-primary text-white">{t('dashboard.plans.mostPopular')}</Badge>
                     </div>
                   )}
-                  
+
                   <CardHeader>
                     {/* Return Rate Display */}
                     <div className="flex items-center gap-2 mb-3">
                       <div className="text-4xl font-bold text-white">{plan.returnRate}</div>
                       <TrendingUp className="w-8 h-8 text-primary" />
                     </div>
-                    
+
                     <CardTitle className="text-white">{plan.name}</CardTitle>
                     <div className="text-2xl font-bold text-white">
                       ${plan.price.toLocaleString()}
                       {plan.maxPrice && <span className="text-gray-400 text-sm font-normal"> minimum</span>}
                     </div>
-                    
+
                     {/* Withdrawal Info Box */}
                     <div className="bg-gray-800/50 rounded-lg p-3 mb-3">
                       <p className="text-sm text-gray-300">{plan.withdrawalInfo}</p>
                     </div>
-                    
+
                     <p className="text-gray-400 text-sm">{plan.description}</p>
                   </CardHeader>
-                  
+
                   <CardContent className="space-y-4">
                     <div className="space-y-2">
                       <div className="flex justify-between text-sm">
@@ -451,7 +463,7 @@ const Plans = () => {
                         </span>
                       </div>
                     </div>
-                    
+
                     <div className="space-y-3">
                       {plan.features.map((feature, idx) => (
                         <div key={idx} className="flex items-center gap-2">
@@ -460,13 +472,13 @@ const Plans = () => {
                         </div>
                       ))}
                     </div>
-                    
-                    <Button 
-                      className={`w-full ${plan.popular ? 'button-gradient' : ''} ${currentPlan.id === plan.id ? 'opacity-50' : ''}`}
+
+                    <Button
+                      className={`w-full ${plan.popular ? 'button-gradient' : ''} ${currentPlan().id === plan.id ? 'opacity-50' : ''}`}
                       variant={plan.popular ? 'default' : 'outline'}
-                      disabled={currentPlan.id === plan.id}
+                      disabled={currentPlan().id === plan.id}
                     >
-                      {currentPlan.id === plan.id ? 'Current Plan' : 'Select Plan'}
+                      {currentPlan().id === plan.id ? 'Current Plan' : 'Select Plan'}
                     </Button>
                   </CardContent>
                 </Card>
