@@ -10,13 +10,16 @@ import {
   Clock,
   CheckCircle,
   XCircle,
-  Loader2
+  Loader2,
+  Eye
 } from "lucide-react";
 import AdminLayout from "@/components/AdminLayout";
 import { useCallback, useEffect, useState } from "react";
 import api from "@/lib/api";
 import { useToast } from "@/hooks/use-toast";
 import { AxiosError } from "axios";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const AdminDashboard = () => {
   const { t } = useTranslation();
@@ -341,6 +344,11 @@ const AdminDashboard = () => {
                           Assets: ${user.wallet?.assetValue?.toLocaleString() || '0'}
                         </p>
                       </div>
+                      <Link to={`/admin/users/${user.username}`}>
+                        <Button size="sm">
+                          <Eye className="w-4 h-4" />
+                        </Button>
+                      </Link>
                       <Badge className={user.verified ? 'bg-green-500/10 text-green-500' : 'bg-gray-500/10 text-gray-500'}>
                         {user.verified ? 'Verified' : 'Unverified'}
                       </Badge>
