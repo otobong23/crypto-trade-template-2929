@@ -5,7 +5,17 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Search, Eye, Edit, Loader2, User, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import { Search, Edit, Loader2, User, ChevronLeft, ChevronRight, Trash2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import AdminLayout from "@/components/AdminLayout";
 import { useToast } from "@/hooks/use-toast";
@@ -20,6 +30,9 @@ const AllUsers = () => {
   const [loading, setLoading] = useState(true);
   const [searching, setSearching] = useState(false);
   const [isSearchMode, setIsSearchMode] = useState(false);
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+  const [userToDelete, setUserToDelete] = useState<string | null>(null);
+  const [deleting, setDeleting] = useState(false);
   const { toast } = useToast();
   const [userStats, setUserStats] = useState({
     total: 0,
@@ -68,6 +81,58 @@ const AllUsers = () => {
 
     getAllData();
   }, [userStats.page, toast]);
+
+  const handleDeleteConfirmation = (username: string) => {
+    setUserToDelete(username);
+    setDeleteDialogOpen(true);
+  };
+
+  const handleDeleteUser = async (username: string) => {
+    const LOCALSTORAGE_TOKEN = localStorage.getItem('adminToken');
+    if (!LOCALSTORAGE_TOKEN) {
+      window.location.href = "/admin/login";
+      return;
+    }
+
+    setDeleting(true);
+    try {
+      api.defaults.headers.common["Authorization"] = `Bearer ${LOCALSTORAGE_TOKEN}`;
+      await api.delete(`/admin/user?username=${username}`);
+
+      // Remove user from the current list
+      if (isSearchMode) {
+        setSearchedUsers(prev => prev.filter(user => user.username !== username));
+      } else {
+        setUsers(prev => prev.filter(user => user.username !== username));
+        setUserStats(prev => ({ ...prev, total: prev.total - 1 }));
+      }
+
+      toast({
+        title: "Success",
+        description: `User ${username} has been deleted successfully`,
+        variant: "default",
+      });
+    } catch (err) {
+      console.log(err);
+      if (err instanceof AxiosError) {
+        toast({
+          title: "Error",
+          description: err.response?.data.message || "Failed to delete user",
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: "Error",
+          description: 'Failed to delete user. Please try again later',
+          variant: "destructive",
+        });
+      }
+    } finally {
+      setDeleting(false);
+      setDeleteDialogOpen(false);
+      setUserToDelete(null);
+    }
+  };
 
   const handleSearch = async () => {
     if (!searchTerm.trim()) {
@@ -275,11 +340,14 @@ const AllUsers = () => {
                         </Badge>
 
                         <div className="flex gap-2">
-                          <Link to={`/admin/users/${user.username}`}>
-                            <Button size="sm" variant="outline">
-                              <Eye className="w-4 h-4" />
-                            </Button>
-                          </Link>
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => handleDeleteConfirmation(user.username)}
+                            className="text-red-400 hover:text-red-300 hover:bg-red-500/10"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </Button>
                           <Link to={`/admin/users/${user.username}`}>
                             <Button size="sm" variant="outline">
                               <Edit className="w-4 h-4" />
@@ -332,6 +400,43 @@ const AllUsers = () => {
             )}
           </CardContent>
         </Card>
+
+        {/* Delete Confirmation Modal */}
+        <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
+          <AlertDialogContent className="bg-gray-900 border-gray-700">
+            <AlertDialogHeader>
+              <AlertDialogTitle className="text-white">
+                Delete User
+              </AlertDialogTitle>
+              <AlertDialogDescription className="text-gray-300">
+                Are you sure you want to delete the user <span className="font-semibold text-white">@{userToDelete}</span>?
+                This action cannot be undone and will permanently remove all user data including their wallet, transactions, and assets.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel
+                className="bg-gray-700 text-gray-300 hover:bg-gray-600"
+                disabled={deleting}
+              >
+                Cancel
+              </AlertDialogCancel>
+              <AlertDialogAction
+                onClick={() => userToDelete && handleDeleteUser(userToDelete)}
+                disabled={deleting}
+                className="bg-red-600 hover:bg-red-700 text-white"
+              >
+                {deleting ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin mr-2" />
+                    Deleting...
+                  </>
+                ) : (
+                  'Delete User'
+                )}
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
       </div>
     </AdminLayout>
   );
