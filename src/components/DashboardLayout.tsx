@@ -19,6 +19,7 @@ import LanguageSwitcher from "./LanguageSwitcher";
 import { useToast } from "@/hooks/use-toast";
 import api from "@/lib/api";
 import { AxiosError } from "axios";
+import Cookies from "js-cookie";
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -31,13 +32,13 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   const { toast } = useToast();
   useEffect(() => {
     const getUser = async () => {
-      const LOCALSTORAGE_TOKEN = localStorage.getItem('authToken')
-      if (!LOCALSTORAGE_TOKEN) {
+      const USER_TOKEN = Cookies.get('authToken')
+      if (!USER_TOKEN) {
         window.location.href = "/login";
         return
       }
       try {
-        api.defaults.headers.common["Authorization"] = `Bearer ${LOCALSTORAGE_TOKEN}`;
+        api.defaults.headers.common["Authorization"] = `Bearer ${USER_TOKEN}`;
         const response = await api.get<profileResponse>('/user/getUser',)
         setUser(response.data.user)
       } catch (err) {
@@ -69,7 +70,7 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
 
   const handleLogout = () => {
     // Simulate logout - replace with actual logout logic
-    localStorage.clear();
+    Cookies.remove('authToken');
     window.location.href = "/";
   };
 

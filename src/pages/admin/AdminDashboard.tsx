@@ -20,6 +20,7 @@ import { useToast } from "@/hooks/use-toast";
 import { AxiosError } from "axios";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const AdminDashboard = () => {
   const { t } = useTranslation();
@@ -40,15 +41,15 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     const getAllData = async () => {
-      const LOCALSTORAGE_TOKEN = localStorage.getItem('adminToken');
-      if (!LOCALSTORAGE_TOKEN) {
+      const USER_TOKEN = Cookies.get('adminToken');
+      if (!USER_TOKEN) {
         window.location.href = "/admin/login";
         return;
       }
 
       setLoading(true);
       try {
-        api.defaults.headers.common["Authorization"] = `Bearer ${LOCALSTORAGE_TOKEN}`;
+        api.defaults.headers.common["Authorization"] = `Bearer ${USER_TOKEN}`;
 
         // Fetch users and transactions in parallel
         const [allUsersResponse, allTransactionResponse] = await Promise.all([

@@ -15,6 +15,7 @@ import { Link, useLocation } from "react-router-dom";
 import tradephereLogoSrc from "@/assets/trade_phere.svg";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { useTranslation } from "react-i18next";
+import Cookies from "js-cookie";
 
 interface AdminLayoutProps {
   children: React.ReactNode;
@@ -33,8 +34,8 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
   ];
 
   const handleLogout = () => {
-    localStorage.removeItem("adminToken");
-    localStorage.removeItem("userRole");
+    Cookies.remove("adminToken");
+    Cookies.remove("userRole");
     window.location.href = "/";
   };
 

@@ -12,6 +12,7 @@ import DashboardLayout from "@/components/DashboardLayout";
 import api from "@/lib/api";
 import { AxiosError } from "axios";
 import { QRCodeCanvas } from "qrcode.react";
+import Cookies from "js-cookie";
 
 const DepositConfirm = () => {
   const { t } = useTranslation();
@@ -140,13 +141,13 @@ const DepositConfirm = () => {
 
     // Simulate file upload delay
     setTimeout(async () => {
-      const LOCALSTORAGE_TOKEN = localStorage.getItem('authToken')
-      if (!LOCALSTORAGE_TOKEN) {
+      const USER_TOKEN =  Cookies.get('authToken')
+      if (!USER_TOKEN) {
         window.location.href = "/login";
         return
       }
       try {
-        api.defaults.headers.common["Authorization"] = `Bearer ${LOCALSTORAGE_TOKEN}`;
+        api.defaults.headers.common["Authorization"] = `Bearer ${USER_TOKEN}`;
         const response = await api.post<transactionResponseType>('/user/deposit/', {
           amount: cryptoAmount,
           blockchain: crypto.name == 'Bitcoin' ? 'BTC' : crypto.name == 'Ethereum' ? 'ETH' : 'USDT',

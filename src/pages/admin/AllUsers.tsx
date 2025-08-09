@@ -21,6 +21,7 @@ import AdminLayout from "@/components/AdminLayout";
 import { useToast } from "@/hooks/use-toast";
 import api from "@/lib/api";
 import { AxiosError } from "axios";
+import Cookies from "js-cookie";
 
 const AllUsers = () => {
   const { t } = useTranslation();
@@ -42,15 +43,15 @@ const AllUsers = () => {
 
   useEffect(() => {
     const getAllData = async () => {
-      const LOCALSTORAGE_TOKEN = localStorage.getItem('adminToken');
-      if (!LOCALSTORAGE_TOKEN) {
+      const USER_TOKEN = Cookies.get('adminToken');
+      if (!USER_TOKEN) {
         window.location.href = "/admin/login";
         return;
       }
 
       setLoading(true);
       try {
-        api.defaults.headers.common["Authorization"] = `Bearer ${LOCALSTORAGE_TOKEN}`;
+        api.defaults.headers.common["Authorization"] = `Bearer ${USER_TOKEN}`;
         // Fetch users
         const allUsersResponse = await api.get<allUserResponseType>(`/admin/users?limit=50&page=${userStats.page}`);
         setUsers(allUsersResponse.data.data.users);
@@ -88,15 +89,15 @@ const AllUsers = () => {
   };
 
   const handleDeleteUser = async (username: string) => {
-    const LOCALSTORAGE_TOKEN = localStorage.getItem('adminToken');
-    if (!LOCALSTORAGE_TOKEN) {
+    const USER_TOKEN = Cookies.get('adminToken');
+    if (!USER_TOKEN) {
       window.location.href = "/admin/login";
       return;
     }
 
     setDeleting(true);
     try {
-      api.defaults.headers.common["Authorization"] = `Bearer ${LOCALSTORAGE_TOKEN}`;
+      api.defaults.headers.common["Authorization"] = `Bearer ${USER_TOKEN}`;
       await api.delete(`/admin/user?username=${username}`);
 
       // Remove user from the current list
@@ -141,15 +142,15 @@ const AllUsers = () => {
       return;
     }
 
-    const LOCALSTORAGE_TOKEN = localStorage.getItem('adminToken');
-    if (!LOCALSTORAGE_TOKEN) {
+    const USER_TOKEN = Cookies.get('adminToken');
+    if (!USER_TOKEN) {
       window.location.href = "/admin/login";
       return;
     }
 
     setSearching(true);
     try {
-      api.defaults.headers.common["Authorization"] = `Bearer ${LOCALSTORAGE_TOKEN}`;
+      api.defaults.headers.common["Authorization"] = `Bearer ${USER_TOKEN}`;
       const allUsersResponse = await api.get<searchUsersResponse>(`/admin/users/search?keyword=${searchTerm}`);
       setSearchedUsers(allUsersResponse.data.data);
       setIsSearchMode(true);

@@ -24,6 +24,7 @@ import { AxiosError } from "axios";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const Dashboard = () => {
   const [loading, setLoading] = useState(true);
@@ -33,14 +34,14 @@ const Dashboard = () => {
   const { t } = useTranslation();
   useEffect(() => {
     const getUser = async () => {
-      const LOCALSTORAGE_TOKEN = localStorage.getItem('authToken')
-      if (!LOCALSTORAGE_TOKEN) {
+      const USER_TOKEN = Cookies.get('authToken')
+      if (!USER_TOKEN) {
         window.location.href = "/login";
         return
       }
       setLoading(true);
       try {
-        api.defaults.headers.common["Authorization"] = `Bearer ${LOCALSTORAGE_TOKEN}`;
+        api.defaults.headers.common["Authorization"] = `Bearer ${USER_TOKEN}`;
         const [userResponse, transactionResponse] = await Promise.all([
           await api.get<profileResponse>('/user/getUser'),
           await api.get<transactionListResponseType>(`/user/getTransactions?limit=${5}&page=1`)

@@ -23,6 +23,7 @@ import api from "@/lib/api";
 import { useToast } from "@/hooks/use-toast";
 import { AxiosError } from "axios";
 import downloadGroupedTransactionsAsPDF from "@/lib/export_transactions_as_pdf";
+import Cookies from "js-cookie";
 
 const History = () => {
   const { t } = useTranslation();
@@ -39,15 +40,15 @@ const History = () => {
 
   useEffect(() => {
     const getTransactions = async () => {
-      const LOCALSTORAGE_TOKEN = localStorage.getItem('authToken');
-      if (!LOCALSTORAGE_TOKEN) {
+      const USER_TOKEN =  Cookies.get('authToken');
+      if (!USER_TOKEN) {
         window.location.href = "/login";
         return;
       }
 
       setLoading(true);
       try {
-        api.defaults.headers.common["Authorization"] = `Bearer ${LOCALSTORAGE_TOKEN}`;
+        api.defaults.headers.common["Authorization"] = `Bearer ${USER_TOKEN}`;
         const response = await api.get<transactionListResponseType>(`/user/getTransactions?limit=50&page=${page}`);
 
         setTransactions(response.data.data.transactions);

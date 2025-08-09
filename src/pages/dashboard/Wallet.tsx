@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+// import { Badge } from "@/components/ui/badge";
 import {
   Wallet as WalletIcon,
   ArrowUpRight,
@@ -20,6 +20,7 @@ import { useEffect, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import api from "@/lib/api";
 import { AxiosError } from "axios";
+import Cookies from "js-cookie";
 
 const Wallet = () => {
   const { t } = useTranslation();
@@ -28,13 +29,13 @@ const Wallet = () => {
 
   useEffect(() => {
     const getUser = async () => {
-      const LOCALSTORAGE_TOKEN = localStorage.getItem('authToken')
-      if (!LOCALSTORAGE_TOKEN) {
+      const USER_TOKEN = Cookies.get('authToken')
+      if (!USER_TOKEN) {
         window.location.href = "/login";
         return
       }
       try {
-        api.defaults.headers.common["Authorization"] = `Bearer ${LOCALSTORAGE_TOKEN}`;
+        api.defaults.headers.common["Authorization"] = `Bearer ${USER_TOKEN}`;
         const response = await api.get<profileResponse>('/user/getUser',)
         setUser(response.data.user)
       } catch (err) {

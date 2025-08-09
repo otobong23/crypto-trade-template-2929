@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import btcImage from '@/assets/btc.png'
 import ethImage from '@/assets/eth.png'
 import usdtImage from '@/assets/usdt.png'
+import Cookies from "js-cookie";
 
 const Withdrawal = () => {
   const { t } = useTranslation();
@@ -26,13 +27,13 @@ const Withdrawal = () => {
 
   useEffect(() => {
     const getUser = async () => {
-      const LOCALSTORAGE_TOKEN = localStorage.getItem('authToken')
-      if (!LOCALSTORAGE_TOKEN) {
+      const USER_TOKEN = Cookies.get('authToken')
+      if (!USER_TOKEN) {
         window.location.href = "/login";
         return
       }
       try {
-        api.defaults.headers.common["Authorization"] = `Bearer ${LOCALSTORAGE_TOKEN}`;
+        api.defaults.headers.common["Authorization"] = `Bearer ${USER_TOKEN}`;
         const response = await api.get<profileResponse>('/user/getUser',)
         setUser(response.data.user)
       } catch (err) {
@@ -70,14 +71,14 @@ const Withdrawal = () => {
       return;
     }
 
-    const LOCALSTORAGE_TOKEN = localStorage.getItem('authToken')
-    if (!LOCALSTORAGE_TOKEN) {
+    const USER_TOKEN = Cookies.get('authToken')
+    if (!USER_TOKEN) {
       window.location.href = "/login";
       return
     }
 
     try {
-      api.defaults.headers.common["Authorization"] = `Bearer ${LOCALSTORAGE_TOKEN}`;
+      api.defaults.headers.common["Authorization"] = `Bearer ${USER_TOKEN}`;
       const response = await api.post<transactionResponseType>('/user/withdraw/', {
         amount,
         blockchain: selectedCrypto,

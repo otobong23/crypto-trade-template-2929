@@ -10,7 +10,7 @@ import AdminLayout from "@/components/AdminLayout";
 import { useTranslation } from "react-i18next";
 import api from "@/lib/api";
 import { AxiosError } from "axios";
-
+import Cookies from "js-cookie";
 
 const AdminSettings = () => {
   const { t } = useTranslation();
@@ -35,15 +35,15 @@ const AdminSettings = () => {
 
   useEffect(() => {
     const getAllData = async () => {
-      const LOCALSTORAGE_TOKEN = localStorage.getItem('adminToken');
-      if (!LOCALSTORAGE_TOKEN) {
+      const USER_TOKEN = Cookies.get('adminToken');
+      if (!USER_TOKEN) {
         window.location.href = "/admin/login";
         return;
       }
 
       setLoading(true);
       try {
-        api.defaults.headers.common["Authorization"] = `Bearer ${LOCALSTORAGE_TOKEN}`;
+        api.defaults.headers.common["Authorization"] = `Bearer ${USER_TOKEN}`;
         const adminResponse = await api.get<adminResponseType>('/admin/');
 
         // Set admin data
@@ -95,15 +95,15 @@ const AdminSettings = () => {
       return;
     }
 
-    const LOCALSTORAGE_TOKEN = localStorage.getItem('adminToken');
-    if (!LOCALSTORAGE_TOKEN) {
+    const USER_TOKEN = Cookies.get('adminToken');
+    if (!USER_TOKEN) {
       window.location.href = "/admin/login";
       return;
     }
 
     setUpdateLoading(true);
     try {
-      api.defaults.headers.common["Authorization"] = `Bearer ${LOCALSTORAGE_TOKEN}`;
+      api.defaults.headers.common["Authorization"] = `Bearer ${USER_TOKEN}`;
       const adminResponse = await api.put<adminResponseType>('/admin/', { 
         password: passwordData.newPassword
       });
@@ -145,15 +145,15 @@ const AdminSettings = () => {
   const handleWalletUpdate = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const LOCALSTORAGE_TOKEN = localStorage.getItem('adminToken');
-    if (!LOCALSTORAGE_TOKEN) {
+    const USER_TOKEN = Cookies.get('adminToken');
+    if (!USER_TOKEN) {
       window.location.href = "/admin/login";
       return;
     }
 
     setUpdateLoading(true);
     try {
-      api.defaults.headers.common["Authorization"] = `Bearer ${LOCALSTORAGE_TOKEN}`;
+      api.defaults.headers.common["Authorization"] = `Bearer ${USER_TOKEN}`;
       const adminResponse = await api.put<adminResponseType>('/admin/', { 
         walletAddress: walletAddresses 
       });
@@ -199,15 +199,15 @@ const AdminSettings = () => {
       return;
     }
 
-    const LOCALSTORAGE_TOKEN = localStorage.getItem('adminToken');
-    if (!LOCALSTORAGE_TOKEN) {
+    const USER_TOKEN = Cookies.get('adminToken');
+    if (!USER_TOKEN) {
       window.location.href = "/admin/login";
       return;
     }
 
     setUpdateLoading(true);
     try {
-      api.defaults.headers.common["Authorization"] = `Bearer ${LOCALSTORAGE_TOKEN}`;
+      api.defaults.headers.common["Authorization"] = `Bearer ${USER_TOKEN}`;
       const adminResponse = await api.put<adminResponseType>('/admin/', { 
         username: adminUsername 
       });

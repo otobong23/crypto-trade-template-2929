@@ -9,6 +9,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Link, Navigate } from "react-router-dom";
 import api from "@/lib/api";
 import { AxiosError } from "axios";
+import Cookies from "js-cookie";
 
 const Login = () => {
   const { t } = useTranslation();
@@ -17,8 +18,8 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
-  const token = localStorage.getItem("authToken");
-  const userRole = localStorage.getItem("userRole");
+  const token = Cookies.get("authToken")
+  const userRole = Cookies.get("userRole")
 
   // Check if user is authenticated
   if (token && userRole === "user") {
@@ -38,8 +39,8 @@ const Login = () => {
             title: "Login Successful",
             description: response.data.message,
           });
-          localStorage.setItem("authToken", response.data.token);
-          localStorage.setItem("userRole", "user");
+          Cookies.set("authToken", response.data.token, { expires: 30 });
+          Cookies.set("userRole", "user", { expires: 30 });
           // Redirect to login would happen here
           window.location.href = "/dashboard";
         } catch (err) {

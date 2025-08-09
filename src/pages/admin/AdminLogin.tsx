@@ -10,6 +10,7 @@ import { Shield } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { AxiosError } from "axios";
 import api from "@/lib/api";
+import Cookies from "js-cookie";
 
 const AdminLogin = () => {
   const { t } = useTranslation();
@@ -21,13 +22,13 @@ const AdminLogin = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
 
-  const token = localStorage.getItem("adminToken");
-    const userRole = localStorage.getItem("userRole");
-  
-    // Check if user is authenticated
-    if (token && userRole === "admin") {
-      return <Navigate to={"/admin/dashboard"} replace />;
-    }
+  const token = Cookies.get("adminToken");
+  const userRole = Cookies.get("userRole");
+
+  // Check if user is authenticated
+  if (token && userRole === "admin") {
+    return <Navigate to={"/admin/dashboard"} replace />;
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,8 +42,8 @@ const AdminLogin = () => {
           title: "Login Successful",
           description: response.data.message,
         });
-        localStorage.setItem("adminToken", response.data.access_token);
-        localStorage.setItem("userRole", "admin");
+        Cookies.set("adminToken", response.data.access_token, { expires: 30 });
+        Cookies.set("userRole", "admin", { expires: 30 });
         navigate("/admin/dashboard");
       } catch (err) {
         if (err instanceof AxiosError) {

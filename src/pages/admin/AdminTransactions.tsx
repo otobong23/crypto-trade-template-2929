@@ -20,6 +20,7 @@ import {
 import AdminLayout from "@/components/AdminLayout";
 import api from "@/lib/api";
 import { AxiosError } from "axios";
+import Cookies from "js-cookie";
 
 
 const AdminTransactions = () => {
@@ -43,15 +44,15 @@ const AdminTransactions = () => {
   }, [transactionStats.page]);
 
   const getTransactions = async () => {
-    const LOCALSTORAGE_TOKEN = localStorage.getItem('adminToken');
-    if (!LOCALSTORAGE_TOKEN) {
+    const USER_TOKEN = Cookies.get('adminToken');
+    if (!USER_TOKEN) {
       window.location.href = "/admin/login";
       return;
     }
 
     setLoading(true);
     try {
-      api.defaults.headers.common["Authorization"] = `Bearer ${LOCALSTORAGE_TOKEN}`;
+      api.defaults.headers.common["Authorization"] = `Bearer ${USER_TOKEN}`;
 
       const allTransactionResponse = await api.get<allTransactionsResponseType>(
         `/admin/transactions?limit=${transactionStats.limit}&page=${transactionStats.page}`
@@ -100,15 +101,15 @@ const AdminTransactions = () => {
   });
 
   const handleAccept = async (transactionId: string) => {
-    const LOCALSTORAGE_TOKEN = localStorage.getItem('adminToken');
-    if (!LOCALSTORAGE_TOKEN) {
+    const USER_TOKEN = Cookies.get('adminToken');
+    if (!USER_TOKEN) {
       window.location.href = "/admin/login";
       return;
     }
 
     setUpdatingTransaction(transactionId);
     try {
-      api.defaults.headers.common["Authorization"] = `Bearer ${LOCALSTORAGE_TOKEN}`;
+      api.defaults.headers.common["Authorization"] = `Bearer ${USER_TOKEN}`;
       const updateTransaction = await api.put<updateTransactionType>(
         `/admin/transactions?transactionID=${transactionId}`,
         {
@@ -150,15 +151,15 @@ const AdminTransactions = () => {
   };
 
   const handleReject = async (transactionId: string) => {
-    const LOCALSTORAGE_TOKEN = localStorage.getItem('adminToken');
-    if (!LOCALSTORAGE_TOKEN) {
+    const USER_TOKEN = Cookies.get('adminToken');
+    if (!USER_TOKEN) {
       window.location.href = "/admin/login";
       return;
     }
 
     setUpdatingTransaction(transactionId);
     try {
-      api.defaults.headers.common["Authorization"] = `Bearer ${LOCALSTORAGE_TOKEN}`;
+      api.defaults.headers.common["Authorization"] = `Bearer ${USER_TOKEN}`;
       const updateTransaction = await api.put<updateTransactionType>(
         `/admin/transactions?transactionID=${transactionId}`,
         {

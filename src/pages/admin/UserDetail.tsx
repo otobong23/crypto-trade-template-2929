@@ -12,6 +12,7 @@ import { Edit, Save, X, User, Loader2 } from "lucide-react";
 import AdminLayout from "@/components/AdminLayout";
 import api from "@/lib/api";
 import { AxiosError } from "axios";
+import Cookies from "js-cookie";
 
 const UserDetail = () => {
   const { t } = useTranslation();
@@ -24,15 +25,15 @@ const UserDetail = () => {
 
   useEffect(() => {
     const getAllData = async () => {
-      const LOCALSTORAGE_TOKEN = localStorage.getItem('adminToken');
-      if (!LOCALSTORAGE_TOKEN) {
+      const USER_TOKEN = Cookies.get('adminToken');
+      if (!USER_TOKEN) {
         window.location.href = "/admin/login";
         return;
       }
 
       setLoading(true);
       try {
-        api.defaults.headers.common["Authorization"] = `Bearer ${LOCALSTORAGE_TOKEN}`;
+        api.defaults.headers.common["Authorization"] = `Bearer ${USER_TOKEN}`;
         // Fetch user data
         const userResponse = await api.get<userResponseType>(`/admin/user?username=${userId}`);
         setUser(userResponse.data.data);
@@ -83,14 +84,14 @@ const UserDetail = () => {
       } else {
         (updatedUser as any)[field] = updateValue;
       }
-      const LOCALSTORAGE_TOKEN = localStorage.getItem('adminToken');
-      if (!LOCALSTORAGE_TOKEN) {
+      const USER_TOKEN = Cookies.get('adminToken');
+      if (!USER_TOKEN) {
         window.location.href = "/admin/login";
         return;
       }
 
       setLoading(true);
-      api.defaults.headers.common["Authorization"] = `Bearer ${LOCALSTORAGE_TOKEN}`;
+      api.defaults.headers.common["Authorization"] = `Bearer ${USER_TOKEN}`;
       // update user data
       const payload = {
         firstName: updatedUser.firstName,
