@@ -68,14 +68,6 @@ const Dashboard = () => {
     getUser()
   }, [])
 
-  const recentTransactions = [
-    { id: 1, type: "Deposit", amount: 1000, status: "Completed", date: "2024-01-15", crypto: "BTC" },
-    { id: 2, type: "Withdrawal", amount: 500, status: "Pending", date: "2024-01-14", crypto: "ETH" },
-    { id: 3, type: "Deposit", amount: 750, status: "Completed", date: "2024-01-13", crypto: "USDT" },
-    { id: 4, type: "Withdrawal", amount: 300, status: "Rejected", date: "2024-01-12", crypto: "BTC" },
-    { id: 5, type: "Deposit", amount: 2000, status: "Completed", date: "2024-01-11", crypto: "ETH" },
-  ];
-
   const marketData = [
     { symbol: "BTC", price: 45250.50, change: 2.45, positive: true },
     { symbol: "ETH", price: 2850.75, change: -1.23, positive: false },

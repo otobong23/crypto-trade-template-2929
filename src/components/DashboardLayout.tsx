@@ -168,12 +168,42 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
         </header>
 
         {/* Page Content */}
-        <main className="p-4 sm:p-6">
+        <main className="p-4 sm:p-6 relative">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
+            {/* Background */}
+            <div
+              className="absolute inset-0 -z-10 bg-[#0A0A0A] overflow-hidden"
+            />
+            {/* Enhanced Background with Image and Overlays */}
+            {/* Background Image */}
+            <div
+              className="absolute inset-0 bg-contain bg-center bg-no-repeat"
+              style={{
+                backgroundImage: 'url("/crypto.webp")',
+              }}
+            />
+
+            {/* Light Dark Overlay for Better Text Readability */}
+            {/* <div className="absolute inset-0 bg-black/40" /> */}
+
+            {/* Gradient Overlay for Enhanced Visual Appeal */}
+            {/* <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/30 to-transparent" /> */}
+
+            {/* Subtle Pattern Overlay for Texture */}
+            {/* <div
+              className="absolute inset-0 opacity-10"
+              style={{
+                backgroundImage: `
+                radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.3) 0%, transparent 50%)
+              `
+              }}
+            /> */}
             {children}
           </motion.div>
         </main>
