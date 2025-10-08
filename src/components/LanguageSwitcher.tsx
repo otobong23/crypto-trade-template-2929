@@ -18,6 +18,7 @@ const languages = [
   { code: 'ru', name: 'Русский', flag: '🇷🇺' },
   { code: 'hi', name: 'हिन्दी', flag: '🇮🇳' },
   { code: 'km', name: 'ភាសាខ្មែរ', flag: '🇰🇭' },
+  { code: 'hu', name: 'Magyar', flag: '🇭🇺' },
 ];
 
 const LanguageSwitcher = () => {

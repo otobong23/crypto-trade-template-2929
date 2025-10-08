@@ -15,6 +15,7 @@ import ko from './locales/ko.json';
 import ar from './locales/ar.json';
 import ru from './locales/ru.json';
 import hi from './locales/hi.json';
+import hu from './locales/hu.json';
 
 i18n
   .use(LanguageDetector)
@@ -34,6 +35,7 @@ i18n
       ru: { translation: ru },
       hi: { translation: hi },
       km: { translation: km },
+      hu: { translation: hu },
     },
     fallbackLng: 'en',
     debug: false,
