@@ -81,6 +81,7 @@ export default function DriftWidget({ embedId }: DriftWidgetProps) {
 
       window.drift!.SNIPPET_VERSION = "0.3.1";
       window.drift!.load!(embedId);
+      window.drift!.show();
 
       // No cleanup: Drift's own loader guards against double-init,
       // and removing the widget script on unmount can break the
