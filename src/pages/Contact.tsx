@@ -6,16 +6,22 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { useState } from "react";
+import { useEffect } from "react";
 
 const Contact = () => {
   const { t } = useTranslation();
-  const [isChatOpen, setIsChatOpen] = useState(false);
+  useEffect(() => {
+    window.drift.hide();
+  }, [])
+
+  const openChat = () => {
+    window.drift?.api?.openChat();
+  };
 
   return (
     <div className="min-h-screen bg-black text-foreground">
       <Navigation />
-      
+
       <div className="container px-4 pt-32 pb-20">
         {/* Hero Section */}
         <motion.section
@@ -45,38 +51,38 @@ const Contact = () => {
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium mb-2">{t('contact.form.name')}</label>
-                  <Input 
-                    placeholder={t('contact.form.name')} 
+                  <Input
+                    placeholder={t('contact.form.name')}
                     className="bg-black/50 border-white/20 focus:border-blue-400"
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-2">{t('contact.form.lastName')}</label>
-                  <Input 
-                    placeholder={t('contact.form.lastName')} 
+                  <Input
+                    placeholder={t('contact.form.lastName')}
                     className="bg-black/50 border-white/20 focus:border-blue-400"
                   />
                 </div>
               </div>
               <div>
                 <label className="block text-sm font-medium mb-2">{t('contact.form.email')}</label>
-                <Input 
-                  type="email" 
-                  placeholder={t('contact.form.email')} 
+                <Input
+                  type="email"
+                  placeholder={t('contact.form.email')}
                   className="bg-black/50 border-white/20 focus:border-blue-400"
                 />
               </div>
               <div>
                 <label className="block text-sm font-medium mb-2">{t('contact.form.subject')}</label>
-                <Input 
-                  placeholder={t('contact.form.subject')} 
+                <Input
+                  placeholder={t('contact.form.subject')}
                   className="bg-black/50 border-white/20 focus:border-blue-400"
                 />
               </div>
               <div>
                 <label className="block text-sm font-medium mb-2">{t('contact.form.message')}</label>
-                <Textarea 
-                  placeholder={t('contact.form.message')} 
+                <Textarea
+                  placeholder={t('contact.form.message')}
                   rows={5}
                   className="bg-black/50 border-white/20 focus:border-blue-400"
                 />
@@ -106,7 +112,7 @@ const Contact = () => {
                     <p className="text-gray-300">support@tradephere.com</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center space-x-4">
                   <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
                     <MapPin className="w-6 h-6 text-white" />
@@ -152,8 +158,8 @@ const Contact = () => {
               <p className="text-gray-300 mb-6">
                 {t('contact.chat.description')}
               </p>
-              <Button 
-                onClick={() => setIsChatOpen(true)}
+              <Button
+                onClick={() => openChat()}
                 className="w-full button-gradient"
               >
                 {t('contact.chat.openChat')}
@@ -163,63 +169,7 @@ const Contact = () => {
         </div>
       </div>
 
-      {/* Fixed Chat Box */}
-      <div className={`fixed bottom-6 right-6 z-50 transition-all duration-300 ${isChatOpen ? 'w-80 h-96' : 'w-16 h-16'}`}>
-        {!isChatOpen ? (
-          <Button
-            onClick={() => setIsChatOpen(true)}
-            className="w-16 h-16 rounded-full button-gradient shadow-lg hover:shadow-xl"
-            size="icon"
-          >
-            <MessageCircle className="w-6 h-6" />
-          </Button>
-        ) : (
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            className="glass rounded-2xl h-full flex flex-col"
-          >
-            {/* Chat Header */}
-            <div className="flex items-center justify-between p-4 border-b border-white/10">
-              <h3 className="font-semibold">{t('contact.chat.support')}</h3>
-              <Button
-                onClick={() => setIsChatOpen(false)}
-                variant="ghost"
-                size="icon"
-                className="w-8 h-8"
-              >
-                <X className="w-4 h-4" />
-              </Button>
-            </div>
-            
-            {/* Chat Content */}
-            <div className="flex-1 p-4 space-y-4">
-              <div className="bg-blue-500/20 rounded-lg p-3">
-                <p className="text-sm">{t('contact.chat.greeting')}</p>
-              </div>
-              <div className="bg-gray-800/50 rounded-lg p-3 ml-8">
-                <p className="text-sm">{t('contact.chat.sampleMessage')}</p>
-              </div>
-              <div className="bg-blue-500/20 rounded-lg p-3">
-                <p className="text-sm">{t('contact.chat.response')}</p>
-              </div>
-            </div>
-            
-            {/* Chat Input */}
-            <div className="p-4 border-t border-white/10">
-              <div className="flex space-x-2">
-                <Input 
-                  placeholder={t('contact.chat.placeholder')} 
-                  className="flex-1 bg-black/50 border-white/20 text-sm"
-                />
-                <Button size="sm" className="button-gradient">
-                  {t('contact.chat.send')}
-                </Button>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </div>
+      
 
       <Footer />
     </div>

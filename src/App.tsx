@@ -23,6 +23,7 @@ import UserDetail from "./pages/admin/UserDetail";
 import AdminTransactions from "./pages/admin/AdminTransactions";
 import AdminSettings from "./pages/admin/AdminSettings";
 import ProtectedRoute from "./components/ProtectedRoute";
+import DriftWidget from "./components/DriftComponent";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +33,7 @@ const App = () => (
       <div className="min-h-screen bg-background">
         <Toaster />
         <Sonner />
+        <DriftWidget embedId="p2xyx3myvsf5" />
         <BrowserRouter future={{ v7_relativeSplatPath: true, v7_startTransition: true }}>
         <Routes>
           <Route path="/" element={<Index />} />
